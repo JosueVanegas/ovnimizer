@@ -1,0 +1,138 @@
+{
+  "meta": {
+    "title": "Ovnimizer — Optimize your images without limits",
+    "description": "Convert, compress and resize images in your browser. Free, private, no limits."
+  },
+  "hero": {
+    "title": "Optimize your images without limits",
+    "subtitle": "Convert, compress and resize directly in your browser"
+  },
+  "upload": {
+    "drag": "Drag images here",
+    "drop": "Drop the images here",
+    "hint": "or click to select · JPG, PNG, WebP, AVIF, GIF, BMP, SVG · Max 50MB per file",
+    "reject": "Format not supported",
+    "addMore": "Add more images",
+    "dropToAdd": "Drop to add",
+    "orFrom": "or from:",
+    "fromUrl": "URL",
+    "urlPlaceholder": "Paste image URL…",
+    "fetch": "Fetch",
+    "urlFetching": "Fetching…",
+    "urlError": "Could not fetch the image. Check the URL and CORS settings.",
+    "cloudSoon": "Cloud integration coming soon",
+    "cloudDrive": "Google Drive",
+    "cloudDropbox": "Dropbox",
+    "cloudOneDrive": "OneDrive"
+  },
+  "options": {
+    "format": "Output format",
+    "quality": "Quality",
+    "maxWidth": "Max size",
+    "avifWarning": "AVIF requires browser support. Will fall back to WebP if unavailable.",
+    "preset": {
+      "max": "Maximum",
+      "high": "High",
+      "balanced": "Balanced",
+      "aggressive": "Aggressive",
+      "minimum": "Minimum",
+      "custom": "Custom"
+    },
+    "size": {
+      "original": "Original",
+      "large": "Large",
+      "medium": "Medium",
+      "small": "Small",
+      "thumb": "Thumbnail"
+    }
+  },
+  "gallery": {
+    "image": "image",
+    "images": "images",
+    "processed": "processed",
+    "processedPlural": "processed",
+    "removeAria": "Remove image",
+    "downloadAria": "Download image",
+    "compareAria": "View comparison",
+    "before": "Before",
+    "after": "After",
+    "close": "Close"
+  },
+  "actions": {
+    "processAll": "Process all",
+    "clear": "Clear",
+    "reprocess": "Reprocess",
+    "cancel": "Cancel"
+  },
+  "progress": {
+    "label": "Processing {current} of {total}"
+  },
+  "stats": {
+    "image": "image",
+    "images": "images",
+    "compression": "compression",
+    "saved": "saved",
+    "download": "Download",
+    "downloadAll": "Download all",
+    "downloadZip": "Download ZIP",
+    "zipping": "Compressing…",
+    "original": "original"
+  },
+  "editor": {
+    "notProcessed": "Adjusting settings…",
+    "error": "Error processing this image",
+    "applyAll": "Apply to all images"
+  },
+  "share": {
+    "button": "Share Ovnimizer with others",
+    "text": "Check out Ovnimizer — free browser-based image optimizer. No uploads, no limits.",
+    "copied": "Link copied to clipboard!"
+  },
+  "format": {
+    "label": "Output format",
+    "searchPlaceholder": "Search formats…",
+    "noResults": "No formats found",
+    "cat": {
+      "all": "All",
+      "web": "Web",
+      "lossless": "Lossless",
+      "icon": "Icon"
+    },
+    "desc": {
+      "webp": "Best for web",
+      "avif": "Next generation",
+      "jpg": "Universal",
+      "png": "Lossless",
+      "ico": "Favicon"
+    },
+    "pngWarning": "PNG is lossless — it won't reduce file size for photos or JPEGs."
+  },
+  "toast": {
+    "success": "{count} image optimized",
+    "successPlural": "{count} images optimized",
+    "warning": "{done} processed, {errors} with errors"
+  },
+  "footer": {
+    "privacy": "Your files never leave your device",
+    "privacyLink": "Privacy",
+    "community": "Free and open source for the community"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "badge": "No data collection",
+    "intro": "Ovnimizer is a free, open-source, non-commercial tool built for the community. We do not collect, store, or transmit any personal data or files.",
+    "localTitle": "100% local processing",
+    "localBody": "Your images are processed using your device's CPU and memory via browser APIs (OffscreenCanvas). No file is uploaded to any server. When you close the tab, all data is gone.",
+    "noCollectionTitle": "No data collection",
+    "noCollectionBody": "We collect no data of any kind: no images, no metadata, no device information, no IP addresses. We have no way of knowing who uses this tool.",
+    "noTrackingTitle": "No tracking or analytics",
+    "noTrackingBody": "We do not use cookies, analytics tools, or any tracking technology. No ads, no user profiles, no monetization.",
+    "cloudIntegrationTitle": "Cloud integrations (optional)",
+    "cloudIntegrationBody": "Ovnimizer offers optional connections with Google Drive and Dropbox. Authentication happens directly between your browser and the provider — never through our servers. Files are downloaded from the cloud to your browser and processed locally. We never store tokens, credentials, or files at any point.",
+    "openSourceTitle": "Open source & community",
+    "openSourceBody": "Ovnimizer is a non-profit project built for the community. There is no business model or commercial interest. The code is free and open.",
+    "gdprTitle": "GDPR & privacy compliance",
+    "gdprBody": "Since no personal data is processed or stored, Ovnimizer is fully compliant with GDPR, CCPA, and other privacy regulations worldwide. No cookie consent is required.",
+    "back": "Back to home"
+  }
+}
