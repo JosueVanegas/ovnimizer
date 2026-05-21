@@ -11,8 +11,7 @@ export function FloatingCow() {
     const inner = innerRef.current as HTMLDivElement;
     if (!el || !inner) return;
 
-    // desktop only
-    if (window.innerWidth < 768) return;
+    const isDesktop = window.innerWidth >= 768;
 
     const SIZE = 72;
     const state = {
@@ -72,7 +71,15 @@ export function FloatingCow() {
     state.raf = requestAnimationFrame(tick);
     setSpinSpeed(state.vx, state.vy);
 
-    // ── Drag ────────────────────────────────────────────────────────────────
+    if (!isDesktop) {
+      // Mobile/tablet: bouncing background only, no interaction
+      return () => cancelAnimationFrame(state.raf);
+    }
+
+    // ── Drag (desktop only) ──────────────────────────────────────────────────
+    el.style.pointerEvents = "auto";
+    el.style.cursor = "grab";
+
     function onPointerDown(e: PointerEvent) {
       e.preventDefault();
       state.dragging = true;
@@ -139,12 +146,13 @@ export function FloatingCow() {
   return (
     <div
       ref={ref}
-      className="fixed top-0 left-0 select-none  opacity-80 cursor-grab"
+      className="fixed top-0 left-0 select-none opacity-80"
       style={{
         willChange: "transform",
         fontSize: 72,
         lineHeight: 1,
         zIndex: -50,
+        pointerEvents: "none",
       }}
       aria-hidden
     >
