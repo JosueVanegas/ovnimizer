@@ -3,27 +3,20 @@
 import { useState, useRef, useEffect } from 'react'
 import { useTranslations } from 'next-intl'
 import { ChevronDown, Search, Check } from 'lucide-react'
-import { ImageFormat } from '@/types'
+import { FormatChoice, ToolMode } from '@/types'
+import { OUTPUT_FORMATS, OUTPUT_FORMAT_ORDER, FormatCategory } from '@/lib/formats'
 
-const FORMAT_META: Record<ImageFormat, { cat: 'web' | 'lossless' | 'icon' }> = {
-  webp: { cat: 'web'      },
-  avif: { cat: 'web'      },
-  jpg:  { cat: 'web'      },
-  png:  { cat: 'lossless' },
-  ico:  { cat: 'icon'     },
-}
-
-const ALL_FORMATS: ImageFormat[] = ['webp', 'avif', 'jpg', 'png', 'ico']
-const CATS = ['all', 'web', 'lossless', 'icon'] as const
-type Cat = typeof CATS[number]
+const CATS = ['all', 'web', 'lossless', 'raster', 'icon'] as const
+type Cat = (typeof CATS)[number]
 
 interface FormatPickerProps {
-  value: ImageFormat
-  onChange: (fmt: ImageFormat) => void
+  value: FormatChoice
+  mode: ToolMode
+  onChange: (fmt: FormatChoice) => void
   disabled?: boolean
 }
 
-export function FormatPicker({ value, onChange, disabled }: FormatPickerProps) {
+export function FormatPicker({ value, mode, onChange, disabled }: FormatPickerProps) {
   const t = useTranslations('format')
   const [open, setOpen] = useState(false)
   const [search, setSearch] = useState('')
@@ -38,20 +31,33 @@ export function FormatPicker({ value, onChange, disabled }: FormatPickerProps) {
     return () => document.removeEventListener('mousedown', onOut)
   }, [])
 
-  const filtered = ALL_FORMATS.filter((f) => {
-    if (cat !== 'all' && FORMAT_META[f].cat !== cat) return false
+  // 'keep' is only available in Optimize mode, always shown first when present.
+  const choices: FormatChoice[] = [
+    ...(mode === 'optimize' ? (['keep'] as FormatChoice[]) : []),
+    ...OUTPUT_FORMAT_ORDER,
+  ]
+
+  const catOf = (f: FormatChoice): FormatCategory | 'keep' =>
+    f === 'keep' ? 'keep' : OUTPUT_FORMATS[f].cat
+
+  const filtered = choices.filter((f) => {
+    if (cat !== 'all' && f !== 'keep' && catOf(f) !== cat) return false
     if (search) {
       const q = search.toLowerCase()
-      const label = f.toLowerCase()
+      const label = (f === 'keep' ? t('keepLabel') : f).toLowerCase()
       const desc = t(`desc.${f}` as Parameters<typeof t>[0]).toLowerCase()
       if (!label.includes(q) && !desc.includes(q)) return false
     }
     return true
   })
 
+  const label = (f: FormatChoice) => (f === 'keep' ? t('keepLabel') : f.toUpperCase())
+
   return (
     <div ref={ref} className="space-y-1.5">
-      <label className="text-sm font-semibold">{t('label')}</label>
+      <label className="text-sm font-semibold">
+        {mode === 'optimize' ? t('label') : t('convertLabel')}
+      </label>
       <div className="relative">
         <button
           type="button"
@@ -61,7 +67,7 @@ export function FormatPicker({ value, onChange, disabled }: FormatPickerProps) {
         >
           <span className="flex items-center gap-2.5">
             <span className="px-2 py-0.5 rounded-md bg-emerald-500 text-white text-xs font-bold uppercase tracking-wider">
-              {value.toUpperCase()}
+              {label(value)}
             </span>
             <span className="text-muted-foreground text-xs">
               {t(`desc.${value}` as Parameters<typeof t>[0])}
@@ -126,11 +132,11 @@ export function FormatPicker({ value, onChange, disabled }: FormatPickerProps) {
                     ].join(' ')}
                   >
                     <span
-                      className={`w-10 text-xs font-bold uppercase tracking-wider shrink-0 ${
+                      className={`w-14 text-xs font-bold uppercase tracking-wider shrink-0 ${
                         active ? 'text-emerald-600 dark:text-emerald-400' : 'text-foreground'
                       }`}
                     >
-                      {fmt.toUpperCase()}
+                      {label(fmt)}
                     </span>
                     <span className="text-xs text-muted-foreground flex-1 truncate">
                       {t(`desc.${fmt}` as Parameters<typeof t>[0])}

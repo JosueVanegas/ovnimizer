@@ -1,27 +1,34 @@
-import type { ProcessingOptions } from '@/types'
+import type { ProcessingOptions, ToolMode } from '@/types'
 
-export const FORMATS = ['png', 'jpg', 'webp', 'avif', 'ico'] as const
+export const MODES: ToolMode[] = ['optimize', 'convert']
 
-export const DEFAULT_OPTIONS: ProcessingOptions = {
-  format: 'webp',
-  quality: 80,
-  width: null,
+export function defaultOptions(mode: ToolMode): ProcessingOptions {
+  return {
+    mode,
+    // Optimize keeps the source format by default; Convert needs an explicit target.
+    format: mode === 'optimize' ? 'keep' : 'webp',
+    quality: 80,
+    width: null,
+  }
 }
 
 export const MAX_FILE_SIZE = 50 * 1024 * 1024
 export const MAX_TOTAL_SIZE = 100 * 1024 * 1024
 export const MAX_FILES = 50
 
+// Formats the dropzone will accept as *input*. Decoding is best-effort for
+// some of these (SVG, RAW), with a clear error if the browser can't handle it.
 export const ACCEPTED_TYPES = {
-  'image/jpeg':   ['.jpg', '.jpeg', '.jfif'],
-  'image/png':    ['.png'],
-  'image/webp':   ['.webp'],
-  'image/avif':   ['.avif'],
-  'image/gif':    ['.gif'],
-  'image/bmp':    ['.bmp'],
-  'image/svg+xml':['.svg'],
-  'image/heic':   ['.heic'],
-  'image/heif':   ['.heif'],
+  'image/jpeg':         ['.jpg', '.jpeg', '.jfif'],
+  'image/png':          ['.png'],
+  'image/webp':         ['.webp'],
+  'image/avif':         ['.avif'],
+  'image/gif':          ['.gif'],
+  'image/bmp':          ['.bmp'],
+  'image/tiff':         ['.tif', '.tiff'],
+  'image/svg+xml':      ['.svg'],
+  'image/heic':         ['.heic'],
+  'image/heif':         ['.heif'],
 }
 
 export const QUALITY_PRESETS = [

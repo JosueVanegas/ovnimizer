@@ -11,14 +11,14 @@ import {
   Archive,
   Users,
 } from "lucide-react";
-import { ImageItem, ProcessingOptions } from "@/types";
+import { ImageItem, ProcessingOptions, ToolMode } from "@/types";
 import { BeforeAfterSlider } from "./BeforeAfterSlider";
 import { FormatPicker } from "./FormatPicker";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { formatBytes } from "@/lib/utils";
-import { getOutputFilename } from "@/lib/image-processor";
+import { getOutputFilename, OUTPUT_FORMATS } from "@/lib/formats";
 import { downloadSingleOrZip } from "@/lib/zip-handler";
 import { QUALITY_PRESETS, RESIZE_PRESETS } from "@/lib/constants";
 
@@ -30,6 +30,7 @@ interface Progress {
 }
 
 interface EditorViewProps {
+  mode: ToolMode;
   images: ImageItem[];
   updateItem: (id: string, updates: Partial<ImageItem>) => void;
   onRemove: (id: string) => void;
@@ -44,6 +45,7 @@ interface EditorViewProps {
 }
 
 export function EditorView({
+  mode,
   images,
   updateItem,
   onRemove,
@@ -136,15 +138,18 @@ export function EditorView({
     const url = URL.createObjectURL(img.processedBlob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = getOutputFilename(
-      img.name,
-      selected?.settings.format ?? "webp",
-    );
+    a.download = getOutputFilename(img.name, img.outputFormat ?? "webp");
     a.click();
     URL.revokeObjectURL(url);
   }
 
   const settings = selected?.settings;
+  // Quality only matters for lossy encoders. 'keep' may still hit a lossy
+  // source format, so we keep the control visible for it.
+  const qualityApplies =
+    !settings ||
+    settings.format === "keep" ||
+    !OUTPUT_FORMATS[settings.format].lossless;
   const qualityPresetKey =
     QUALITY_PRESETS.find((p) => p.value === settings?.quality)?.key ?? "custom";
   const resizePresetKey =
@@ -325,7 +330,8 @@ export function EditorView({
 
         <div className="rounded-2xl border border-border/40 bg-card p-4 space-y-4">
           <FormatPicker
-            value={settings?.format ?? "webp"}
+            value={settings?.format ?? (mode === "optimize" ? "keep" : "webp")}
+            mode={mode}
             onChange={(fmt) => updateSettings({ format: fmt })}
             disabled={isProcessing}
           />
@@ -340,7 +346,7 @@ export function EditorView({
             </p>
           )}
 
-          <div className="space-y-2">
+          <div className={qualityApplies ? "space-y-2" : "hidden"}>
             <div className="flex items-center justify-between">
               <label className="text-sm font-semibold">
                 {t("options.quality")}
@@ -455,9 +461,7 @@ export function EditorView({
             {anyDone && !isProcessing && (
               <Button
                 className="w-full gap-2 bg-emerald-500 hover:bg-emerald-600 text-white font-bold"
-                onClick={() =>
-                  downloadSingleOrZip(doneImages, settings?.format ?? "webp")
-                }
+                onClick={() => downloadSingleOrZip(doneImages)}
               >
                 {doneImages.length === 1 ? (
                   <>

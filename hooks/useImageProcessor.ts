@@ -42,7 +42,7 @@ export function useImageProcessor(
     workerRef.current = w
 
     w.onmessage = (e) => {
-      const { type, id, value, blob, error } = e.data
+      const { type, id, value, blob, format, error } = e.data
 
       if (type === 'PROGRESS') {
         setProgress((p) => ({ ...p, imagePct: value }))
@@ -53,6 +53,7 @@ export function useImageProcessor(
           processedBlob: blob,
           processedPreview: preview,
           processedSize: blob.size,
+          outputFormat: format,
         })
         setProgress((p) => ({ ...p, done: p.done + 1, imagePct: 100 }))
         nextRef.current()

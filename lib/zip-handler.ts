@@ -1,28 +1,24 @@
 import JSZip from 'jszip'
-import { ImageItem, ImageFormat } from '@/types'
-import { getOutputFilename } from './image-processor'
+import { ImageItem } from '@/types'
+import { getOutputFilename } from './formats'
 
-export async function downloadSingleOrZip(images: ImageItem[], format: ImageFormat): Promise<void> {
+function filenameFor(img: ImageItem): string {
+  return getOutputFilename(img.name, img.outputFormat ?? 'webp')
+}
+
+export async function downloadSingleOrZip(images: ImageItem[]): Promise<void> {
   const done = images.filter((i) => i.status === 'done' && i.processedBlob)
   if (!done.length) return
 
   if (done.length === 1) {
-    const img = done[0]
-    const url = URL.createObjectURL(img.processedBlob!)
-    const a = document.createElement('a')
-    a.href = url
-    a.download = getOutputFilename(img.name, format)
-    document.body.appendChild(a)
-    a.click()
-    document.body.removeChild(a)
-    setTimeout(() => URL.revokeObjectURL(url), 1000)
+    triggerDownload(done[0].processedBlob!, filenameFor(done[0]))
     return
   }
 
-  await downloadZip(done, format)
+  await downloadZip(done)
 }
 
-export async function downloadZip(images: ImageItem[], format: ImageFormat): Promise<void> {
+export async function downloadZip(images: ImageItem[]): Promise<void> {
   const done = images.filter((i) => i.status === 'done' && i.processedBlob)
   if (!done.length) return
 
@@ -30,7 +26,7 @@ export async function downloadZip(images: ImageItem[], format: ImageFormat): Pro
   const folder = zip.folder('ovnimizer')!
 
   for (const img of done) {
-    folder.file(getOutputFilename(img.name, format), img.processedBlob!)
+    folder.file(filenameFor(img), img.processedBlob!)
   }
 
   const blob = await zip.generateAsync({
@@ -39,10 +35,14 @@ export async function downloadZip(images: ImageItem[], format: ImageFormat): Pro
     compressionOptions: { level: 1 },
   })
 
+  triggerDownload(blob, `ovnimizer-${new Date().toISOString().slice(0, 10)}.zip`)
+}
+
+function triggerDownload(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
   a.href = url
-  a.download = `ovnimizer-${new Date().toISOString().slice(0, 10)}.zip`
+  a.download = filename
   document.body.appendChild(a)
   a.click()
   document.body.removeChild(a)

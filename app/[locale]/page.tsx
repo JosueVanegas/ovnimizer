@@ -1,141 +1,71 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
 import { useTranslations } from "next-intl";
-import { toast } from "sonner";
-import { Share2 } from "lucide-react";
+import { ArrowLeftRight, Sparkles, ArrowRight } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { ImageUploader } from "@/components/ImageUploader";
-import { EditorView } from "@/components/EditorView";
-import { useFileUpload } from "@/hooks/useFileUpload";
-import { useImageProcessor } from "@/hooks/useImageProcessor";
+import { Link } from "@/i18n/navigation";
+import { ToolMode } from "@/types";
 
-export default function Home() {
+const TOOLS: { mode: ToolMode; Icon: typeof Sparkles }[] = [
+  { mode: "optimize", Icon: Sparkles },
+  { mode: "convert", Icon: ArrowLeftRight },
+];
+
+export default function Landing() {
   const t = useTranslations();
 
-  const {
-    images,
-    error,
-    addImages,
-    removeImage,
-    updateItem,
-    clearAll,
-    resetProcessed,
-  } = useFileUpload();
-
-  const { isProcessing, progress, processImages, cancel } =
-    useImageProcessor(updateItem);
-
-  useEffect(() => {
-    if (error) toast.error(error);
-  }, [error]);
-
-  const prevProcessingRef = useMemo(() => ({ value: false }), []);
-  useEffect(() => {
-    if (prevProcessingRef.value && !isProcessing && progress.total > 0) {
-      const errors = images.filter((i) => i.status === "error").length;
-      const done = images.filter((i) => i.status === "done").length;
-      if (errors > 0) {
-        toast.warning(t("toast.warning", { done, errors }));
-      } else if (done > 0) {
-        toast.success(
-          done === 1
-            ? t("toast.success", { count: done })
-            : t("toast.successPlural", { count: done }),
-        );
-      }
-    }
-    prevProcessingRef.value = isProcessing;
-  }, [isProcessing, images, progress.total, prevProcessingRef, t]);
-
-  const lastIdleKey = useRef("");
-  useEffect(() => {
-    if (isProcessing) return;
-    const idle = images.filter((i) => i.status === "idle");
-    if (!idle.length) return;
-    const key = idle.map((i) => i.id).join(",");
-    if (key === lastIdleKey.current) return;
-    lastIdleKey.current = key;
-    processImages(idle.map((img) => ({ item: img, options: img.settings })));
-  }, [images, isProcessing]);
-
-  useEffect(() => {
-    return () => {
-      images.forEach((i) => {
-        URL.revokeObjectURL(i.preview);
-        if (i.processedPreview) URL.revokeObjectURL(i.processedPreview);
-      });
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const hasImages = images.length > 0;
-
-  async function handleShare() {
-    const url = window.location.origin;
-    if (navigator.share) {
-      try {
-        await navigator.share({
-          title: "Ovnimizer",
-          text: t("share.text"),
-          url,
-        });
-      } catch {}
-    } else {
-      await navigator.clipboard.writeText(url);
-      toast.success(t("share.copied"));
-    }
-  }
-
   return (
-    <div className="toptop min-h-screen">
+    <div className="toptop min-h-screen flex flex-col">
       <Header />
 
-      <main className="flex-1 max-w-5xl mx-auto w-full px-4 md:px-8 pt-40 space-y-8">
-        {!hasImages && (
-          <div className="text-center space-y-2">
-            <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-              {t("hero.title")}
-            </h1>
-            <p className="text-muted-foreground text-base md:text-lg">
-              {t("hero.subtitle")}
-            </p>
-          </div>
-        )}
-
-        <ImageUploader
-          onFiles={addImages}
-          disabled={isProcessing}
-          hasImages={hasImages}
-        />
-
-        {hasImages && (
-          <EditorView
-            images={images}
-            updateItem={updateItem}
-            onRemove={removeImage}
-            onClear={clearAll}
-            processImages={processImages}
-            onCancel={cancel}
-            onReprocess={() => {
-              resetProcessed();
-              lastIdleKey.current = "";
-            }}
-            isProcessing={isProcessing}
-            progress={progress}
-          />
-        )}
-
-        <div className="flex justify-center pt-4 pb-16">
-          <button
-            onClick={handleShare}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-ufo-green border border-border/60 text-sm text-black hover:text-foreground hover:border-ufo-green hover:bg-muted/40 transition-colors"
-          >
-            <Share2 className="w-4 h-4" />
-            {t("share.button")}
-          </button>
+      <main className="flex-1 max-w-5xl mx-auto w-full px-4 md:px-8 pt-40 pb-16 space-y-10">
+        <div className="text-center space-y-3">
+          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight">
+            {t("landing.title")}
+          </h1>
+          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
+            {t("landing.subtitle")}
+          </p>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          {TOOLS.map(({ mode, Icon }) => (
+            <Link
+              key={mode}
+              href={`/${mode}`}
+              className="group relative rounded-3xl border border-border/60 bg-card p-7 md:p-8 flex flex-col gap-4 hover:border-ufo-green hover:shadow-lg hover:shadow-ufo-green/5 transition-all animate-card-appear"
+            >
+              <div className="w-14 h-14 rounded-2xl bg-ufo-green/10 text-ufo-green flex items-center justify-center group-hover:bg-ufo-green group-hover:text-black transition-colors">
+                <Icon className="w-7 h-7" />
+              </div>
+              <div className="space-y-1.5">
+                <h2 className="text-xl md:text-2xl font-bold">
+                  {t(`tool.${mode}.title` as Parameters<typeof t>[0])}
+                </h2>
+                <p className="text-sm text-muted-foreground">
+                  {t(`tool.${mode}.cardDesc` as Parameters<typeof t>[0])}
+                </p>
+              </div>
+              <ul className="text-sm text-muted-foreground space-y-1 mt-1">
+                {[0, 1, 2].map((i) => (
+                  <li key={i} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-ufo-green shrink-0" />
+                    {t(`tool.${mode}.feature${i}` as Parameters<typeof t>[0])}
+                  </li>
+                ))}
+              </ul>
+              <span className="mt-2 inline-flex items-center gap-1.5 text-sm font-semibold text-ufo-green">
+                {t(`tool.${mode}.cta` as Parameters<typeof t>[0])}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+              </span>
+            </Link>
+          ))}
+        </div>
+
+        <p className="text-center text-xs text-muted-foreground">
+          {t("landing.privacyNote")}
+        </p>
       </main>
 
       <Footer />

@@ -1,10 +1,10 @@
 'use client'
 
 import { useState, useCallback, useRef, useEffect } from 'react'
-import { ImageItem } from '@/types'
-import { MAX_FILE_SIZE, MAX_TOTAL_SIZE, MAX_FILES, DEFAULT_OPTIONS } from '@/lib/constants'
+import { ImageItem, ToolMode } from '@/types'
+import { MAX_FILE_SIZE, MAX_TOTAL_SIZE, MAX_FILES, defaultOptions } from '@/lib/constants'
 
-export function useFileUpload() {
+export function useFileUpload(mode: ToolMode) {
   const [images, setImages] = useState<ImageItem[]>([])
   const [error, setError] = useState<string | null>(null)
   const imagesRef = useRef<ImageItem[]>([])
@@ -46,7 +46,7 @@ export function useFileUpload() {
       width: 0,
       height: 0,
       status: 'idle',
-      settings: { ...DEFAULT_OPTIONS },
+      settings: defaultOptions(mode),
     }))
 
     entries.forEach((entry) => {
@@ -62,7 +62,7 @@ export function useFileUpload() {
     })
 
     setImages((curr) => [...curr, ...entries])
-  }, [])
+  }, [mode])
 
   const removeImage = useCallback((id: string) => {
     setImages((prev) => {
@@ -93,7 +93,7 @@ export function useFileUpload() {
     setImages((prev) =>
       prev.map((i) => {
         if (i.processedPreview) URL.revokeObjectURL(i.processedPreview)
-        return { ...i, status: 'idle' as const, processedBlob: undefined, processedPreview: undefined, processedSize: undefined, errorMessage: undefined }
+        return { ...i, status: 'idle' as const, processedBlob: undefined, processedPreview: undefined, processedSize: undefined, outputFormat: undefined, errorMessage: undefined }
       })
     )
   }, [])

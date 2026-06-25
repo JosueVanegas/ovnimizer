@@ -10,7 +10,7 @@
   "upload": {
     "drag": "Arrastra imágenes aquí",
     "drop": "Suelta las imágenes aquí",
-    "hint": "o haz clic para seleccionar · JPG, PNG, WebP, AVIF, GIF, BMP, SVG · Máx 50MB por archivo",
+    "hint": "o haz clic para seleccionar · JPG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, SVG · Máx 50MB por archivo",
     "reject": "Formato no soportado",
     "addMore": "Añadir más imágenes",
     "dropToAdd": "Suelta para añadir",
@@ -96,21 +96,35 @@
       "all": "Todos",
       "web": "Web",
       "lossless": "Sin pérdida",
-      "icon": "Icono"
+      "icon": "Icono",
+      "raster": "Ráster"
     },
     "desc": {
       "webp": "Ideal para web",
       "avif": "Nueva generación",
       "jpg": "Universal",
       "png": "Sin pérdida",
-      "ico": "Favicon"
+      "ico": "Favicon",
+      "tiff": "Alta calidad",
+      "bmp": "Sin comprimir",
+      "keep": "Mantener formato original"
     },
-    "pngWarning": "PNG es sin pérdida — no reducirá el tamaño de fotos o JPEGs."
+    "pngWarning": "PNG es sin pérdida — no reducirá el tamaño de fotos o JPEGs.",
+    "convertLabel": "Convertir a",
+    "keepLabel": "Mantener"
   },
   "toast": {
     "success": "{count} imagen optimizada",
     "successPlural": "{count} imágenes optimizadas",
-    "warning": "{done} procesadas, {errors} con error"
+    "warning": "{done} procesadas, {errors} con error",
+    "optimize": {
+      "success": "{count} imagen optimizada",
+      "successPlural": "{count} imágenes optimizadas"
+    },
+    "convert": {
+      "success": "{count} imagen convertida",
+      "successPlural": "{count} imágenes convertidas"
+    }
   },
   "footer": {
     "privacy": "Tus archivos nunca salen de tu dispositivo",
@@ -134,5 +148,35 @@
     "gdprTitle": "Cumplimiento RGPD y privacidad",
     "gdprBody": "Al no procesar ni almacenar datos personales, Ovnimizer cumple plenamente con el RGPD, la CCPA y otras normativas de privacidad en todo el mundo. No es necesario ningún consentimiento de cookies.",
     "back": "Volver al inicio"
+  },
+  "landing": {
+    "title": "Una herramienta limpia para cada tarea con imágenes",
+    "subtitle": "Elige lo que necesitas — optimiza el rendimiento o convierte entre formatos. Sin flujos mezclados, sin sorpresas. Todo se ejecuta de forma privada en tu navegador.",
+    "privacyNote": "100% local — tus archivos nunca salen de tu dispositivo."
+  },
+  "tool": {
+    "allTools": "← Todas las herramientas",
+    "optimize": {
+      "badge": "Optimización de imagen",
+      "title": "Optimizar imagen",
+      "subtitle": "Comprime, redimensiona y elimina metadatos manteniendo el formato original.",
+      "switch": "¿Prefieres cambiar de formato? Convertir imagen →",
+      "cardDesc": "Haz tus imágenes más ligeras y rápidas sin cambiar su formato — salvo que quieras.",
+      "cta": "Optimizar imágenes",
+      "feature0": "Compresión inteligente y control de calidad",
+      "feature1": "Redimensiona al tamaño que necesites",
+      "feature2": "Elimina los metadatos EXIF automáticamente"
+    },
+    "convert": {
+      "badge": "Conversión de archivos",
+      "title": "Convertir imagen",
+      "subtitle": "Convierte entre JPG, PNG, WebP, AVIF, TIFF, BMP y más.",
+      "switch": "¿Solo quieres reducir el tamaño? Optimizar imagen →",
+      "cardDesc": "Cambia una imagen de un formato a otro, con control total de la calidad.",
+      "cta": "Convertir imágenes",
+      "feature0": "JPG · PNG · WebP · AVIF · TIFF · BMP",
+      "feature1": "Lee HEIC, GIF (primer fotograma) y más",
+      "feature2": "Elige explícitamente el formato de destino"
+    }
   }
 }

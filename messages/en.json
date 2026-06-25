@@ -10,7 +10,7 @@
   "upload": {
     "drag": "Drag images here",
     "drop": "Drop the images here",
-    "hint": "or click to select · JPG, PNG, WebP, AVIF, GIF, BMP, SVG · Max 50MB per file",
+    "hint": "or click to select · JPG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, SVG · Max 50MB per file",
     "reject": "Format not supported",
     "addMore": "Add more images",
     "dropToAdd": "Drop to add",
@@ -96,21 +96,35 @@
       "all": "All",
       "web": "Web",
       "lossless": "Lossless",
-      "icon": "Icon"
+      "icon": "Icon",
+      "raster": "Raster"
     },
     "desc": {
       "webp": "Best for web",
       "avif": "Next generation",
       "jpg": "Universal",
       "png": "Lossless",
-      "ico": "Favicon"
+      "ico": "Favicon",
+      "tiff": "High quality",
+      "bmp": "Uncompressed",
+      "keep": "Keep original format"
     },
-    "pngWarning": "PNG is lossless — it won't reduce file size for photos or JPEGs."
+    "pngWarning": "PNG is lossless — it won't reduce file size for photos or JPEGs.",
+    "convertLabel": "Convert to",
+    "keepLabel": "Keep"
   },
   "toast": {
     "success": "{count} image optimized",
     "successPlural": "{count} images optimized",
-    "warning": "{done} processed, {errors} with errors"
+    "warning": "{done} processed, {errors} with errors",
+    "optimize": {
+      "success": "{count} image optimized",
+      "successPlural": "{count} images optimized"
+    },
+    "convert": {
+      "success": "{count} image converted",
+      "successPlural": "{count} images converted"
+    }
   },
   "footer": {
     "privacy": "Your files never leave your device",
@@ -134,5 +148,35 @@
     "gdprTitle": "GDPR & privacy compliance",
     "gdprBody": "Since no personal data is processed or stored, Ovnimizer is fully compliant with GDPR, CCPA, and other privacy regulations worldwide. No cookie consent is required.",
     "back": "Back to home"
+  },
+  "landing": {
+    "title": "One clean tool for every image job",
+    "subtitle": "Pick what you need — optimize for performance, or convert between formats. No mixed flows, no surprises. Everything runs privately in your browser.",
+    "privacyNote": "100% local — your files never leave your device."
+  },
+  "tool": {
+    "allTools": "← All tools",
+    "optimize": {
+      "badge": "Image Optimization",
+      "title": "Optimize Image",
+      "subtitle": "Compress, resize and strip metadata while keeping your original format.",
+      "switch": "Need to change format instead? Convert image →",
+      "cardDesc": "Make images lighter and faster without changing their format — unless you want to.",
+      "cta": "Optimize images",
+      "feature0": "Smart compression & quality control",
+      "feature1": "Resize to fit any target",
+      "feature2": "Removes EXIF metadata automatically"
+    },
+    "convert": {
+      "badge": "File Conversion",
+      "title": "Convert Image",
+      "subtitle": "Convert between JPG, PNG, WebP, AVIF, TIFF, BMP and more.",
+      "switch": "Just want it smaller? Optimize image →",
+      "cardDesc": "Change an image from one format to another, with full control over quality.",
+      "cta": "Convert images",
+      "feature0": "JPG · PNG · WebP · AVIF · TIFF · BMP",
+      "feature1": "Reads HEIC, GIF (first frame) & more",
+      "feature2": "Pick any target format explicitly"
+    }
   }
 }
