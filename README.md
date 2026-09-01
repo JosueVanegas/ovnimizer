@@ -40,7 +40,7 @@ Upload → Configure → Optimize → Download
 | **Resize presets** | Original · 2560px · 1920px · 1280px · 800px |
 | **Before/After** | Side-by-side comparison slider for every image |
 | **ZIP download** | One-click batch download as a single `.zip` |
-| **7 languages** | English · Spanish · Portuguese · Italian · Japanese · Russian · German |
+| **2 languages** | Spanish · English |
 | **Dark mode** | Full light/dark theme support |
 | **Non-blocking UI** | Image processing runs in a dedicated Web Worker thread |
 
@@ -52,7 +52,7 @@ Upload → Configure → Optimize → Download
 Framework       Next.js 15 (App Router, React 19)
 Language        TypeScript 5
 Styling         Tailwind CSS 4
-i18n            next-intl 4  (7 locales)
+i18n            next-intl 4  (2 locales)
 Image decoding  heic2any  ·  OffscreenCanvas (Web Worker)
 File handling   react-dropzone  ·  jszip
 Cloud SDKs      Google Picker API  ·  Dropbox Chooser

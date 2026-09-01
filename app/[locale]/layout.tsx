@@ -3,6 +3,8 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server'
 import { Toaster } from '@/components/ui/sonner'
 import { FloatingCow } from '@/components/FloatingCow'
+import { CommandPalette } from '@/components/CommandPalette'
+import { ShortcutsModal } from '@/components/ShortcutsModal'
 import { routing } from '@/i18n/routing'
 
 export async function generateStaticParams() {
@@ -41,6 +43,8 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <FloatingCow />
+      <CommandPalette />
+      <ShortcutsModal />
       {children}
       <Toaster richColors position="bottom-right" />
     </NextIntlClientProvider>

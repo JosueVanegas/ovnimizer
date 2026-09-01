@@ -1,6 +1,15 @@
+import type { Viewport } from 'next'
 import { Nunito } from 'next/font/google'
 import { ThemeProvider } from 'next-themes'
+import { ServiceWorker } from '@/components/ServiceWorker'
 import './globals.css'
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#0a0a0a' },
+  ],
+}
 
 const nunito = Nunito({
   variable: '--font-nunito',
@@ -15,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
+        <ServiceWorker />
       </body>
     </html>
   )

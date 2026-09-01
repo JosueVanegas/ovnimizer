@@ -1,8 +1,9 @@
 "use client";
 
-import { ShieldCheck, ExternalLink } from "lucide-react";
+import { ShieldCheck, ExternalLink, Keyboard } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { OPEN_SHORTCUTS_EVENT } from "./ShortcutsModal";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -16,6 +17,20 @@ export function Footer() {
         </div>
         <div className="flex items-center gap-4">
           <span className="hidden sm:block">{t("community")}</span>
+          <Link
+            href="/changelog"
+            className="hover:text-foreground transition-colors underline underline-offset-2"
+          >
+            Changelog
+          </Link>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_SHORTCUTS_EVENT))}
+            className="hidden items-center gap-1 hover:text-foreground transition-colors sm:flex"
+          >
+            <Keyboard className="w-3.5 h-3.5" />
+            Shortcuts
+          </button>
           <Link
             href="/privacy"
             className="hover:text-foreground transition-colors underline underline-offset-2"

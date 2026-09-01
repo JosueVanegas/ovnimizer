@@ -1,5 +1,6 @@
 import { ThemeToggle } from "./shared/ThemeToggle";
 import { LanguageSwitcher } from "./LanguageSwitcher";
+import { SearchTrigger } from "./SearchTrigger";
 import Link from "next/link";
 
 export function Header() {
@@ -15,6 +16,7 @@ export function Header() {
           </span>
         </Link>
         <div className="flex items-center gap-1">
+          <SearchTrigger />
           <LanguageSwitcher />
           <ThemeToggle />
         </div>
