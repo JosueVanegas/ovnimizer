@@ -129,7 +129,6 @@
   html {
     @apply font-sans;
   }
-  /* CJK font fallback for Japanese */
   :lang(ja) {
     font-family:
       var(--font-nunito), "Hiragino Sans", "Yu Gothic UI", "Meiryo", sans-serif;
@@ -142,13 +141,58 @@
   --ufo-glow: rgba(81, 238, 3);
 }
 
-/* Cosmic dark-mode accent at the top */
+/* ===== ALIEN TRACTOR BEAM (dark mode) ===== */
 .dark .toptop {
-  background-image: radial-gradient(
-    ellipse 50% 25% at 50% -5%,
-    oklch(75.73% 0.24165 141.676 / 0.55),
-    transparent
+  position: relative;
+  overflow: hidden;
+  background-image:
+    radial-gradient(ellipse 6% 55% at 50% 0%, oklch(88% 0.22 141 / 0.55) 0%, transparent 100%),
+    radial-gradient(ellipse 18% 48% at 50% 0%, oklch(78% 0.24 141 / 0.3) 0%, transparent 100%),
+    radial-gradient(ellipse 50% 35% at 50% -5%, oklch(75% 0.24 141 / 0.14) 0%, transparent 100%);
+}
+
+.dark .toptop::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  translate: -50% 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, oklch(85% 0.24 141 / 0.7) 0%, oklch(75% 0.24 141 / 0.2) 50%, transparent 70%);
+  filter: blur(30px);
+  animation: beam-source-pulse 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark .toptop::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 100%;
+  max-width: 500px;
+  height: 65vh;
+  translate: -50% 0;
+  pointer-events: none;
+  z-index: 0;
+  clip-path: polygon(42% 0%, 58% 0%, 75% 100%, 25% 100%);
+  background: linear-gradient(
+    180deg,
+    oklch(85% 0.24 141 / 0.18) 0%,
+    oklch(80% 0.24 141 / 0.08) 40%,
+    oklch(75% 0.24 141 / 0.03) 70%,
+    transparent 100%
   );
+  animation: beam-breathe 4s ease-in-out infinite;
+}
+
+/* Light mode: subtle green tint */
+.toptop:not(:is(.dark *)) {
+  background-image:
+    radial-gradient(ellipse 30% 20% at 50% 0%, oklch(85% 0.15 141 / 0.06) 0%, transparent 100%);
 }
 
 /* ===== KEYFRAMES ===== */
@@ -213,6 +257,26 @@
   }
   100% {
     background-position: 200% center;
+  }
+}
+
+@keyframes beam-source-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes beam-breathe {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
   }
 }
 

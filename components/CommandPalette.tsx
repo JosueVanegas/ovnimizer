@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { Search, CornerDownLeft, ArrowUp, ArrowDown } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/navigation'
 import { searchTools, CATEGORY_MAP } from '@/lib/tools/registry'
 
@@ -9,6 +10,9 @@ export const OPEN_COMMAND_EVENT = 'ovni:command'
 
 export function CommandPalette() {
   const router = useRouter()
+  const tc = useTranslations('common')
+  const tt = useTranslations('t')
+  const tCat = useTranslations('cat')
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [active, setActive] = useState(0)
@@ -32,7 +36,6 @@ export function CommandPalette() {
     [router, close],
   )
 
-  // Global shortcuts: Cmd/Ctrl+K toggles; header button dispatches an event.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -89,7 +92,7 @@ export function CommandPalette() {
       onMouseDown={close}
       role="dialog"
       aria-modal="true"
-      aria-label="Search tools"
+      aria-label={tc('searchTools')}
     >
       <div
         className="w-full max-w-xl overflow-hidden rounded-2xl border border-border/60 bg-popover shadow-2xl animate-slide-up"
@@ -102,7 +105,7 @@ export function CommandPalette() {
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search tools…"
+            placeholder={tc('searchPlaceholder')}
             className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted-foreground/60"
           />
           <kbd className="rounded border border-border/60 px-1.5 py-0.5 text-[10px] text-muted-foreground">ESC</kbd>
@@ -110,7 +113,7 @@ export function CommandPalette() {
 
         <div ref={listRef} className="max-h-[52vh] overflow-y-auto p-2">
           {results.length === 0 ? (
-            <p className="py-10 text-center text-sm text-muted-foreground">No tools found</p>
+            <p className="py-10 text-center text-sm text-muted-foreground">{tc('noToolsFound')}</p>
           ) : (
             results.map((tool, i) => {
               const Icon = tool.icon
@@ -133,14 +136,14 @@ export function CommandPalette() {
                     <Icon className="h-4 w-4" />
                   </span>
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-medium">{tool.title}</span>
+                    <span className="block truncate text-sm font-medium">{tt(`${tool.slug}.title`)}</span>
                     <span className="block truncate text-xs text-muted-foreground">
-                      {CATEGORY_MAP[tool.category].label} · {tool.description}
+                      {tCat(`${tool.category}.label`)} · {tt(`${tool.slug}.desc`)}
                     </span>
                   </span>
                   {soon ? (
                     <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase text-muted-foreground">
-                      Soon
+                      {tc('soon')}
                     </span>
                   ) : (
                     activeRow && <CornerDownLeft className="h-3.5 w-3.5 shrink-0 text-muted-foreground" />
@@ -152,8 +155,8 @@ export function CommandPalette() {
         </div>
 
         <div className="flex items-center gap-4 border-t border-border/50 px-4 py-2 text-[11px] text-muted-foreground">
-          <span className="flex items-center gap-1"><ArrowUp className="h-3 w-3" /><ArrowDown className="h-3 w-3" /> navigate</span>
-          <span className="flex items-center gap-1"><CornerDownLeft className="h-3 w-3" /> open</span>
+          <span className="flex items-center gap-1"><ArrowUp className="h-3 w-3" /><ArrowDown className="h-3 w-3" /> {tc('navigate')}</span>
+          <span className="flex items-center gap-1"><CornerDownLeft className="h-3 w-3" /> {tc('open')}</span>
         </div>
       </div>
     </div>

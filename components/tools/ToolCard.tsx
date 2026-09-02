@@ -4,9 +4,23 @@ import { cn } from '@/lib/utils'
 import type { ToolMeta } from '@/lib/tools/types'
 import { FavoriteButton } from './FavoriteButton'
 
-export function ToolCard({ tool, className }: { tool: ToolMeta; className?: string }) {
+export function ToolCard({
+  tool,
+  title,
+  desc,
+  soonLabel = 'Soon',
+  className,
+}: {
+  tool: ToolMeta
+  title?: string
+  desc?: string
+  soonLabel?: string
+  className?: string
+}) {
   const Icon = tool.icon
   const soon = tool.status === 'soon'
+  const displayTitle = title ?? tool.title
+  const displayDesc = desc ?? tool.description
 
   return (
     <div
@@ -16,11 +30,10 @@ export function ToolCard({ tool, className }: { tool: ToolMeta; className?: stri
         className,
       )}
     >
-      {/* Stretched link covers the whole card; interactive controls sit above it. */}
       {soon ? (
         <span className="absolute inset-0 cursor-not-allowed" aria-disabled />
       ) : (
-        <Link href={tool.href} aria-label={tool.title} className="absolute inset-0 z-0 rounded-2xl" />
+        <Link href={tool.href} aria-label={displayTitle} className="absolute inset-0 z-0 rounded-2xl" />
       )}
 
       <div className="pointer-events-none relative z-[1] flex items-start justify-between">
@@ -29,7 +42,7 @@ export function ToolCard({ tool, className }: { tool: ToolMeta; className?: stri
         </div>
         {soon ? (
           <span className="rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-muted-foreground">
-            Soon
+            {soonLabel}
           </span>
         ) : (
           <div className="flex items-center gap-1">
@@ -40,8 +53,8 @@ export function ToolCard({ tool, className }: { tool: ToolMeta; className?: stri
       </div>
 
       <div className="pointer-events-none relative z-[1] mt-3 space-y-1">
-        <h3 className="text-sm font-semibold leading-tight">{tool.title}</h3>
-        <p className="line-clamp-2 text-xs text-muted-foreground">{tool.description}</p>
+        <h3 className="text-sm font-semibold leading-tight">{displayTitle}</h3>
+        <p className="line-clamp-2 text-xs text-muted-foreground">{displayDesc}</p>
       </div>
     </div>
   )

@@ -2,6 +2,89 @@
 
 import { useEffect, useRef } from "react";
 
+function CowSvg() {
+  return (
+    <svg
+      width="72"
+      height="62"
+      viewBox="0 0 80 68"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        filter:
+          "drop-shadow(0 0 8px rgba(100,255,23,0.45)) drop-shadow(0 0 2px rgba(100,255,23,0.25))",
+      }}
+    >
+      {/* body */}
+      <ellipse cx="36" cy="40" rx="22" ry="15" fill="#f0f0f0" />
+      {/* spots */}
+      <ellipse cx="28" cy="36" rx="7" ry="5.5" fill="#2a2a2a" opacity="0.85" />
+      <ellipse cx="44" cy="43" rx="5" ry="4" fill="#2a2a2a" opacity="0.85" />
+      <circle cx="20" cy="42" r="3" fill="#2a2a2a" opacity="0.6" />
+      {/* head */}
+      <circle cx="58" cy="28" r="12" fill="#f0f0f0" />
+      {/* ears */}
+      <ellipse
+        cx="49"
+        cy="18"
+        rx="3.5"
+        ry="6"
+        fill="#f5a0b8"
+        transform="rotate(-20 49 18)"
+      />
+      <ellipse
+        cx="65"
+        cy="20"
+        rx="3.5"
+        ry="6"
+        fill="#f5a0b8"
+        transform="rotate(15 65 20)"
+      />
+      {/* horns */}
+      <path
+        d="M50 16 L46 5"
+        stroke="#e8c84a"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      <path
+        d="M64 18 L68 7"
+        stroke="#e8c84a"
+        strokeWidth="3.5"
+        strokeLinecap="round"
+      />
+      {/* eye */}
+      <circle cx="61" cy="25" r="3" fill="#1a1a1a" />
+      <circle cx="62.2" cy="23.8" r="1.2" fill="#fff" />
+      {/* snout */}
+      <ellipse cx="65" cy="32" rx="6.5" ry="4.5" fill="#f5a0b8" />
+      <circle cx="63" cy="32.5" r="1.3" fill="#d4748a" />
+      <circle cx="67" cy="32.5" r="1.3" fill="#d4748a" />
+      {/* legs */}
+      <rect x="18" y="51" width="6" height="13" rx="3" fill="#f0f0f0" />
+      <rect x="28" y="51" width="6" height="13" rx="3" fill="#f0f0f0" />
+      <rect x="38" y="51" width="6" height="13" rx="3" fill="#f0f0f0" />
+      <rect x="48" y="51" width="6" height="13" rx="3" fill="#f0f0f0" />
+      {/* hooves */}
+      <rect x="18" y="61" width="6" height="4" rx="2" fill="#2a2a2a" />
+      <rect x="28" y="61" width="6" height="4" rx="2" fill="#2a2a2a" />
+      <rect x="38" y="61" width="6" height="4" rx="2" fill="#2a2a2a" />
+      <rect x="48" y="61" width="6" height="4" rx="2" fill="#2a2a2a" />
+      {/* tail */}
+      <path
+        d="M14 36 Q7 28 9 22"
+        stroke="#f0f0f0"
+        strokeWidth="3"
+        strokeLinecap="round"
+        fill="none"
+      />
+      <ellipse cx="9" cy="20" rx="3.5" ry="4" fill="#f0f0f0" />
+      {/* udder */}
+      <ellipse cx="33" cy="53" rx="5" ry="3" fill="#f5a0b8" opacity="0.7" />
+    </svg>
+  );
+}
+
 export function FloatingCow() {
   const ref = useRef<HTMLDivElement>(null);
   const innerRef = useRef<HTMLDivElement>(null);
@@ -28,7 +111,6 @@ export function FloatingCow() {
 
     function setSpinSpeed(vx: number, vy: number) {
       const speed = Math.sqrt(vx * vx + vy * vy);
-      // 5s at rest, down to 0.4s at max speed (~20px/frame)
       const duration = Math.max(0.4, 5 - speed * 0.23);
       inner.style.animation = `cow-spin ${duration.toFixed(2)}s linear infinite`;
     }
@@ -72,11 +154,9 @@ export function FloatingCow() {
     setSpinSpeed(state.vx, state.vy);
 
     if (!isDesktop) {
-      // Mobile/tablet: bouncing background only, no interaction
       return () => cancelAnimationFrame(state.raf);
     }
 
-    // ── Drag (desktop only) ──────────────────────────────────────────────────
     el.style.pointerEvents = "auto";
     el.style.cursor = "grab";
 
@@ -97,7 +177,6 @@ export function FloatingCow() {
 
       const now = performance.now();
       state.history.push({ x: e.clientX, y: e.clientY, t: now });
-      // keep only last 80ms
       state.history = state.history.filter((p) => now - p.t < 80);
     }
 
@@ -114,7 +193,6 @@ export function FloatingCow() {
         const vx = ((last.x - first.x) / dt) * 16;
         const vy = ((last.y - first.y) / dt) * 16;
 
-        // clamp to max speed 22, min speed 1.5
         const speed = Math.sqrt(vx * vx + vy * vy);
         const clamped = Math.min(22, Math.max(1.5, speed));
         const scale = speed > 0 ? clamped / speed : 1;
@@ -149,15 +227,15 @@ export function FloatingCow() {
       className="fixed top-0 left-0 select-none opacity-80"
       style={{
         willChange: "transform",
-        fontSize: 72,
-        lineHeight: 1,
-        zIndex: -50,
+        width: 72,
+        height: 68,
+        zIndex: 40,
         pointerEvents: "none",
       }}
       aria-hidden
     >
       <div ref={innerRef} style={{ animation: "cow-spin 5s linear infinite" }}>
-        🐄
+        <CowSvg />
       </div>
     </div>
   );

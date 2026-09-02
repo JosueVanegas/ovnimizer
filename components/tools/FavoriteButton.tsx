@@ -1,6 +1,7 @@
 'use client'
 
 import { Star } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { cn } from '@/lib/utils'
 import { useFavorites } from '@/hooks/usePersonalization'
 
@@ -14,6 +15,7 @@ export function FavoriteButton({
   className?: string
 }) {
   const { isFavorite, toggle, mounted } = useFavorites()
+  const tc = useTranslations('common')
   const active = mounted && isFavorite(slug)
 
   function onClick(e: React.MouseEvent) {
@@ -37,7 +39,7 @@ export function FavoriteButton({
         )}
       >
         <Star className={cn('h-3.5 w-3.5', active && 'fill-current')} />
-        {active ? 'Favorited' : 'Favorite'}
+        {active ? tc('favorited') : tc('favorite')}
       </button>
     )
   }
@@ -46,7 +48,7 @@ export function FavoriteButton({
     <button
       type="button"
       onClick={onClick}
-      aria-label={active ? 'Remove from favorites' : 'Add to favorites'}
+      aria-label={active ? tc('removeFavorite') : tc('addFavorite')}
       aria-pressed={active}
       className={cn(
         'flex h-7 w-7 items-center justify-center rounded-lg transition-colors',

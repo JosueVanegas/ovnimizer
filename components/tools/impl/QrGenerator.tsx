@@ -1,13 +1,15 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { Download } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import QRCode from 'qrcode'
 import { ToolInput, ToolTextarea, Toolbar } from '../ui'
 
 type Level = 'L' | 'M' | 'Q' | 'H'
 
 export function QrGenerator() {
+  const t = useTranslations('qr')
   const [text, setText] = useState('https://ovnimizer.com')
   const [size, setSize] = useState(320)
   const [level, setLevel] = useState<Level>('M')
@@ -33,36 +35,38 @@ export function QrGenerator() {
         }
       })
       .catch(() => {
-        if (!cancelled) setError('Text is too long for a QR code at this level.')
+        if (!cancelled) setError(t('tooLong'))
       })
     return () => {
       cancelled = true
     }
-  }, [text, size, level])
+  }, [text, size, level, t])
 
-  function download() {
+  const download = useCallback(() => {
     if (!dataUrl) return
-    const a = document.createElement('a')
-    a.href = dataUrl
-    a.download = 'qrcode.png'
-    a.click()
-  }
+    const link = document.createElement('a')
+    link.href = dataUrl
+    link.download = 'qrcode.png'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }, [dataUrl])
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
       <div className="space-y-4">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Text or URL</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('textLabel')}</label>
           <ToolTextarea
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Enter a URL or any text…"
+            placeholder={t('placeholder')}
             className="min-h-28"
           />
         </div>
 
         <Toolbar>
-          <label className="text-xs font-semibold text-muted-foreground">Size</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('size')}</label>
           <ToolInput
             type="number"
             min={128}
@@ -88,7 +92,7 @@ export function QrGenerator() {
           </div>
         </Toolbar>
         <p className="text-xs text-muted-foreground">
-          Error correction: higher levels (Q/H) survive more damage but hold less data. Generated locally.
+          {t('errorLevel')}
         </p>
       </div>
 
@@ -100,7 +104,7 @@ export function QrGenerator() {
             // eslint-disable-next-line @next/next/no-img-element
             <img src={dataUrl} alt="QR code" className="h-full w-full object-contain" />
           ) : (
-            <span className="text-sm text-muted-foreground">Enter text to generate</span>
+            <span className="text-sm text-muted-foreground">{t('enterText')}</span>
           )}
         </div>
         <button
@@ -108,7 +112,7 @@ export function QrGenerator() {
           disabled={!dataUrl}
           className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg bg-ufo-green px-3 py-2 text-sm font-bold text-black transition-colors hover:bg-ufo-green/85 disabled:opacity-40"
         >
-          <Download className="h-4 w-4" /> Download PNG
+          <Download className="h-4 w-4" /> {t('downloadPng')}
         </button>
       </div>
     </div>

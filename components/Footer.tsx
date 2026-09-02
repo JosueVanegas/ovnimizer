@@ -21,7 +21,7 @@ export function Footer() {
             href="/changelog"
             className="hover:text-foreground transition-colors underline underline-offset-2"
           >
-            Changelog
+            {t("changelog")}
           </Link>
           <button
             type="button"
@@ -29,7 +29,7 @@ export function Footer() {
             className="hidden items-center gap-1 hover:text-foreground transition-colors sm:flex"
           >
             <Keyboard className="w-3.5 h-3.5" />
-            Shortcuts
+            {t("shortcuts")}
           </button>
           <Link
             href="/privacy"

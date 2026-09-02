@@ -1,6 +1,7 @@
 'use client'
 
 import { Star, History } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { ToolCard } from './ToolCard'
 import { TOOL_MAP } from '@/lib/tools/registry'
 import { useFavorites, useRecents } from '@/hooks/usePersonalization'
@@ -10,7 +11,19 @@ function toTools(slugs: string[]): ToolMeta[] {
   return slugs.map((s) => TOOL_MAP[s]).filter((t): t is ToolMeta => Boolean(t))
 }
 
-function Rail({ icon, title, tools }: { icon: React.ReactNode; title: string; tools: ToolMeta[] }) {
+function Rail({
+  icon,
+  title,
+  tools,
+  tt,
+  soonLabel,
+}: {
+  icon: React.ReactNode
+  title: string
+  tools: ToolMeta[]
+  tt: (key: string) => string
+  soonLabel: string
+}) {
   if (!tools.length) return null
   return (
     <section className="space-y-4">
@@ -20,7 +33,13 @@ function Rail({ icon, title, tools }: { icon: React.ReactNode; title: string; to
       </h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
         {tools.map((t) => (
-          <ToolCard key={t.slug} tool={t} />
+          <ToolCard
+            key={t.slug}
+            tool={t}
+            title={tt(`${t.slug}.title`)}
+            desc={tt(`${t.slug}.desc`)}
+            soonLabel={soonLabel}
+          />
         ))}
       </div>
     </section>
@@ -30,6 +49,8 @@ function Rail({ icon, title, tools }: { icon: React.ReactNode; title: string; to
 export function PersonalRails() {
   const { favorites, mounted: favMounted } = useFavorites()
   const { recents, mounted: recentMounted } = useRecents()
+  const tc = useTranslations('common')
+  const tt = useTranslations('t')
 
   if (!favMounted || !recentMounted) return null
 
@@ -38,17 +59,23 @@ export function PersonalRails() {
 
   if (!favTools.length && !recentTools.length) return null
 
+  const soonLabel = tc('soon')
+
   return (
     <div className="space-y-10">
       <Rail
         icon={<Star className="h-4 w-4 fill-ufo-green text-ufo-green" />}
-        title="Favorites"
+        title={tc('favorites')}
         tools={favTools}
+        tt={tt}
+        soonLabel={soonLabel}
       />
       <Rail
         icon={<History className="h-4 w-4 text-ufo-green" />}
-        title="Recently used"
+        title={tc('recentlyUsed')}
         tools={recentTools}
+        tt={tt}
+        soonLabel={soonLabel}
       />
     </div>
   )

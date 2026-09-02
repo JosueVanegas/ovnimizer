@@ -2,10 +2,12 @@
 
 import { useState, useCallback, useRef, TextareaHTMLAttributes, InputHTMLAttributes } from 'react'
 import { Check, Copy, ShieldCheck, Upload } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { toast } from 'sonner'
 import { cn } from '@/lib/utils'
 
 export function LocalBadge({ className }: { className?: string }) {
+  const tc = useTranslations('common')
   return (
     <span
       className={cn(
@@ -14,7 +16,7 @@ export function LocalBadge({ className }: { className?: string }) {
       )}
     >
       <ShieldCheck className="h-3.5 w-3.5" />
-      Processed locally in your browser
+      {tc('localBadge')}
     </span>
   )
 }
@@ -47,10 +49,11 @@ export function CopyButton({
   disabled?: boolean
 }) {
   const { copied, copy } = useCopy()
+  const tc = useTranslations('common')
   return (
     <button
       type="button"
-      onClick={() => copy(value)}
+      onClick={() => copy(value, tc('copied'))}
       disabled={disabled || !value}
       className={cn(
         'inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted/70 disabled:opacity-40 disabled:cursor-not-allowed',
@@ -58,7 +61,7 @@ export function CopyButton({
       )}
     >
       {copied ? <Check className="h-3.5 w-3.5 text-ufo-green" /> : <Copy className="h-3.5 w-3.5" />}
-      {label ?? (copied ? 'Copied' : 'Copy')}
+      {label ?? (copied ? tc('copied') : tc('copy'))}
     </button>
   )
 }
@@ -95,7 +98,7 @@ export function Toolbar({ children }: { children: React.ReactNode }) {
 export function FileDrop({
   onFile,
   accept,
-  hint = 'Drop a file here or click to browse',
+  hint,
 }: {
   onFile: (file: File) => void
   accept?: string
@@ -103,6 +106,7 @@ export function FileDrop({
 }) {
   const [drag, setDrag] = useState(false)
   const ref = useRef<HTMLInputElement>(null)
+  const defaultHint = hint ?? 'Drop a file here or click to browse'
 
   return (
     <div
@@ -135,7 +139,7 @@ export function FileDrop({
         }}
       />
       <Upload className="h-7 w-7 text-muted-foreground" />
-      <p className="text-sm text-muted-foreground">{hint}</p>
+      <p className="text-sm text-muted-foreground">{defaultHint}</p>
     </div>
   )
 }
