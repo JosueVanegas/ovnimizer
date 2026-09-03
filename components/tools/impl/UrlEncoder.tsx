@@ -2,9 +2,12 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, Toolbar, ToolTextarea } from '../ui'
 
 export function UrlEncoder() {
+  const t = useTranslations('tools.url-encoder')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
   const [scope, setScope] = useState<'component' | 'full'>('component')
@@ -20,9 +23,9 @@ export function UrlEncoder() {
       }
       return { output: out, error: null }
     } catch {
-      return { output: '', error: 'Malformed input — could not decode.' }
+      return { output: '', error: t('malformed') }
     }
-  }, [input, mode, scope])
+  }, [input, mode, scope, t])
 
   return (
     <div className="space-y-4">
@@ -32,11 +35,11 @@ export function UrlEncoder() {
             <button
               key={v}
               onClick={() => setMode(v)}
-              className={`rounded-md px-3 py-1 font-semibold capitalize transition-colors ${
+              className={`rounded-md px-3 py-1 font-semibold transition-colors ${
                 mode === v ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {v}
+              {v === 'encode' ? tc('encode') : tc('decode')}
             </button>
           ))}
         </div>
@@ -45,11 +48,11 @@ export function UrlEncoder() {
             <button
               key={v}
               onClick={() => setScope(v)}
-              className={`rounded-md px-3 py-1 font-semibold capitalize transition-colors ${
+              className={`rounded-md px-3 py-1 font-semibold transition-colors ${
                 scope === v ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {v === 'component' ? 'Component' : 'Whole URL'}
+              {v === 'component' ? t('component') : t('wholeUrl')}
             </button>
           ))}
         </div>
@@ -57,15 +60,15 @@ export function UrlEncoder() {
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Input</label>
-          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Text or URL…" />
+          <label className="text-xs font-semibold text-muted-foreground">{tc('input')}</label>
+          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t('placeholder')} />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-semibold text-muted-foreground">Output</label>
+            <label className="text-xs font-semibold text-muted-foreground">{tc('output')}</label>
             <CopyButton value={output} />
           </div>
-          <ToolTextarea value={output} readOnly placeholder="Result…" />
+          <ToolTextarea value={output} readOnly placeholder={tc('result')} />
         </div>
       </div>
 

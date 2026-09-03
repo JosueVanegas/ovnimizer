@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton } from '../ui'
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -9,13 +10,14 @@ function hexToRgb(hex: string): [number, number, number] {
 }
 
 const CONTROLS: { key: 'x' | 'y' | 'blur' | 'spread'; label: string; min: number; max: number }[] = [
-  { key: 'x', label: 'Offset X', min: -50, max: 50 },
-  { key: 'y', label: 'Offset Y', min: -50, max: 50 },
-  { key: 'blur', label: 'Blur', min: 0, max: 100 },
-  { key: 'spread', label: 'Spread', min: -50, max: 50 },
+  { key: 'x', label: 'offsetX', min: -50, max: 50 },
+  { key: 'y', label: 'offsetY', min: -50, max: 50 },
+  { key: 'blur', label: 'blur', min: 0, max: 100 },
+  { key: 'spread', label: 'spread', min: -50, max: 50 },
 ]
 
 export function BoxShadow() {
+  const t = useTranslations('tools.box-shadow')
   const [vals, setVals] = useState({ x: 0, y: 12, blur: 30, spread: -6 })
   const [color, setColor] = useState('#0b0b0b')
   const [alpha, setAlpha] = useState(0.25)
@@ -37,7 +39,7 @@ export function BoxShadow() {
         {CONTROLS.map((c) => (
           <div key={c.key} className="space-y-1">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-medium text-muted-foreground">{c.label}</span>
+              <span className="font-medium text-muted-foreground">{t(c.label)}</span>
               <span className="font-mono tabular-nums">{vals[c.key]}px</span>
             </div>
             <input
@@ -53,7 +55,7 @@ export function BoxShadow() {
 
         <div className="space-y-1">
           <div className="flex items-center justify-between text-xs">
-            <span className="font-medium text-muted-foreground">Opacity</span>
+            <span className="font-medium text-muted-foreground">{t('opacity')}</span>
             <span className="font-mono tabular-nums">{alpha}</span>
           </div>
           <input
@@ -77,7 +79,7 @@ export function BoxShadow() {
           />
           <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
             <input type="checkbox" checked={inset} onChange={(e) => setInset(e.target.checked)} className="accent-[var(--ufo-green)]" />
-            inset
+            {t('inset')}
           </label>
         </div>
 

@@ -1,10 +1,12 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea } from '../ui'
 import { GITIGNORE_LABELS, GITIGNORE_TEMPLATES } from '@/lib/tools/gitignore-templates'
 
 export function GitignoreGenerator() {
+  const t = useTranslations('tools.gitignore-generator')
   const [selected, setSelected] = useState<string[]>(['Node', 'Next.js', 'macOS', 'Env'])
 
   const output = useMemo(
@@ -21,7 +23,7 @@ export function GitignoreGenerator() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-muted-foreground">Include templates</label>
+        <label className="text-xs font-semibold text-muted-foreground">{t('includeTemplates')}</label>
         <div className="flex flex-wrap gap-1.5">
           {GITIGNORE_LABELS.map((label) => (
             <button
@@ -44,7 +46,7 @@ export function GitignoreGenerator() {
           <label className="text-xs font-semibold text-muted-foreground">.gitignore</label>
           <CopyButton value={output} />
         </div>
-        <ToolTextarea value={output} readOnly className="min-h-72" placeholder="Select templates above…" />
+        <ToolTextarea value={output} readOnly className="min-h-72" placeholder={t('outputPlaceholder')} />
       </div>
     </div>
   )

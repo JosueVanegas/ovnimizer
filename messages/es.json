@@ -314,8 +314,370 @@
     "placeholder": "Introduce una URL o cualquier texto…",
     "size": "Tamaño",
     "errorLevel": "Corrección de errores: niveles más altos (Q/H) soportan más daño pero almacenan menos datos. Generado localmente.",
+    "scanHint": "Consejo: deja un margen claro alrededor del código y suficiente contraste al imprimirlo o mostrarlo, o algunos escáneres fallarán.",
     "enterText": "Introduce texto para generar",
     "downloadPng": "Descargar PNG",
     "tooLong": "El texto es demasiado largo para un código QR a este nivel."
+  },
+  "tools": {
+    "common": {
+      "input": "Entrada",
+      "output": "Salida",
+      "result": "Resultado…",
+      "clear": "Limpiar",
+      "sample": "Ejemplo",
+      "minify": "Minimizar",
+      "generate": "Generar",
+      "randomize": "Aleatorio",
+      "copyAll": "Copiar todo",
+      "download": "Descargar",
+      "encode": "Codificar",
+      "decode": "Decodificar",
+      "useOutputAsInput": "Usar salida como entrada",
+      "howMany": "Cuántos",
+      "count": "cantidad",
+      "length": "Longitud",
+      "invalidInput": "Entrada no válida",
+      "oneItemPerLine": "Un elemento por línea…",
+      "pasteJson": "Pega el JSON aquí…",
+      "caseInsensitive": "sin distinción de mayúsculas",
+      "removeEmpty": "quitar vacías",
+      "trimWhitespace": "recortar espacios",
+      "previewText": "El veloz murciélago hindú",
+      "add": "Añadir",
+      "remove": "Quitar"
+    },
+    "json-formatter": {
+      "spaces": "{n} espacios",
+      "tab": "Tab",
+      "inputPlaceholder": "Pega el JSON aquí…",
+      "outputPlaceholder": "JSON formateado…",
+      "valid": "JSON válido",
+      "input": "Entrada",
+      "output": "Salida"
+    },
+    "json-validator": {
+      "placeholder": "Pega el JSON para validar…",
+      "valid": "JSON válido · la raíz es {type}",
+      "typeArray": "array ({n} elementos)",
+      "typeObject": "objeto ({n} claves)"
+    },
+    "json-diff": {
+      "left": "Izquierda (A)",
+      "right": "Derecha (B)",
+      "originalPlaceholder": "JSON original…",
+      "changedPlaceholder": "JSON modificado…",
+      "leftError": "Izquierda: {error}",
+      "rightError": "Derecha: {error}",
+      "identical": "Los dos documentos son idénticos.",
+      "differences": "{n, plural, one {# diferencia} other {# diferencias}}"
+    },
+    "json-converters": {
+      "json": "JSON",
+      "chars": "{n} caracteres",
+      "minified": "Minimizado",
+      "minifiedPlaceholder": "JSON minimizado…",
+      "yaml": "YAML",
+      "yamlPlaceholder": "Salida YAML…",
+      "csv": "CSV",
+      "csvPlaceholder": "Salida CSV (espera un array JSON)…",
+      "typescript": "TypeScript",
+      "typescriptPlaceholder": "Interfaces generadas…"
+    },
+    "base64": {
+      "plainText": "Texto plano",
+      "base64": "Base64",
+      "encodePlaceholder": "Texto para codificar…",
+      "decodePlaceholder": "Base64 para decodificar…",
+      "invalid": "Entrada Base64 no válida"
+    },
+    "base64-image": {
+      "toBase64": "Imagen → Base64",
+      "toImage": "Base64 → Imagen",
+      "dropImage": "Suelta una imagen aquí o haz clic para elegir",
+      "dataUri": "Data URI",
+      "asBase64": "{size} en Base64",
+      "inputLabel": "Base64 o data URI",
+      "downloadImage": "Descargar imagen"
+    },
+    "base64-file": {
+      "toBase64": "Archivo → Base64",
+      "toFile": "Base64 → Archivo",
+      "dropFile": "Suelta cualquier archivo aquí o haz clic para elegir",
+      "dataUri": "Data URI",
+      "asBase64": "{size} en Base64",
+      "inputLabel": "Base64 o data URI",
+      "filename": "Nombre de archivo"
+    },
+    "jwt-decoder": {
+      "label": "JWT",
+      "placeholder": "Pega un JSON Web Token…",
+      "warning": "La firma no se verifica: la decodificación es local y nunca comprueba el secreto.",
+      "minParts": "Un JWT tiene al menos dos partes separadas por puntos.",
+      "decodeError": "No se pudo decodificar este token.",
+      "issued": "Emitido: {date}",
+      "expires": "Expira: {date}",
+      "expired": "Expiró: {date}",
+      "header": "Cabecera",
+      "payload": "Payload"
+    },
+    "hash-generator": {
+      "placeholder": "Escribe o pega texto para hashear…",
+      "note": "Calculado localmente con la Web Crypto API. MD5 no es compatible con los navegadores y se omite."
+    },
+    "case-converter": {
+      "placeholder": "Escribe algo de texto…"
+    },
+    "url-encoder": {
+      "component": "Componente",
+      "wholeUrl": "URL completa",
+      "placeholder": "Texto o URL…",
+      "malformed": "Entrada mal formada: no se pudo decodificar."
+    },
+    "query-parser": {
+      "label": "URL o query string",
+      "placeholder": "https://example.com/search?q=hola&tag=a&tag=b",
+      "key": "Clave",
+      "value": "Valor",
+      "asJson": "Como JSON"
+    },
+    "url-builder": {
+      "baseUrl": "URL base",
+      "queryParams": "Parámetros de consulta",
+      "key": "clave",
+      "value": "valor",
+      "addParam": "Añadir parámetro",
+      "removeParam": "Quitar parámetro"
+    },
+    "uuid-generator": {
+      "note": "UUID versión 4 (RFC 4122), generados localmente con la Web Crypto API."
+    },
+    "password-generator": {
+      "strength": "Fortaleza: {label}",
+      "weak": "Débil",
+      "fair": "Aceptable",
+      "strong": "Fuerte",
+      "lower": "minúsculas",
+      "upper": "mayúsculas",
+      "numbers": "números",
+      "symbols": "símbolos",
+      "note": "Generada localmente con el CSPRNG de Web Crypto."
+    },
+    "password-strength": {
+      "placeholder": "Escribe una contraseña para probar…",
+      "show": "Mostrar",
+      "hide": "Ocultar",
+      "entropy": "{bits} bits de entropía",
+      "crackTime": "Tiempo estimado de crackeo offline: {time}",
+      "instantly": "al instante",
+      "veryWeak": "Muy débil",
+      "weak": "Débil",
+      "fair": "Aceptable",
+      "strong": "Fuerte",
+      "veryStrong": "Muy fuerte",
+      "tipLength": "Usa al menos 12 caracteres",
+      "tipUpper": "Añade mayúsculas",
+      "tipNumber": "Añade números",
+      "tipSymbol": "Añade símbolos",
+      "tipRepeat": "Evita caracteres repetidos",
+      "unit_second": "{n, plural, one {# segundo} other {# segundos}}",
+      "unit_minute": "{n, plural, one {# minuto} other {# minutos}}",
+      "unit_hour": "{n, plural, one {# hora} other {# horas}}",
+      "unit_day": "{n, plural, one {# día} other {# días}}",
+      "unit_year": "{n, plural, one {# año} other {# años}}",
+      "unit_century": "{n, plural, one {# siglo} other {# siglos}}",
+      "note": "Analizada localmente: tu contraseña nunca sale del navegador."
+    },
+    "random-string": {
+      "alphanumeric": "alfanumérico",
+      "letters": "letras",
+      "numbers": "números",
+      "hex": "hex",
+      "symbols": "símbolos",
+      "note": "Generado localmente con el CSPRNG de Web Crypto."
+    },
+    "hex-rgb": {
+      "invalid": "Introduce un color hex de 3 o 6 dígitos válido."
+    },
+    "color-picker": {
+      "hex": "HEX",
+      "rgb": "RGB",
+      "hsl": "HSL",
+      "cssVariable": "Variable CSS",
+      "pickFromScreen": "Elegir de la pantalla",
+      "invalid": "Introduce un color hex válido."
+    },
+    "tailwind-palette": {
+      "baseColor": "Color base",
+      "name": "Nombre",
+      "invalid": "Introduce un color hex válido."
+    },
+    "contrast-checker": {
+      "textColor": "Color del texto",
+      "background": "Fondo",
+      "invalid": "Introduce dos colores hex válidos.",
+      "ratio": "ratio de contraste",
+      "aaNormal": "AA · Texto normal (4.5:1)",
+      "aaLarge": "AA · Texto grande (3:1)",
+      "aaaNormal": "AAA · Texto normal (7:1)",
+      "aaaLarge": "AAA · Texto grande (4.5:1)"
+    },
+    "gradient-generator": {
+      "linear": "lineal",
+      "radial": "radial",
+      "angle": "Ángulo",
+      "addStop": "Añadir parada",
+      "removeStop": "Quitar parada"
+    },
+    "border-radius": {
+      "linked": "Enlazado",
+      "independent": "Independiente",
+      "allCorners": "Todas las esquinas",
+      "topLeft": "Superior izquierda",
+      "topRight": "Superior derecha",
+      "bottomRight": "Inferior derecha",
+      "bottomLeft": "Inferior izquierda"
+    },
+    "box-shadow": {
+      "offsetX": "Desplazamiento X",
+      "offsetY": "Desplazamiento Y",
+      "blur": "Difuminado",
+      "spread": "Extensión",
+      "opacity": "Opacidad",
+      "inset": "interior"
+    },
+    "clamp-generator": {
+      "minViewport": "Viewport mínimo",
+      "maxViewport": "Viewport máximo",
+      "minSize": "Tamaño mínimo",
+      "maxSize": "Tamaño máximo",
+      "rootFontSize": "Tamaño de fuente raíz",
+      "viewportsMustDiffer": "El viewport mínimo y máximo deben ser distintos.",
+      "livePreview": "Vista previa en vivo (redimensiona la ventana):",
+      "explanation": "Escala de forma fluida de {minSize}px a {minVw}px de ancho hasta {maxSize}px a {maxVw}px de ancho, usando rem para accesibilidad."
+    },
+    "lorem-ipsum": {
+      "paragraphs": "párrafos",
+      "sentences": "frases",
+      "words": "palabras",
+      "startClassic": "Empezar con “Lorem ipsum”"
+    },
+    "slug-generator": {
+      "hyphen": "guion -",
+      "underscore": "guion bajo _",
+      "lowercase": "minúsculas",
+      "stripAccents": "quitar acentos",
+      "textLabel": "Texto (uno por línea)",
+      "textPlaceholder": "¡Mi Genial Entrada de Blog!",
+      "slug": "Slug",
+      "slugPlaceholder": "mi-genial-entrada-de-blog"
+    },
+    "unix-timestamp": {
+      "currentTime": "Hora Unix actual",
+      "use": "Usar",
+      "inputLabel": "Timestamp (s o ms) o una fecha en texto",
+      "placeholder": "p. ej. 1516239022 o 2026-07-15T10:00:00Z",
+      "unrecognized": "Fecha o timestamp no reconocido.",
+      "unixSeconds": "Unix (segundos)",
+      "unixMs": "Unix (ms)",
+      "iso": "ISO 8601",
+      "utc": "UTC",
+      "local": "Local"
+    },
+    "character-counter": {
+      "placeholder": "Escribe o pega tu texto…",
+      "words": "Palabras",
+      "characters": "Caracteres",
+      "charactersNoSpaces": "Caracteres (sin espacios)",
+      "sentences": "Frases",
+      "lines": "Líneas",
+      "paragraphs": "Párrafos",
+      "readingTime": "Tiempo de lectura"
+    },
+    "sort-lines": {
+      "asc": "A → Z",
+      "desc": "Z → A",
+      "alpha": "alfabético",
+      "numeric": "numérico",
+      "lengthKind": "longitud",
+      "inputPlaceholder": "Un elemento por línea…",
+      "sorted": "Ordenado"
+    },
+    "remove-duplicate-lines": {
+      "inputPlaceholder": "Un elemento por línea…",
+      "uniqueLines": "Líneas únicas",
+      "removed": "{n, plural, one {# duplicada eliminada} other {# duplicadas eliminadas}}",
+      "noDuplicates": "Sin duplicadas"
+    },
+    "html-escape": {
+      "escape": "escapar",
+      "unescape": "desescapar",
+      "rawLabel": "HTML / texto sin procesar",
+      "escapedLabel": "HTML escapado",
+      "escapePlaceholder": "<div class=\"x\">Hola & adiós</div>",
+      "unescapePlaceholder": "&lt;div&gt;…&lt;/div&gt;"
+    },
+    "conventional-commit": {
+      "type": "Tipo",
+      "scope": "Ámbito (opcional)",
+      "scopePlaceholder": "api, ui, auth…",
+      "description": "Descripción",
+      "descriptionPlaceholder": "añadir endpoint de login",
+      "body": "Cuerpo (opcional)",
+      "bodyPlaceholder": "Explicación más larga…",
+      "breaking": "Cambio incompatible",
+      "breakingPlaceholder": "Describe qué se rompe…",
+      "commitMessage": "Mensaje de commit",
+      "feat": "Una nueva funcionalidad",
+      "fix": "Corrección de un error",
+      "docs": "Solo documentación",
+      "style": "Formato, sin cambios de código",
+      "refactor": "Ni corrige un error ni añade una funcionalidad",
+      "perf": "Mejora el rendimiento",
+      "test": "Añadir o corregir pruebas",
+      "build": "Sistema de build o dependencias",
+      "ci": "Configuración de CI",
+      "chore": "Otros cambios",
+      "revert": "Revierte un commit anterior"
+    },
+    "gitignore-generator": {
+      "includeTemplates": "Incluir plantillas",
+      "outputPlaceholder": "Selecciona plantillas arriba…"
+    },
+    "robots-generator": {
+      "allowAll": "Permitir todo",
+      "blockAll": "Bloquear todo",
+      "custom": "Personalizado",
+      "userAgent": "User-agent",
+      "sitemapUrl": "URL del sitemap",
+      "disallowPaths": "Rutas no permitidas",
+      "addPath": "Añadir ruta",
+      "removePath": "Quitar ruta"
+    },
+    "sitemap-generator": {
+      "urlsLabel": "URLs (una por línea)",
+      "changeFrequency": "Frecuencia de cambio",
+      "priority": "Prioridad",
+      "includeLastmod": "incluir lastmod (hoy)"
+    },
+    "metadata-generator": {
+      "title": "Título",
+      "description": "Descripción",
+      "canonicalUrl": "URL canónica",
+      "imageUrl": "URL de la imagen",
+      "siteName": "Nombre del sitio",
+      "twitterHandle": "Usuario de Twitter",
+      "ogType": "Tipo OG",
+      "htmlMetaTags": "Etiquetas meta HTML"
+    },
+    "qr-reader": {
+      "hint": "Suelta una imagen de código QR aquí o haz clic para elegir",
+      "couldNotRead": "No se pudo leer la imagen.",
+      "notFound": "No se encontró ningún código QR en esta imagen.",
+      "couldNotLoad": "No se pudo cargar la imagen.",
+      "decodedContent": "Contenido decodificado",
+      "open": "Abrir",
+      "note": "Decodificado localmente: las imágenes nunca salen de tu navegador."
+    }
   }
 }

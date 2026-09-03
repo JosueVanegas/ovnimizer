@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle, Plus, Minus, Pencil } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { ToolTextarea } from '../ui'
 import { tryParse, diffJson, type Json, type DiffEntry } from '@/lib/tools/json-convert'
 
@@ -33,28 +34,29 @@ function Entry({ entry }: { entry: DiffEntry }) {
 }
 
 export function JsonDiff() {
+  const t = useTranslations('tools.json-diff')
   const [a, setA] = useState('')
   const [b, setB] = useState('')
 
   const result = useMemo(() => {
     if (!a.trim() || !b.trim()) return null
     const pa = tryParse(a)
-    if (pa.error) return { ok: false as const, error: `Left: ${pa.error}` }
+    if (pa.error) return { ok: false as const, error: t('leftError', { error: pa.error }) }
     const pb = tryParse(b)
-    if (pb.error) return { ok: false as const, error: `Right: ${pb.error}` }
+    if (pb.error) return { ok: false as const, error: t('rightError', { error: pb.error }) }
     return { ok: true as const, diff: diffJson(pa.value, pb.value) }
-  }, [a, b])
+  }, [a, b, t])
 
   return (
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Left (A)</label>
-          <ToolTextarea value={a} onChange={(e) => setA(e.target.value)} placeholder="Original JSON…" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('left')}</label>
+          <ToolTextarea value={a} onChange={(e) => setA(e.target.value)} placeholder={t('originalPlaceholder')} />
         </div>
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Right (B)</label>
-          <ToolTextarea value={b} onChange={(e) => setB(e.target.value)} placeholder="Changed JSON…" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('right')}</label>
+          <ToolTextarea value={b} onChange={(e) => setB(e.target.value)} placeholder={t('changedPlaceholder')} />
         </div>
       </div>
 
@@ -67,11 +69,11 @@ export function JsonDiff() {
       {result && result.ok && (
         result.diff.length === 0 ? (
           <p className="rounded-xl border border-ufo-green/30 bg-ufo-green/10 px-4 py-3 text-sm font-medium text-ufo-green">
-            The two documents are identical.
+            {t('identical')}
           </p>
         ) : (
           <div className="space-y-1.5">
-            <p className="text-xs font-semibold text-muted-foreground">{result.diff.length} difference{result.diff.length === 1 ? '' : 's'}</p>
+            <p className="text-xs font-semibold text-muted-foreground">{t('differences', { n: result.diff.length })}</p>
             {result.diff.map((e, i) => (
               <Entry key={i} entry={e} />
             ))}

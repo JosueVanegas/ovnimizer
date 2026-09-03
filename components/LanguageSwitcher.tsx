@@ -10,6 +10,11 @@ import ReactCountryFlag from 'react-country-flag'
 const LOCALES: Record<Locale, { countryCode: string; code: string; name: string }> = {
   es: { countryCode: 'ES', code: 'ES', name: 'Español' },
   en: { countryCode: 'GB', code: 'EN', name: 'English' },
+  pt: { countryCode: 'PT', code: 'PT', name: 'Português' },
+  it: { countryCode: 'IT', code: 'IT', name: 'Italiano' },
+  ja: { countryCode: 'JP', code: 'JA', name: '日本語' },
+  ru: { countryCode: 'RU', code: 'RU', name: 'Русский' },
+  de: { countryCode: 'DE', code: 'DE', name: 'Deutsch' },
 }
 
 function Flag({ countryCode }: { countryCode: string }) {

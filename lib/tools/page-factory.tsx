@@ -11,7 +11,7 @@ type LocaleParams = { params: Promise<{ locale: string }> }
 export function makeToolMetadata(slug: string) {
   return async ({ params }: LocaleParams): Promise<Metadata> => {
     const { locale } = await params
-    return toolMetadata(slug, locale)
+    return await toolMetadata(slug, locale)
   }
 }
 
@@ -21,9 +21,10 @@ export function makeToolPage(slug: string, Tool: ComponentType) {
     const { locale } = await params
     setRequestLocale(locale)
     const tool = getTool(slug)!
+    const jsonLd = await toolJsonLd(slug, locale)
     return (
       <>
-        <JsonLd data={toolJsonLd(slug, locale)} />
+        <JsonLd data={jsonLd} />
         <ToolShell tool={tool}>
           <Tool />
         </ToolShell>

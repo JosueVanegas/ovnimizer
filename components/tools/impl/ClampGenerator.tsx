@@ -1,11 +1,14 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput } from '../ui'
 
 const round = (n: number) => Math.round(n * 10000) / 10000
 
 export function ClampGenerator() {
+  const t = useTranslations('tools.clamp-generator')
+  const tc = useTranslations('tools.common')
   const [minVw, setMinVw] = useState(320)
   const [maxVw, setMaxVw] = useState(1280)
   const [minSize, setMinSize] = useState(16)
@@ -30,11 +33,11 @@ export function ClampGenerator() {
   }, [minVw, maxVw, minSize, maxSize, root])
 
   const fields: { label: string; value: number; set: (n: number) => void; suffix: string }[] = [
-    { label: 'Min viewport', value: minVw, set: setMinVw, suffix: 'px' },
-    { label: 'Max viewport', value: maxVw, set: setMaxVw, suffix: 'px' },
-    { label: 'Min size', value: minSize, set: setMinSize, suffix: 'px' },
-    { label: 'Max size', value: maxSize, set: setMaxSize, suffix: 'px' },
-    { label: 'Root font size', value: root, set: setRoot, suffix: 'px' },
+    { label: t('minViewport'), value: minVw, set: setMinVw, suffix: 'px' },
+    { label: t('maxViewport'), value: maxVw, set: setMaxVw, suffix: 'px' },
+    { label: t('minSize'), value: minSize, set: setMinSize, suffix: 'px' },
+    { label: t('maxSize'), value: maxSize, set: setMaxSize, suffix: 'px' },
+    { label: t('rootFontSize'), value: root, set: setRoot, suffix: 'px' },
   ]
 
   return (
@@ -59,7 +62,7 @@ export function ClampGenerator() {
       </div>
 
       {!result ? (
-        <p className="text-sm text-destructive">Min and max viewport must differ.</p>
+        <p className="text-sm text-destructive">{t('viewportsMustDiffer')}</p>
       ) : (
         <>
           <div className="flex items-center justify-between gap-2 rounded-xl border border-border/50 bg-muted/20 p-3">
@@ -67,14 +70,18 @@ export function ClampGenerator() {
             <CopyButton value={`font-size: ${result.css};`} className="shrink-0" />
           </div>
           <div className="rounded-2xl border border-border/50 bg-muted/10 p-6">
-            <p className="mb-1 text-xs text-muted-foreground">Live preview (resize the window):</p>
+            <p className="mb-1 text-xs text-muted-foreground">{t('livePreview')}</p>
             <p style={{ fontSize: result.css }} className="font-bold leading-tight">
-              The quick brown fox
+              {tc('previewText')}
             </p>
           </div>
           <p className="text-xs text-muted-foreground">
-            Fluidly scales from {minSize}px at {minVw}px wide to {maxSize}px at {maxVw}px wide, using rem
-            for accessibility.
+            {t('explanation', {
+              minSize: String(minSize),
+              minVw: String(minVw),
+              maxSize: String(maxSize),
+              maxVw: String(maxVw),
+            })}
           </p>
         </>
       )}

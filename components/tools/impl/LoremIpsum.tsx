@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from 'react'
 import { RefreshCw } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput, ToolTextarea, Toolbar } from '../ui'
 
 const WORDS =
@@ -26,6 +27,8 @@ function paragraph(): string {
 type Unit = 'paragraphs' | 'sentences' | 'words'
 
 export function LoremIpsum() {
+  const t = useTranslations('tools.lorem-ipsum')
+  const tc = useTranslations('tools.common')
   const [count, setCount] = useState(3)
   const [unit, setUnit] = useState<Unit>('paragraphs')
   const [startClassic, setStartClassic] = useState(true)
@@ -64,11 +67,11 @@ export function LoremIpsum() {
             <button
               key={u}
               onClick={() => setUnit(u)}
-              className={`rounded-md px-2.5 py-1 font-semibold capitalize transition-colors ${
+              className={`rounded-md px-2.5 py-1 font-semibold transition-colors ${
                 unit === u ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {u}
+              {t(u)}
             </button>
           ))}
         </div>
@@ -79,13 +82,13 @@ export function LoremIpsum() {
             onChange={(e) => setStartClassic(e.target.checked)}
             className="accent-[var(--ufo-green)]"
           />
-          Start with “Lorem ipsum”
+          {t('startClassic')}
         </label>
         <button
           onClick={generate}
           className="inline-flex items-center gap-1.5 rounded-lg bg-ufo-green px-3 py-1.5 text-xs font-bold text-black transition-colors hover:bg-ufo-green/85"
         >
-          <RefreshCw className="h-3.5 w-3.5" /> Generate
+          <RefreshCw className="h-3.5 w-3.5" /> {tc('generate')}
         </button>
         <CopyButton value={output} />
       </Toolbar>

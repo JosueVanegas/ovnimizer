@@ -1,0 +1,683 @@
+{
+  "meta": {
+    "title": "Ovnimizer — ブラウザーで即座に動く開発者ツール",
+    "description": "高速でプライバシー重視の開発者ツール。JSON整形、画像変換、JWTデコード、UUID・ハッシュ生成など。アップロード不要、アカウント不要。"
+  },
+  "hero": {
+    "title": "画像を無制限に最適化",
+    "subtitle": "ブラウザーで直接、変換・圧縮・リサイズ"
+  },
+  "upload": {
+    "drag": "ここに画像をドラッグ",
+    "drop": "ここに画像をドロップ",
+    "hint": "またはクリックして選択 · JPG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, SVG · 1ファイル最大50MB",
+    "reject": "サポートされていない形式",
+    "addMore": "画像を追加",
+    "dropToAdd": "ドロップして追加",
+    "orFrom": "または:",
+    "fromUrl": "URL",
+    "urlPlaceholder": "画像のURLを貼り付け…",
+    "fetch": "取得",
+    "urlFetching": "取得中…",
+    "urlError": "画像を取得できませんでした。URLとCORS設定を確認してください。",
+    "cloudSoon": "クラウド連携は近日公開",
+    "cloudDrive": "Google Drive",
+    "cloudDropbox": "Dropbox",
+    "cloudOneDrive": "OneDrive"
+  },
+  "options": {
+    "format": "出力形式",
+    "quality": "品質",
+    "maxWidth": "最大サイズ",
+    "avifWarning": "AVIFはブラウザーのサポートが必要です。利用できない場合はWebPになります。",
+    "preset": {
+      "max": "最大",
+      "high": "高",
+      "balanced": "バランス",
+      "aggressive": "強め",
+      "minimum": "最小",
+      "custom": "カスタム"
+    },
+    "size": {
+      "original": "オリジナル",
+      "large": "大",
+      "medium": "中",
+      "small": "小",
+      "thumb": "サムネイル"
+    }
+  },
+  "gallery": {
+    "image": "画像",
+    "images": "画像",
+    "processed": "処理済み",
+    "processedPlural": "処理済み",
+    "removeAria": "画像を削除",
+    "downloadAria": "画像をダウンロード",
+    "compareAria": "比較を表示",
+    "before": "変更前",
+    "after": "変更後",
+    "close": "閉じる"
+  },
+  "actions": {
+    "processAll": "すべて処理",
+    "clear": "クリア",
+    "reprocess": "再処理",
+    "cancel": "キャンセル"
+  },
+  "progress": {
+    "label": "{total} 件中 {current} 件を処理中"
+  },
+  "stats": {
+    "image": "画像",
+    "images": "画像",
+    "compression": "圧縮率",
+    "saved": "削減",
+    "download": "ダウンロード",
+    "downloadAll": "すべてダウンロード",
+    "downloadZip": "ZIPをダウンロード",
+    "zipping": "圧縮中…",
+    "original": "オリジナル"
+  },
+  "editor": {
+    "notProcessed": "設定を調整中…",
+    "error": "この画像の処理中にエラーが発生しました",
+    "applyAll": "すべての画像に適用"
+  },
+  "share": {
+    "button": "Ovnimizerを共有",
+    "text": "Ovnimizerをチェック — 無料のブラウザー画像最適化ツール。アップロード不要、制限なし。",
+    "copied": "リンクをクリップボードにコピーしました！"
+  },
+  "format": {
+    "label": "出力形式",
+    "searchPlaceholder": "形式を検索…",
+    "noResults": "形式が見つかりません",
+    "cat": {
+      "all": "すべて",
+      "web": "Web",
+      "lossless": "可逆",
+      "icon": "アイコン",
+      "raster": "ラスター"
+    },
+    "desc": {
+      "webp": "Web向けに最適",
+      "avif": "次世代",
+      "jpg": "汎用",
+      "png": "可逆",
+      "ico": "ファビコン",
+      "tiff": "高品質",
+      "bmp": "非圧縮",
+      "keep": "元の形式を保持"
+    },
+    "pngWarning": "PNGは可逆形式です。写真やJPEGのファイルサイズは縮小されません。",
+    "convertLabel": "変換先",
+    "keepLabel": "保持"
+  },
+  "toast": {
+    "success": "{count} 件の画像を最適化しました",
+    "successPlural": "{count} 件の画像を最適化しました",
+    "warning": "{done} 件処理、{errors} 件エラー",
+    "optimize": {
+      "success": "{count} 件の画像を最適化しました",
+      "successPlural": "{count} 件の画像を最適化しました"
+    },
+    "convert": {
+      "success": "{count} 件の画像を変換しました",
+      "successPlural": "{count} 件の画像を変換しました"
+    }
+  },
+  "footer": {
+    "privacy": "ファイルがデバイスから出ることはありません",
+    "privacyLink": "プライバシー",
+    "community": "コミュニティのために無料・オープンソース",
+    "changelog": "変更履歴",
+    "shortcuts": "ショートカット"
+  },
+  "privacy": {
+    "title": "プライバシーポリシー",
+    "badge": "データ収集なし",
+    "intro": "Ovnimizerはコミュニティのために作られた、無料でオープンソースの非営利ツールです。個人データやファイルの収集・保存・送信は一切行いません。",
+    "localTitle": "100% ローカル処理",
+    "localBody": "画像はブラウザーAPI（OffscreenCanvas）を使ってデバイスのCPUとメモリで処理されます。ファイルはどのサーバーにもアップロードされません。タブを閉じるとすべてのデータは消えます。",
+    "noCollectionTitle": "データ収集なし",
+    "noCollectionBody": "画像、メタデータ、デバイス情報、IPアドレスなど、いかなるデータも収集しません。誰がこのツールを使っているかを知る手段はありません。",
+    "noTrackingTitle": "トラッキング・分析なし",
+    "noTrackingBody": "Cookie、分析ツール、トラッキング技術は一切使用しません。広告なし、ユーザープロフィールなし、収益化なし。",
+    "cloudIntegrationTitle": "クラウド連携（任意）",
+    "cloudIntegrationBody": "OvnimizerはGoogle DriveおよびDropboxとの任意の連携を提供します。認証はブラウザーとプロバイダーの間で直接行われ、当社のサーバーを経由しません。ファイルはクラウドからブラウザーにダウンロードされ、ローカルで処理されます。トークン、認証情報、ファイルを保存することは一切ありません。",
+    "openSourceTitle": "オープンソースとコミュニティ",
+    "openSourceBody": "Ovnimizerはコミュニティのために作られた非営利プロジェクトです。ビジネスモデルも商業的な利益もありません。コードは自由でオープンです。",
+    "gdprTitle": "GDPR・プライバシー準拠",
+    "gdprBody": "個人データを処理・保存しないため、OvnimizerはGDPR、CCPA、その他世界中のプライバシー規制に完全準拠しています。Cookieの同意は不要です。",
+    "back": "ホームに戻る"
+  },
+  "landing": {
+    "title": "あらゆる画像作業に、すっきりしたツールをひとつ",
+    "subtitle": "必要なものを選択 — パフォーマンスのための最適化、または形式変換。混在したフローも、驚きもありません。すべてブラウザー内でプライベートに実行されます。",
+    "privacyNote": "100% ローカル — ファイルがデバイスから出ることはありません。"
+  },
+  "tool": {
+    "allTools": "← すべてのツール",
+    "optimize": {
+      "badge": "画像最適化",
+      "title": "画像を最適化",
+      "subtitle": "元の形式を保ちながら、圧縮・リサイズ・メタデータ削除を行います。",
+      "switch": "形式を変えたいですか？ 画像を変換 →",
+      "cardDesc": "形式を変えずに（変えたい場合を除き）画像を軽く速くします。",
+      "cta": "画像を最適化",
+      "feature0": "スマートな圧縮と品質コントロール",
+      "feature1": "任意のサイズにリサイズ",
+      "feature2": "EXIFメタデータを自動削除"
+    },
+    "convert": {
+      "badge": "ファイル変換",
+      "title": "画像を変換",
+      "subtitle": "JPG、PNG、WebP、AVIF、TIFF、BMPなどの間で変換します。",
+      "switch": "小さくしたいだけですか？ 画像を最適化 →",
+      "cardDesc": "品質を完全にコントロールしながら、画像をある形式から別の形式へ変換します。",
+      "cta": "画像を変換",
+      "feature0": "JPG · PNG · WebP · AVIF · TIFF · BMP",
+      "feature1": "HEIC、GIF（先頭フレーム）なども読み込み",
+      "feature2": "変換先の形式を明示的に選択"
+    }
+  },
+  "home": {
+    "badge": "開発者のツールボックス",
+    "title": "ブラウザーで即座に動く開発者ツール",
+    "subtitle": "整形、変換、生成、検査 — 高速でプライバシー重視の数十種のユーティリティをひとつに。アカウント不要、アップロード不要、余計なものなし。",
+    "popular": "人気のツール",
+    "categories": "カテゴリーで探す",
+    "recent": "最近追加",
+    "privacyTitle": "設計段階からプライバシー重視",
+    "privacyDesc": "Ovnimizerは技術的に可能な限りデータをローカルで処理します。ファイルとテキストはデバイスに留まり、サーバーへアップロードされません。",
+    "featureInstant": "即時",
+    "featureInstantDesc": "登録も待ち時間もなし。ページが読み込まれた瞬間にツールが動きます。",
+    "featurePrivate": "プライベート",
+    "featurePrivateDesc": "すべてブラウザー内で実行。データがデバイスから出ることはありません。",
+    "featureOffline": "オフラインで動作",
+    "featureOfflineDesc": "ブラウザー完結型のツールは接続がなくても動き続けます。",
+    "faq": "よくある質問",
+    "faqQ1": "ファイルやデータはどこかにアップロードされますか？",
+    "faqA1": "いいえ。ブラウザー完結型のツールはすべてデバイス上でローカルに処理します。サーバーには何も送信されません。",
+    "faqQ2": "アカウントは必要ですか？",
+    "faqA2": "不要です。すべてのツールは登録なしで即座に動きます。",
+    "faqQ3": "Ovnimizerは無料ですか？",
+    "faqA3": "はい — Ovnimizerは開発者コミュニティのために作られた無料のオープンソースプロジェクトです。",
+    "nTools": "{count} 個のツール"
+  },
+  "common": {
+    "tools": "ツール",
+    "soon": "近日公開",
+    "copy": "コピー",
+    "copied": "コピーしました",
+    "copyError": "コピーできませんでした",
+    "localBadge": "ブラウザー内でローカルに処理",
+    "favorites": "お気に入り",
+    "favorite": "お気に入り",
+    "favorited": "お気に入り済み",
+    "recentlyUsed": "最近使用",
+    "relatedTools": "関連ツール",
+    "download": "ダウンロード",
+    "share": "共有",
+    "shareCopied": "リンクをクリップボードにコピーしました",
+    "shareError": "リンクをコピーできませんでした",
+    "searchTools": "ツールを検索",
+    "searchPlaceholder": "ツールを検索…",
+    "noToolsFound": "ツールが見つかりません",
+    "navigate": "移動",
+    "open": "開く",
+    "addFavorite": "お気に入りに追加",
+    "removeFavorite": "お気に入りから削除"
+  },
+  "cat": {
+    "images": { "label": "画像", "desc": "画像の最適化・変換・加工" },
+    "json": { "label": "JSON", "desc": "JSONの整形・検証・変換" },
+    "base64": { "label": "Base64", "desc": "Base64のエンコード・デコード" },
+    "jwt": { "label": "JWT", "desc": "JSON Web Tokenの検査" },
+    "hash": { "label": "ハッシュ", "desc": "暗号ハッシュの生成" },
+    "uuid": { "label": "UUID", "desc": "一意な識別子の生成" },
+    "text": { "label": "テキスト", "desc": "テキストの変換・分析" },
+    "url": { "label": "URL", "desc": "URLのエンコード・デコード・解析" },
+    "html": { "label": "HTML", "desc": "HTMLの整形・圧縮・エスケープ" },
+    "css": { "label": "CSS", "desc": "CSSの整形・圧縮・生成" },
+    "svg": { "label": "SVG", "desc": "SVGの最適化・変換" },
+    "colors": { "label": "カラー", "desc": "色の変換・生成・チェック" },
+    "seo": { "label": "SEO", "desc": "メタデータ、robots、サイトマップ" },
+    "git": { "label": "Git", "desc": "コミットと.gitignoreの補助" },
+    "utilities": { "label": "ユーティリティ", "desc": "日常的な開発者ユーティリティ" }
+  },
+  "t": {
+    "image-optimizer": { "title": "画像オプティマイザー", "desc": "形式を変えずに画像を圧縮・リサイズします。" },
+    "image-converter": { "title": "画像を変換", "desc": "JPG、PNG、WebP、AVIF、TIFF、BMPの間で変換します。" },
+    "resize-image": { "title": "画像をリサイズ", "desc": "画像を正確な寸法にリサイズします。" },
+    "heic-converter": { "title": "HEICコンバーター", "desc": "HEIC/HEIF写真をJPGまたはPNGに変換します。" },
+    "exif-remover": { "title": "EXIF削除", "desc": "画像からメタデータを削除します。" },
+    "blur-placeholder": { "title": "ブラープレースホルダー生成", "desc": "Base64のぼかしプレースホルダー（LQIP）を生成します。" },
+    "responsive-image": { "title": "レスポンシブ画像生成", "desc": "srcsetと複数サイズを生成します。" },
+    "favicon-generator": { "title": "ファビコン生成", "desc": "すべてのサイズのファビコンを生成します。" },
+    "json-formatter": { "title": "JSONフォーマッター", "desc": "JSONを即座に整形・検証・圧縮します。" },
+    "json-validator": { "title": "JSONバリデーター", "desc": "JSONを検証し、エラーを行と列で特定します。" },
+    "json-diff": { "title": "JSON差分", "desc": "2つのJSON文書を比較して変更点を確認します。" },
+    "json-minifier": { "title": "JSONミニファイア", "desc": "JSONを最小サイズに圧縮します。" },
+    "json-to-typescript": { "title": "JSON → TypeScript", "desc": "JSONからTypeScriptインターフェースを生成します。" },
+    "json-to-yaml": { "title": "JSON → YAML", "desc": "JSONをYAMLに変換します。" },
+    "json-to-csv": { "title": "JSON → CSV", "desc": "JSON配列をCSVに変換します。" },
+    "base64": { "title": "Base64エンコード / デコード", "desc": "テキストをBase64でエンコード・デコードします。" },
+    "base64-image": { "title": "画像 ↔ Base64", "desc": "画像とBase64データURIを相互変換します。" },
+    "base64-file": { "title": "ファイル ↔ Base64", "desc": "任意のファイルとBase64を相互変換します。" },
+    "jwt-decoder": { "title": "JWTデコーダー", "desc": "JSON Web Tokenをローカルでデコード・検査します。" },
+    "hash-generator": { "title": "ハッシュ生成", "desc": "SHA-1、SHA-256、SHA-384、SHA-512ハッシュを生成します。" },
+    "uuid-generator": { "title": "UUID生成", "desc": "UUID v4識別子を一括生成します。" },
+    "case-converter": { "title": "ケース変換", "desc": "テキストをcamelCase、snake_caseなどに変換します。" },
+    "remove-duplicate-lines": { "title": "重複行の削除", "desc": "順序を保ったまま重複行を削除します。" },
+    "sort-lines": { "title": "行のソート", "desc": "行をアルファベット順、数値順、長さ順でソートします。" },
+    "character-counter": { "title": "文字数カウンター", "desc": "文字数、単語数、行数、読了時間を数えます。" },
+    "word-counter": { "title": "単語数カウンター", "desc": "単語数、文の数、読了時間を数えます。" },
+    "lorem-ipsum": { "title": "Lorem Ipsum生成", "desc": "段落、文、単語単位でダミーテキストを生成します。" },
+    "url-encoder": { "title": "URLエンコーダー / デコーダー", "desc": "URLとコンポーネントをパーセントエンコード・デコードします。" },
+    "query-parser": { "title": "クエリパーサー", "desc": "クエリ文字列をキー/値ペアとJSONに解析します。" },
+    "url-builder": { "title": "URLビルダー", "desc": "ベースとクエリパラメーターからURLを組み立てます。" },
+    "html-beautifier": { "title": "HTML整形", "desc": "HTMLを整形・インデントします。" },
+    "html-minifier": { "title": "HTMLミニファイア", "desc": "HTMLマークアップを圧縮します。" },
+    "escape-html": { "title": "HTMLエスケープ", "desc": "HTMLの特殊文字をエンティティに変換します。" },
+    "unescape-html": { "title": "HTMLアンエスケープ", "desc": "HTMLエンティティをテキストに戻します。" },
+    "css-beautifier": { "title": "CSS整形", "desc": "CSSを整形・インデントします。" },
+    "css-minifier": { "title": "CSSミニファイア", "desc": "CSSを圧縮します。" },
+    "border-radius": { "title": "Border Radius生成", "desc": "CSSのborder-radiusを視覚的に生成します。" },
+    "box-shadow": { "title": "Box Shadow生成", "desc": "CSSのbox-shadowを視覚的に生成します。" },
+    "clamp-generator": { "title": "Clamp生成", "desc": "フルイドでレスポンシブなCSS clamp()の値を生成します。" },
+    "svg-optimizer": { "title": "SVGオプティマイザー", "desc": "SVGファイルを最適化・縮小します。" },
+    "svg-viewer": { "title": "SVGビューアー", "desc": "生のSVGマークアップをプレビューします。" },
+    "svg-to-react": { "title": "SVG → React", "desc": "SVGをReactコンポーネントに変換します。" },
+    "svg-to-jsx": { "title": "SVG → JSX", "desc": "SVGをJSXに変換します。" },
+    "svg-color-editor": { "title": "SVGカラーエディター", "desc": "SVGパスの色を変更します。" },
+    "hex-rgb": { "title": "HEX ↔ RGB変換", "desc": "色をHEX、RGB、HSLの間で変換します。" },
+    "color-picker": { "title": "カラーピッカー", "desc": "色を選んでHEX、RGB、HSLの値をコピーします。" },
+    "gradient-generator": { "title": "グラデーション生成", "desc": "CSSの線形・放射グラデーションを視覚的に作成します。" },
+    "tailwind-palette": { "title": "Tailwindパレット生成", "desc": "1色からTailwindのカラースケールを生成します。" },
+    "contrast-checker": { "title": "コントラストチェッカー（WCAG）", "desc": "色のコントラスト比をWCAG AAおよびAAAと照合します。" },
+    "metadata-generator": { "title": "メタデータ生成", "desc": "meta、Open Graph、Twitterカードのタグを生成します。" },
+    "robots-generator": { "title": "robots.txt生成", "desc": "robots.txtファイルを生成します。" },
+    "sitemap-generator": { "title": "sitemap.xml生成", "desc": "URLリストからsitemap.xmlを生成します。" },
+    "slug-generator": { "title": "スラッグ生成", "desc": "任意のテキストをURLに適したきれいなスラッグに変換します。" },
+    "conventional-commit": { "title": "Conventional Commit生成", "desc": "Conventional Commitのメッセージを組み立てます。" },
+    "gitignore-generator": { "title": ".gitignore生成", "desc": "テンプレートから.gitignoreファイルを生成します。" },
+    "password-generator": { "title": "パスワード生成", "desc": "強力なランダムパスワードをローカルで生成します。" },
+    "unix-timestamp": { "title": "Unixタイムスタンプ変換", "desc": "Unixタイムスタンプと日付の間で変換します。" },
+    "password-strength": { "title": "パスワード強度チェッカー", "desc": "パスワードの強度と解読時間を推定します。" },
+    "random-string": { "title": "ランダム文字列生成", "desc": "ランダムな文字列、トークン、16進数を生成します。" },
+    "qr-generator": { "title": "QR生成", "desc": "テキストやURLからダウンロード可能なQRコードを生成します。" },
+    "qr-reader": { "title": "QRリーダー", "desc": "画像からQRコードをデコードします。" }
+  },
+  "qr": {
+    "textLabel": "テキストまたはURL",
+    "placeholder": "URLまたは任意のテキストを入力…",
+    "size": "サイズ",
+    "errorLevel": "誤り訂正: レベルが高いほど（Q/H）損傷に強くなりますが、保持できるデータは少なくなります。ローカルで生成。",
+    "scanHint": "ヒント: 印刷・表示の際はコードの周囲に明るい余白と十分なコントラストを確保してください。そうしないと一部のスキャナーで読み取れません。",
+    "enterText": "生成するテキストを入力",
+    "downloadPng": "PNGをダウンロード",
+    "tooLong": "このレベルのQRコードにはテキストが長すぎます。"
+  },
+  "tools": {
+    "common": {
+      "input": "入力",
+      "output": "出力",
+      "result": "結果…",
+      "clear": "クリア",
+      "sample": "サンプル",
+      "minify": "圧縮",
+      "generate": "生成",
+      "randomize": "ランダム",
+      "copyAll": "すべてコピー",
+      "download": "ダウンロード",
+      "encode": "エンコード",
+      "decode": "デコード",
+      "useOutputAsInput": "出力を入力として使用",
+      "howMany": "個数",
+      "count": "個数",
+      "length": "長さ",
+      "invalidInput": "無効な入力",
+      "oneItemPerLine": "1行に1項目…",
+      "pasteJson": "ここにJSONを貼り付け…",
+      "caseInsensitive": "大文字小文字を区別しない",
+      "removeEmpty": "空行を削除",
+      "trimWhitespace": "空白を除去",
+      "previewText": "いろはにほへと ちりぬるを",
+      "add": "追加",
+      "remove": "削除"
+    },
+    "json-formatter": {
+      "spaces": "スペース {n}",
+      "tab": "タブ",
+      "inputPlaceholder": "ここにJSONを貼り付け…",
+      "outputPlaceholder": "整形されたJSON…",
+      "valid": "有効なJSON",
+      "input": "入力",
+      "output": "出力"
+    },
+    "json-validator": {
+      "placeholder": "検証するJSONを貼り付け…",
+      "valid": "有効なJSON · ルートは {type}",
+      "typeArray": "配列（{n} 要素）",
+      "typeObject": "オブジェクト（{n} キー）"
+    },
+    "json-diff": {
+      "left": "左（A）",
+      "right": "右（B）",
+      "originalPlaceholder": "元のJSON…",
+      "changedPlaceholder": "変更後のJSON…",
+      "leftError": "左: {error}",
+      "rightError": "右: {error}",
+      "identical": "2つの文書は同一です。",
+      "differences": "{n} 件の相違"
+    },
+    "json-converters": {
+      "json": "JSON",
+      "chars": "{n} 文字",
+      "minified": "圧縮済み",
+      "minifiedPlaceholder": "圧縮されたJSON…",
+      "yaml": "YAML",
+      "yamlPlaceholder": "YAML出力…",
+      "csv": "CSV",
+      "csvPlaceholder": "CSV出力（JSON配列を想定）…",
+      "typescript": "TypeScript",
+      "typescriptPlaceholder": "生成されたインターフェース…"
+    },
+    "base64": {
+      "plainText": "プレーンテキスト",
+      "base64": "Base64",
+      "encodePlaceholder": "エンコードするテキスト…",
+      "decodePlaceholder": "デコードするBase64…",
+      "invalid": "無効なBase64入力"
+    },
+    "base64-image": {
+      "toBase64": "画像 → Base64",
+      "toImage": "Base64 → 画像",
+      "dropImage": "ここに画像をドロップするかクリックして選択",
+      "dataUri": "データURI",
+      "asBase64": "Base64で {size}",
+      "inputLabel": "Base64またはデータURI",
+      "downloadImage": "画像をダウンロード"
+    },
+    "base64-file": {
+      "toBase64": "ファイル → Base64",
+      "toFile": "Base64 → ファイル",
+      "dropFile": "ここに任意のファイルをドロップするかクリックして選択",
+      "dataUri": "データURI",
+      "asBase64": "Base64で {size}",
+      "inputLabel": "Base64またはデータURI",
+      "filename": "ファイル名"
+    },
+    "jwt-decoder": {
+      "label": "JWT",
+      "placeholder": "JSON Web Tokenを貼り付け…",
+      "warning": "署名は検証されません。デコードはローカルで行われ、シークレットを確認することはありません。",
+      "minParts": "JWTにはドットで区切られた部分が少なくとも2つあります。",
+      "decodeError": "このトークンをデコードできませんでした。",
+      "issued": "発行: {date}",
+      "expires": "有効期限: {date}",
+      "expired": "期限切れ: {date}",
+      "header": "ヘッダー",
+      "payload": "ペイロード"
+    },
+    "hash-generator": {
+      "placeholder": "ハッシュ化するテキストを入力または貼り付け…",
+      "note": "Web Crypto APIを使ってローカルで計算します。MD5はブラウザーで非対応のため省略されています。"
+    },
+    "case-converter": {
+      "placeholder": "テキストを入力…"
+    },
+    "url-encoder": {
+      "component": "コンポーネント",
+      "wholeUrl": "URL全体",
+      "placeholder": "テキストまたはURL…",
+      "malformed": "不正な入力 — デコードできませんでした。"
+    },
+    "query-parser": {
+      "label": "URLまたはクエリ文字列",
+      "placeholder": "https://example.com/search?q=hello&tag=a&tag=b",
+      "key": "キー",
+      "value": "値",
+      "asJson": "JSONとして"
+    },
+    "url-builder": {
+      "baseUrl": "ベースURL",
+      "queryParams": "クエリパラメーター",
+      "key": "キー",
+      "value": "値",
+      "addParam": "パラメーターを追加",
+      "removeParam": "パラメーターを削除"
+    },
+    "uuid-generator": {
+      "note": "UUIDバージョン4（RFC 4122）。Web Crypto APIでローカルに生成。"
+    },
+    "password-generator": {
+      "strength": "強度: {label}",
+      "weak": "弱い",
+      "fair": "普通",
+      "strong": "強い",
+      "lower": "小文字",
+      "upper": "大文字",
+      "numbers": "数字",
+      "symbols": "記号",
+      "note": "Web CryptoのCSPRNGでローカルに生成。"
+    },
+    "password-strength": {
+      "placeholder": "テストするパスワードを入力…",
+      "show": "表示",
+      "hide": "非表示",
+      "entropy": "エントロピー {bits} ビット",
+      "crackTime": "推定オフライン解読時間: {time}",
+      "instantly": "即座に",
+      "veryWeak": "非常に弱い",
+      "weak": "弱い",
+      "fair": "普通",
+      "strong": "強い",
+      "veryStrong": "非常に強い",
+      "tipLength": "12文字以上使用してください",
+      "tipUpper": "大文字を追加してください",
+      "tipNumber": "数字を追加してください",
+      "tipSymbol": "記号を追加してください",
+      "tipRepeat": "同じ文字の繰り返しを避けてください",
+      "unit_second": "{n} 秒",
+      "unit_minute": "{n} 分",
+      "unit_hour": "{n} 時間",
+      "unit_day": "{n} 日",
+      "unit_year": "{n} 年",
+      "unit_century": "{n} 世紀",
+      "note": "ローカルで分析 — パスワードがブラウザーから出ることはありません。"
+    },
+    "random-string": {
+      "alphanumeric": "英数字",
+      "letters": "英字",
+      "numbers": "数字",
+      "hex": "16進数",
+      "symbols": "記号",
+      "note": "Web CryptoのCSPRNGでローカルに生成。"
+    },
+    "hex-rgb": {
+      "invalid": "有効な3桁または6桁の16進カラーを入力してください。"
+    },
+    "color-picker": {
+      "hex": "HEX",
+      "rgb": "RGB",
+      "hsl": "HSL",
+      "cssVariable": "CSS変数",
+      "pickFromScreen": "画面から取得",
+      "invalid": "有効な16進カラーを入力してください。"
+    },
+    "tailwind-palette": {
+      "baseColor": "ベースカラー",
+      "name": "名前",
+      "invalid": "有効な16進カラーを入力してください。"
+    },
+    "contrast-checker": {
+      "textColor": "テキストの色",
+      "background": "背景",
+      "invalid": "有効な16進カラーを2つ入力してください。",
+      "ratio": "コントラスト比",
+      "aaNormal": "AA · 通常テキスト（4.5:1）",
+      "aaLarge": "AA · 大きいテキスト（3:1）",
+      "aaaNormal": "AAA · 通常テキスト（7:1）",
+      "aaaLarge": "AAA · 大きいテキスト（4.5:1）"
+    },
+    "gradient-generator": {
+      "linear": "線形",
+      "radial": "放射",
+      "angle": "角度",
+      "addStop": "ストップを追加",
+      "removeStop": "ストップを削除"
+    },
+    "border-radius": {
+      "linked": "連動",
+      "independent": "個別",
+      "allCorners": "すべての角",
+      "topLeft": "左上",
+      "topRight": "右上",
+      "bottomRight": "右下",
+      "bottomLeft": "左下"
+    },
+    "box-shadow": {
+      "offsetX": "オフセットX",
+      "offsetY": "オフセットY",
+      "blur": "ぼかし",
+      "spread": "広がり",
+      "opacity": "不透明度",
+      "inset": "内側"
+    },
+    "clamp-generator": {
+      "minViewport": "最小ビューポート",
+      "maxViewport": "最大ビューポート",
+      "minSize": "最小サイズ",
+      "maxSize": "最大サイズ",
+      "rootFontSize": "ルートフォントサイズ",
+      "viewportsMustDiffer": "最小と最大のビューポートは異なる値にしてください。",
+      "livePreview": "ライブプレビュー（ウィンドウをリサイズ）:",
+      "explanation": "アクセシビリティのためremを使い、幅 {minVw}px で {minSize}px から幅 {maxVw}px で {maxSize}px まで滑らかにスケールします。"
+    },
+    "lorem-ipsum": {
+      "paragraphs": "段落",
+      "sentences": "文",
+      "words": "単語",
+      "startClassic": "「Lorem ipsum」で始める"
+    },
+    "slug-generator": {
+      "hyphen": "ハイフン -",
+      "underscore": "アンダースコア _",
+      "lowercase": "小文字",
+      "stripAccents": "アクセントを除去",
+      "textLabel": "テキスト（1行に1つ）",
+      "textPlaceholder": "My Awesome Blog Post!",
+      "slug": "スラッグ",
+      "slugPlaceholder": "my-awesome-blog-post"
+    },
+    "unix-timestamp": {
+      "currentTime": "現在のUnix時刻",
+      "use": "使用",
+      "inputLabel": "タイムスタンプ（秒またはミリ秒）または日付文字列",
+      "placeholder": "例: 1516239022 または 2026-07-15T10:00:00Z",
+      "unrecognized": "認識できない日付またはタイムスタンプです。",
+      "unixSeconds": "Unix（秒）",
+      "unixMs": "Unix（ミリ秒）",
+      "iso": "ISO 8601",
+      "utc": "UTC",
+      "local": "ローカル"
+    },
+    "character-counter": {
+      "placeholder": "テキストを入力または貼り付け…",
+      "words": "単語",
+      "characters": "文字",
+      "charactersNoSpaces": "文字（空白なし）",
+      "sentences": "文",
+      "lines": "行",
+      "paragraphs": "段落",
+      "readingTime": "読了時間"
+    },
+    "sort-lines": {
+      "asc": "A → Z",
+      "desc": "Z → A",
+      "alpha": "アルファベット",
+      "numeric": "数値",
+      "lengthKind": "長さ",
+      "inputPlaceholder": "1行に1項目…",
+      "sorted": "ソート済み"
+    },
+    "remove-duplicate-lines": {
+      "inputPlaceholder": "1行に1項目…",
+      "uniqueLines": "一意の行",
+      "removed": "{n} 件の重複を削除",
+      "noDuplicates": "重複なし"
+    },
+    "html-escape": {
+      "escape": "エスケープ",
+      "unescape": "アンエスケープ",
+      "rawLabel": "生のHTML / テキスト",
+      "escapedLabel": "エスケープされたHTML",
+      "escapePlaceholder": "<div class=\"x\">Hi & bye</div>",
+      "unescapePlaceholder": "&lt;div&gt;…&lt;/div&gt;"
+    },
+    "conventional-commit": {
+      "type": "タイプ",
+      "scope": "スコープ（任意）",
+      "scopePlaceholder": "api, ui, auth…",
+      "description": "説明",
+      "descriptionPlaceholder": "ログインエンドポイントを追加",
+      "body": "本文（任意）",
+      "bodyPlaceholder": "より長い説明…",
+      "breaking": "破壊的変更",
+      "breakingPlaceholder": "何が壊れるか説明…",
+      "commitMessage": "コミットメッセージ",
+      "feat": "新機能",
+      "fix": "バグ修正",
+      "docs": "ドキュメントのみ",
+      "style": "書式のみ、コード変更なし",
+      "refactor": "バグ修正でも機能追加でもない",
+      "perf": "パフォーマンス改善",
+      "test": "テストの追加・修正",
+      "build": "ビルドシステムまたは依存関係",
+      "ci": "CI設定",
+      "chore": "その他の変更",
+      "revert": "以前のコミットを取り消す"
+    },
+    "gitignore-generator": {
+      "includeTemplates": "含めるテンプレート",
+      "outputPlaceholder": "上でテンプレートを選択…"
+    },
+    "robots-generator": {
+      "allowAll": "すべて許可",
+      "blockAll": "すべてブロック",
+      "custom": "カスタム",
+      "userAgent": "User-agent",
+      "sitemapUrl": "サイトマップURL",
+      "disallowPaths": "禁止パス",
+      "addPath": "パスを追加",
+      "removePath": "パスを削除"
+    },
+    "sitemap-generator": {
+      "urlsLabel": "URL（1行に1つ）",
+      "changeFrequency": "変更頻度",
+      "priority": "優先度",
+      "includeLastmod": "lastmodを含める（今日）"
+    },
+    "metadata-generator": {
+      "title": "タイトル",
+      "description": "説明",
+      "canonicalUrl": "正規URL",
+      "imageUrl": "画像URL",
+      "siteName": "サイト名",
+      "twitterHandle": "Twitterハンドル",
+      "ogType": "OGタイプ",
+      "htmlMetaTags": "HTMLメタタグ"
+    },
+    "qr-reader": {
+      "hint": "ここにQRコード画像をドロップするかクリックして選択",
+      "couldNotRead": "画像を読み取れませんでした。",
+      "notFound": "この画像にQRコードが見つかりませんでした。",
+      "couldNotLoad": "画像を読み込めませんでした。",
+      "decodedContent": "デコードされた内容",
+      "open": "開く",
+      "note": "ローカルでデコード — 画像がブラウザーから出ることはありません。"
+    }
+  }
+}

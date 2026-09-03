@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle, ShieldAlert } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea } from '../ui'
 
 function b64urlDecode(part: string): string {
@@ -32,12 +33,14 @@ function claimTime(payload: string, key: string): string | null {
 }
 
 export function JwtDecoder() {
+  const t = useTranslations('tools.jwt-decoder')
+  const tc = useTranslations('tools.common')
   const [token, setToken] = useState('')
 
   const decoded = useMemo(() => {
     if (!token.trim()) return null
     const parts = token.trim().split('.')
-    if (parts.length < 2) return { error: 'A JWT has at least two dot-separated parts.' }
+    if (parts.length < 2) return { error: 'minParts' as 'minParts' | 'decodeError' }
     try {
       const header = pretty(b64urlDecode(parts[0]))
       const payload = b64urlDecode(parts[1])
@@ -56,36 +59,36 @@ export function JwtDecoder() {
         })(),
       }
     } catch {
-      return { error: 'Could not decode this token.' }
+      return { error: 'decodeError' as 'minParts' | 'decodeError' }
     }
   }, [token])
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <label className="text-xs font-semibold text-muted-foreground">JWT</label>
+        <label className="text-xs font-semibold text-muted-foreground">{t('label')}</label>
         <button
           onClick={() => setToken(SAMPLE)}
           className="rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted/70"
         >
-          Sample
+          {tc('sample')}
         </button>
       </div>
       <ToolTextarea
         value={token}
         onChange={(e) => setToken(e.target.value)}
-        placeholder="Paste a JSON Web Token…"
+        placeholder={t('placeholder')}
         className="min-h-28"
       />
 
       <p className="flex items-center gap-1.5 rounded-lg bg-amber-500/10 px-3 py-2 text-xs text-amber-600 dark:text-amber-400">
         <ShieldAlert className="h-3.5 w-3.5 shrink-0" />
-        Signature is not verified — decoding happens locally and never checks the secret.
+        {t('warning')}
       </p>
 
       {decoded && 'error' in decoded && (
         <p className="flex items-center gap-1.5 text-sm text-destructive">
-          <AlertCircle className="h-4 w-4 shrink-0" /> {decoded.error}
+          <AlertCircle className="h-4 w-4 shrink-0" /> {decoded.error === 'minParts' ? t('minParts') : t('decodeError')}
         </p>
       )}
 
@@ -94,7 +97,7 @@ export function JwtDecoder() {
           {(decoded.iat || decoded.exp) && (
             <div className="flex flex-wrap gap-2 text-xs">
               {decoded.iat && (
-                <span className="rounded-lg bg-muted px-2.5 py-1">Issued: {decoded.iat}</span>
+                <span className="rounded-lg bg-muted px-2.5 py-1">{t('issued', { date: decoded.iat })}</span>
               )}
               {decoded.exp && (
                 <span
@@ -102,7 +105,7 @@ export function JwtDecoder() {
                     decoded.expired ? 'bg-destructive/15 text-destructive' : 'bg-ufo-green/10 text-ufo-green'
                   }`}
                 >
-                  {decoded.expired ? 'Expired' : 'Expires'}: {decoded.exp}
+                  {decoded.expired ? t('expired', { date: decoded.exp }) : t('expires', { date: decoded.exp })}
                 </span>
               )}
             </div>
@@ -110,14 +113,14 @@ export function JwtDecoder() {
           <div className="grid gap-4 lg:grid-cols-2">
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-muted-foreground">Header</label>
+                <label className="text-xs font-semibold text-muted-foreground">{t('header')}</label>
                 <CopyButton value={decoded.header} />
               </div>
               <ToolTextarea value={decoded.header} readOnly className="min-h-40" />
             </div>
             <div className="space-y-2">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-semibold text-muted-foreground">Payload</label>
+                <label className="text-xs font-semibold text-muted-foreground">{t('payload')}</label>
                 <CopyButton value={decoded.payload} />
               </div>
               <ToolTextarea value={decoded.payload} readOnly className="min-h-40" />

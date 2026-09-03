@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState, useCallback } from 'react'
 import { Search, CornerDownLeft, ArrowUp, ArrowDown } from 'lucide-react'
 import { useTranslations } from 'next-intl'
 import { useRouter } from '@/i18n/navigation'
-import { searchTools, CATEGORY_MAP } from '@/lib/tools/registry'
+import { searchTools } from '@/lib/tools/registry'
 
 export const OPEN_COMMAND_EVENT = 'ovni:command'
 

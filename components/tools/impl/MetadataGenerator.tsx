@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput } from '../ui'
 
 function esc(s: string): string {
@@ -8,6 +9,7 @@ function esc(s: string): string {
 }
 
 export function MetadataGenerator() {
+  const t = useTranslations('tools.metadata-generator')
   const [f, setF] = useState({
     title: 'My Awesome Page',
     description: 'A short, compelling description of the page.',
@@ -43,13 +45,13 @@ export function MetadataGenerator() {
   }, [f])
 
   const FIELDS: { key: keyof typeof f; label: string }[] = [
-    { key: 'title', label: 'Title' },
-    { key: 'description', label: 'Description' },
-    { key: 'url', label: 'Canonical URL' },
-    { key: 'image', label: 'Image URL' },
-    { key: 'site', label: 'Site name' },
-    { key: 'twitter', label: 'Twitter handle' },
-    { key: 'type', label: 'OG type' },
+    { key: 'title', label: t('title') },
+    { key: 'description', label: t('description') },
+    { key: 'url', label: t('canonicalUrl') },
+    { key: 'image', label: t('imageUrl') },
+    { key: 'site', label: t('siteName') },
+    { key: 'twitter', label: t('twitterHandle') },
+    { key: 'type', label: t('ogType') },
   ]
 
   return (
@@ -64,7 +66,7 @@ export function MetadataGenerator() {
       </div>
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-semibold text-muted-foreground">HTML meta tags</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('htmlMetaTags')}</label>
           <CopyButton value={output} />
         </div>
         <pre className="h-full overflow-x-auto rounded-xl border border-border/50 bg-muted/20 p-3 font-mono text-xs">{output}</pre>

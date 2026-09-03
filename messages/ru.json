@@ -1,0 +1,683 @@
+{
+  "meta": {
+    "title": "Ovnimizer — Инструменты разработчика прямо в браузере",
+    "description": "Быстрые инструменты разработчика с упором на приватность: форматирование JSON, конвертация изображений, декодирование JWT, генерация UUID, хешей и другое. Без загрузок и аккаунтов."
+  },
+  "hero": {
+    "title": "Оптимизируйте изображения без ограничений",
+    "subtitle": "Конвертируйте, сжимайте и меняйте размер прямо в браузере"
+  },
+  "upload": {
+    "drag": "Перетащите изображения сюда",
+    "drop": "Отпустите изображения здесь",
+    "hint": "или нажмите для выбора · JPG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, SVG · Макс. 50 МБ на файл",
+    "reject": "Формат не поддерживается",
+    "addMore": "Добавить ещё изображения",
+    "dropToAdd": "Отпустите, чтобы добавить",
+    "orFrom": "или из:",
+    "fromUrl": "URL",
+    "urlPlaceholder": "Вставьте URL изображения…",
+    "fetch": "Загрузить",
+    "urlFetching": "Загрузка…",
+    "urlError": "Не удалось загрузить изображение. Проверьте URL и настройки CORS.",
+    "cloudSoon": "Интеграция с облаком скоро",
+    "cloudDrive": "Google Drive",
+    "cloudDropbox": "Dropbox",
+    "cloudOneDrive": "OneDrive"
+  },
+  "options": {
+    "format": "Формат вывода",
+    "quality": "Качество",
+    "maxWidth": "Максимальный размер",
+    "avifWarning": "AVIF требует поддержки браузера. При отсутствии будет использован WebP.",
+    "preset": {
+      "max": "Максимум",
+      "high": "Высокое",
+      "balanced": "Сбалансировано",
+      "aggressive": "Агрессивно",
+      "minimum": "Минимум",
+      "custom": "Настраиваемое"
+    },
+    "size": {
+      "original": "Оригинал",
+      "large": "Большой",
+      "medium": "Средний",
+      "small": "Маленький",
+      "thumb": "Миниатюра"
+    }
+  },
+  "gallery": {
+    "image": "изображение",
+    "images": "изображения",
+    "processed": "обработано",
+    "processedPlural": "обработано",
+    "removeAria": "Удалить изображение",
+    "downloadAria": "Скачать изображение",
+    "compareAria": "Посмотреть сравнение",
+    "before": "До",
+    "after": "После",
+    "close": "Закрыть"
+  },
+  "actions": {
+    "processAll": "Обработать все",
+    "clear": "Очистить",
+    "reprocess": "Обработать заново",
+    "cancel": "Отмена"
+  },
+  "progress": {
+    "label": "Обработка {current} из {total}"
+  },
+  "stats": {
+    "image": "изображение",
+    "images": "изображения",
+    "compression": "сжатие",
+    "saved": "сэкономлено",
+    "download": "Скачать",
+    "downloadAll": "Скачать все",
+    "downloadZip": "Скачать ZIP",
+    "zipping": "Сжатие…",
+    "original": "оригинал"
+  },
+  "editor": {
+    "notProcessed": "Настройка параметров…",
+    "error": "Ошибка при обработке этого изображения",
+    "applyAll": "Применить ко всем изображениям"
+  },
+  "share": {
+    "button": "Поделиться Ovnimizer с другими",
+    "text": "Попробуйте Ovnimizer — бесплатный оптимизатор изображений в браузере. Без загрузок и ограничений.",
+    "copied": "Ссылка скопирована в буфер обмена!"
+  },
+  "format": {
+    "label": "Формат вывода",
+    "searchPlaceholder": "Поиск форматов…",
+    "noResults": "Форматы не найдены",
+    "cat": {
+      "all": "Все",
+      "web": "Веб",
+      "lossless": "Без потерь",
+      "icon": "Иконка",
+      "raster": "Растр"
+    },
+    "desc": {
+      "webp": "Лучший для веба",
+      "avif": "Новое поколение",
+      "jpg": "Универсальный",
+      "png": "Без потерь",
+      "ico": "Favicon",
+      "tiff": "Высокое качество",
+      "bmp": "Без сжатия",
+      "keep": "Сохранить исходный формат"
+    },
+    "pngWarning": "PNG — формат без потерь, он не уменьшит размер файлов для фото или JPEG.",
+    "convertLabel": "Конвертировать в",
+    "keepLabel": "Сохранить"
+  },
+  "toast": {
+    "success": "{count} изображение оптимизировано",
+    "successPlural": "{count} изображений оптимизировано",
+    "warning": "{done} обработано, {errors} с ошибками",
+    "optimize": {
+      "success": "{count} изображение оптимизировано",
+      "successPlural": "{count} изображений оптимизировано"
+    },
+    "convert": {
+      "success": "{count} изображение конвертировано",
+      "successPlural": "{count} изображений конвертировано"
+    }
+  },
+  "footer": {
+    "privacy": "Ваши файлы никогда не покидают устройство",
+    "privacyLink": "Приватность",
+    "community": "Бесплатно и с открытым кодом для сообщества",
+    "changelog": "Журнал изменений",
+    "shortcuts": "Горячие клавиши"
+  },
+  "privacy": {
+    "title": "Политика конфиденциальности",
+    "badge": "Данные не собираются",
+    "intro": "Ovnimizer — бесплатный, некоммерческий инструмент с открытым кодом, созданный для сообщества. Мы не собираем, не храним и не передаём никакие персональные данные или файлы.",
+    "localTitle": "100% локальная обработка",
+    "localBody": "Ваши изображения обрабатываются с помощью процессора и памяти вашего устройства через API браузера (OffscreenCanvas). Ни один файл не загружается на сервер. При закрытии вкладки все данные исчезают.",
+    "noCollectionTitle": "Данные не собираются",
+    "noCollectionBody": "Мы не собираем никаких данных: ни изображений, ни метаданных, ни информации об устройстве, ни IP-адресов. У нас нет возможности узнать, кто пользуется этим инструментом.",
+    "noTrackingTitle": "Без отслеживания и аналитики",
+    "noTrackingBody": "Мы не используем куки, инструменты аналитики или технологии отслеживания. Никакой рекламы, профилей пользователей или монетизации.",
+    "cloudIntegrationTitle": "Интеграции с облаком (необязательно)",
+    "cloudIntegrationBody": "Ovnimizer предлагает необязательные подключения к Google Drive и Dropbox. Аутентификация происходит напрямую между вашим браузером и провайдером — никогда через наши серверы. Файлы скачиваются из облака в ваш браузер и обрабатываются локально. Мы никогда не храним токены, учётные данные или файлы.",
+    "openSourceTitle": "Открытый код и сообщество",
+    "openSourceBody": "Ovnimizer — некоммерческий проект, созданный для сообщества. Нет ни бизнес-модели, ни коммерческого интереса. Код свободный и открытый.",
+    "gdprTitle": "Соответствие GDPR и приватность",
+    "gdprBody": "Поскольку персональные данные не обрабатываются и не хранятся, Ovnimizer полностью соответствует GDPR, CCPA и другим нормам приватности по всему миру. Согласие на куки не требуется.",
+    "back": "Вернуться на главную"
+  },
+  "landing": {
+    "title": "Один аккуратный инструмент для любой задачи с изображениями",
+    "subtitle": "Выберите то, что нужно — оптимизируйте под производительность или конвертируйте между форматами. Никаких смешанных процессов и сюрпризов. Всё выполняется приватно в вашем браузере.",
+    "privacyNote": "100% локально — ваши файлы никогда не покидают устройство."
+  },
+  "tool": {
+    "allTools": "← Все инструменты",
+    "optimize": {
+      "badge": "Оптимизация изображений",
+      "title": "Оптимизировать изображение",
+      "subtitle": "Сжимайте, меняйте размер и удаляйте метаданные, сохраняя исходный формат.",
+      "switch": "Нужно сменить формат? Конвертировать изображение →",
+      "cardDesc": "Сделайте изображения легче и быстрее, не меняя их формат — если только вы сами этого не захотите.",
+      "cta": "Оптимизировать изображения",
+      "feature0": "Умное сжатие и контроль качества",
+      "feature1": "Изменение размера под любую цель",
+      "feature2": "Автоматическое удаление метаданных EXIF"
+    },
+    "convert": {
+      "badge": "Конвертация файлов",
+      "title": "Конвертировать изображение",
+      "subtitle": "Конвертируйте между JPG, PNG, WebP, AVIF, TIFF, BMP и другими.",
+      "switch": "Просто уменьшить размер? Оптимизировать изображение →",
+      "cardDesc": "Меняйте формат изображения с полным контролем над качеством.",
+      "cta": "Конвертировать изображения",
+      "feature0": "JPG · PNG · WebP · AVIF · TIFF · BMP",
+      "feature1": "Читает HEIC, GIF (первый кадр) и другое",
+      "feature2": "Явный выбор целевого формата"
+    }
+  },
+  "home": {
+    "badge": "Набор инструментов разработчика",
+    "title": "Инструменты разработчика, которые работают в браузере мгновенно",
+    "subtitle": "Форматируйте, конвертируйте, генерируйте и проверяйте — десятки быстрых утилит с упором на приватность в одном месте. Без аккаунтов, загрузок и лишнего.",
+    "popular": "Популярные инструменты",
+    "categories": "Просмотр по категориям",
+    "recent": "Недавно добавленные",
+    "privacyTitle": "Приватность по замыслу",
+    "privacyDesc": "Ovnimizer обрабатывает ваши данные локально всегда, когда это технически возможно. Файлы и текст остаются на вашем устройстве — ничего не загружается на сервер.",
+    "featureInstant": "Мгновенно",
+    "featureInstantDesc": "Без регистрации и ожидания. Инструменты работают, как только загрузится страница.",
+    "featurePrivate": "Приватно",
+    "featurePrivateDesc": "Всё выполняется в вашем браузере. Ваши данные никогда не покидают устройство.",
+    "featureOffline": "Работает офлайн",
+    "featureOfflineDesc": "Браузерные инструменты продолжают работать без подключения.",
+    "faq": "Часто задаваемые вопросы",
+    "faqQ1": "Загружаются ли мои файлы и данные куда-либо?",
+    "faqA1": "Нет. Браузерные инструменты обрабатывают всё локально на вашем устройстве. Ничего не отправляется на сервер.",
+    "faqQ2": "Нужен ли аккаунт?",
+    "faqA2": "Никогда. Каждый инструмент работает сразу без регистрации.",
+    "faqQ3": "Ovnimizer бесплатен?",
+    "faqA3": "Да — Ovnimizer это бесплатный проект с открытым кодом, созданный для сообщества разработчиков.",
+    "nTools": "{count} инструментов"
+  },
+  "common": {
+    "tools": "Инструменты",
+    "soon": "Скоро",
+    "copy": "Копировать",
+    "copied": "Скопировано",
+    "copyError": "Не удалось скопировать",
+    "localBadge": "Обработано локально в вашем браузере",
+    "favorites": "Избранное",
+    "favorite": "В избранное",
+    "favorited": "В избранном",
+    "recentlyUsed": "Недавно использованные",
+    "relatedTools": "Похожие инструменты",
+    "download": "Скачать",
+    "share": "Поделиться",
+    "shareCopied": "Ссылка скопирована в буфер обмена",
+    "shareError": "Не удалось скопировать ссылку",
+    "searchTools": "Поиск инструментов",
+    "searchPlaceholder": "Поиск инструментов…",
+    "noToolsFound": "Инструменты не найдены",
+    "navigate": "навигация",
+    "open": "открыть",
+    "addFavorite": "Добавить в избранное",
+    "removeFavorite": "Убрать из избранного"
+  },
+  "cat": {
+    "images": { "label": "Изображения", "desc": "Оптимизация, конвертация и преобразование изображений" },
+    "json": { "label": "JSON", "desc": "Форматирование, проверка и конвертация JSON" },
+    "base64": { "label": "Base64", "desc": "Кодирование и декодирование Base64" },
+    "jwt": { "label": "JWT", "desc": "Проверка JSON Web Token" },
+    "hash": { "label": "Хеш", "desc": "Генерация криптографических хешей" },
+    "uuid": { "label": "UUID", "desc": "Генерация уникальных идентификаторов" },
+    "text": { "label": "Текст", "desc": "Преобразование и анализ текста" },
+    "url": { "label": "URL", "desc": "Кодирование, декодирование и разбор URL" },
+    "html": { "label": "HTML", "desc": "Форматирование, минификация и экранирование HTML" },
+    "css": { "label": "CSS", "desc": "Форматирование, минификация и генерация CSS" },
+    "svg": { "label": "SVG", "desc": "Оптимизация и конвертация SVG" },
+    "colors": { "label": "Цвета", "desc": "Конвертация, генерация и проверка цветов" },
+    "seo": { "label": "SEO", "desc": "Метаданные, robots и карты сайта" },
+    "git": { "label": "Git", "desc": "Коммиты и помощники для .gitignore" },
+    "utilities": { "label": "Утилиты", "desc": "Повседневные утилиты разработчика" }
+  },
+  "t": {
+    "image-optimizer": { "title": "Оптимизатор изображений", "desc": "Сжатие и изменение размера изображений без смены формата." },
+    "image-converter": { "title": "Конвертировать изображение", "desc": "Конвертация между JPG, PNG, WebP, AVIF, TIFF, BMP." },
+    "resize-image": { "title": "Изменить размер изображения", "desc": "Изменение размера изображений до точных размеров." },
+    "heic-converter": { "title": "Конвертер HEIC", "desc": "Конвертация фото HEIC/HEIF в JPG или PNG." },
+    "exif-remover": { "title": "Удаление EXIF", "desc": "Удаление метаданных из изображений." },
+    "blur-placeholder": { "title": "Генератор blur-заглушек", "desc": "Генерация размытых заглушек base64 (LQIP)." },
+    "responsive-image": { "title": "Генератор адаптивных изображений", "desc": "Генерация srcset и нескольких размеров." },
+    "favicon-generator": { "title": "Генератор favicon", "desc": "Генерация favicon всех размеров." },
+    "json-formatter": { "title": "Форматировщик JSON", "desc": "Мгновенное форматирование, проверка и минификация JSON." },
+    "json-validator": { "title": "Валидатор JSON", "desc": "Проверка JSON и указание ошибок по строке и столбцу." },
+    "json-diff": { "title": "Сравнение JSON", "desc": "Сравнение двух документов JSON и просмотр изменений." },
+    "json-minifier": { "title": "Минификатор JSON", "desc": "Минификация JSON до наименьшего размера." },
+    "json-to-typescript": { "title": "JSON → TypeScript", "desc": "Генерация интерфейсов TypeScript из JSON." },
+    "json-to-yaml": { "title": "JSON → YAML", "desc": "Конвертация JSON в YAML." },
+    "json-to-csv": { "title": "JSON → CSV", "desc": "Конвертация массива JSON в CSV." },
+    "base64": { "title": "Кодирование / декодирование Base64", "desc": "Кодирование и декодирование текста в Base64." },
+    "base64-image": { "title": "Изображение ↔ Base64", "desc": "Конвертация изображений в data URI Base64 и обратно." },
+    "base64-file": { "title": "Файл ↔ Base64", "desc": "Конвертация любого файла в Base64 и обратно." },
+    "jwt-decoder": { "title": "Декодер JWT", "desc": "Локальное декодирование и проверка JSON Web Token." },
+    "hash-generator": { "title": "Генератор хешей", "desc": "Генерация хешей SHA-1, SHA-256, SHA-384 и SHA-512." },
+    "uuid-generator": { "title": "Генератор UUID", "desc": "Массовая генерация идентификаторов UUID v4." },
+    "case-converter": { "title": "Конвертер регистра", "desc": "Преобразование текста между camelCase, snake_case и другими." },
+    "remove-duplicate-lines": { "title": "Удаление повторяющихся строк", "desc": "Удаление повторяющихся строк с сохранением порядка." },
+    "sort-lines": { "title": "Сортировка строк", "desc": "Сортировка строк по алфавиту, числам или длине." },
+    "character-counter": { "title": "Счётчик символов", "desc": "Подсчёт символов, слов, строк и времени чтения." },
+    "word-counter": { "title": "Счётчик слов", "desc": "Подсчёт слов, предложений и времени чтения." },
+    "lorem-ipsum": { "title": "Генератор Lorem Ipsum", "desc": "Генерация текста-заполнителя абзацами, предложениями или словами." },
+    "url-encoder": { "title": "Кодировщик / декодировщик URL", "desc": "Процентное кодирование и декодирование URL и компонентов." },
+    "query-parser": { "title": "Парсер query-строк", "desc": "Разбор query-строк на пары ключ/значение и JSON." },
+    "url-builder": { "title": "Конструктор URL", "desc": "Сборка URL из базы и параметров запроса." },
+    "html-beautifier": { "title": "Форматировщик HTML", "desc": "Форматирование и отступы HTML." },
+    "html-minifier": { "title": "Минификатор HTML", "desc": "Минификация разметки HTML." },
+    "escape-html": { "title": "Экранирование HTML", "desc": "Экранирование специальных символов HTML в сущности." },
+    "unescape-html": { "title": "Снятие экранирования HTML", "desc": "Декодирование HTML-сущностей обратно в текст." },
+    "css-beautifier": { "title": "Форматировщик CSS", "desc": "Форматирование и отступы CSS." },
+    "css-minifier": { "title": "Минификатор CSS", "desc": "Минификация CSS." },
+    "border-radius": { "title": "Генератор border-radius", "desc": "Визуальная генерация CSS border-radius." },
+    "box-shadow": { "title": "Генератор box-shadow", "desc": "Визуальная генерация CSS box-shadow." },
+    "clamp-generator": { "title": "Генератор clamp", "desc": "Генерация плавных адаптивных значений CSS clamp()." },
+    "svg-optimizer": { "title": "Оптимизатор SVG", "desc": "Оптимизация и уменьшение файлов SVG." },
+    "svg-viewer": { "title": "Просмотр SVG", "desc": "Предпросмотр сырой разметки SVG." },
+    "svg-to-react": { "title": "SVG → React", "desc": "Конвертация SVG в компонент React." },
+    "svg-to-jsx": { "title": "SVG → JSX", "desc": "Конвертация SVG в JSX." },
+    "svg-color-editor": { "title": "Редактор цветов SVG", "desc": "Перекраска путей SVG." },
+    "hex-rgb": { "title": "Конвертер HEX ↔ RGB", "desc": "Конвертация цветов между HEX, RGB и HSL." },
+    "color-picker": { "title": "Палитра цветов", "desc": "Выбор цветов и копирование значений HEX, RGB и HSL." },
+    "gradient-generator": { "title": "Генератор градиентов", "desc": "Визуальное создание линейных и радиальных градиентов CSS." },
+    "tailwind-palette": { "title": "Генератор палитры Tailwind", "desc": "Генерация цветовой шкалы Tailwind из одного цвета." },
+    "contrast-checker": { "title": "Проверка контраста (WCAG)", "desc": "Проверка коэффициентов контраста цветов по WCAG AA и AAA." },
+    "metadata-generator": { "title": "Генератор метаданных", "desc": "Генерация тегов meta, Open Graph и Twitter card." },
+    "robots-generator": { "title": "Генератор robots.txt", "desc": "Генерация файла robots.txt." },
+    "sitemap-generator": { "title": "Генератор sitemap.xml", "desc": "Генерация sitemap.xml из списка URL." },
+    "slug-generator": { "title": "Генератор slug", "desc": "Преобразование любого текста в чистый slug для URL." },
+    "conventional-commit": { "title": "Генератор Conventional Commit", "desc": "Составление сообщений коммитов по соглашению." },
+    "gitignore-generator": { "title": "Генератор .gitignore", "desc": "Генерация файлов .gitignore из шаблонов." },
+    "password-generator": { "title": "Генератор паролей", "desc": "Локальная генерация надёжных случайных паролей." },
+    "unix-timestamp": { "title": "Конвертер Unix Timestamp", "desc": "Конвертация между временными метками Unix и датами." },
+    "password-strength": { "title": "Проверка надёжности пароля", "desc": "Оценка надёжности пароля и времени взлома." },
+    "random-string": { "title": "Генератор случайных строк", "desc": "Генерация случайных строк, токенов и hex." },
+    "qr-generator": { "title": "Генератор QR", "desc": "Генерация скачиваемых QR-кодов из текста или URL." },
+    "qr-reader": { "title": "Считыватель QR", "desc": "Декодирование QR-кодов из изображения." }
+  },
+  "qr": {
+    "textLabel": "Текст или URL",
+    "placeholder": "Введите URL или любой текст…",
+    "size": "Размер",
+    "errorLevel": "Коррекция ошибок: более высокие уровни (Q/H) выдерживают больше повреждений, но вмещают меньше данных. Сгенерировано локально.",
+    "scanHint": "Совет: при печати или показе оставляйте светлое поле вокруг кода и достаточный контраст, иначе некоторые сканеры не справятся.",
+    "enterText": "Введите текст для генерации",
+    "downloadPng": "Скачать PNG",
+    "tooLong": "Текст слишком длинный для QR-кода на этом уровне."
+  },
+  "tools": {
+    "common": {
+      "input": "Ввод",
+      "output": "Вывод",
+      "result": "Результат…",
+      "clear": "Очистить",
+      "sample": "Пример",
+      "minify": "Минифицировать",
+      "generate": "Сгенерировать",
+      "randomize": "Случайно",
+      "copyAll": "Копировать всё",
+      "download": "Скачать",
+      "encode": "Кодировать",
+      "decode": "Декодировать",
+      "useOutputAsInput": "Использовать вывод как ввод",
+      "howMany": "Сколько",
+      "count": "количество",
+      "length": "Длина",
+      "invalidInput": "Недопустимый ввод",
+      "oneItemPerLine": "По одному элементу в строке…",
+      "pasteJson": "Вставьте JSON сюда…",
+      "caseInsensitive": "без учёта регистра",
+      "removeEmpty": "удалить пустые",
+      "trimWhitespace": "обрезать пробелы",
+      "previewText": "Съешь же ещё этих мягких французских булок",
+      "add": "Добавить",
+      "remove": "Удалить"
+    },
+    "json-formatter": {
+      "spaces": "{n} пробела(ов)",
+      "tab": "Tab",
+      "inputPlaceholder": "Вставьте JSON сюда…",
+      "outputPlaceholder": "Отформатированный JSON…",
+      "valid": "Корректный JSON",
+      "input": "Ввод",
+      "output": "Вывод"
+    },
+    "json-validator": {
+      "placeholder": "Вставьте JSON для проверки…",
+      "valid": "Корректный JSON · корень: {type}",
+      "typeArray": "массив ({n} элем.)",
+      "typeObject": "объект ({n} ключей)"
+    },
+    "json-diff": {
+      "left": "Слева (A)",
+      "right": "Справа (B)",
+      "originalPlaceholder": "Исходный JSON…",
+      "changedPlaceholder": "Изменённый JSON…",
+      "leftError": "Слева: {error}",
+      "rightError": "Справа: {error}",
+      "identical": "Два документа идентичны.",
+      "differences": "{n, plural, one {# отличие} few {# отличия} many {# отличий} other {# отличия}}"
+    },
+    "json-converters": {
+      "json": "JSON",
+      "chars": "{n} симв.",
+      "minified": "Минифицировано",
+      "minifiedPlaceholder": "Минифицированный JSON…",
+      "yaml": "YAML",
+      "yamlPlaceholder": "Вывод YAML…",
+      "csv": "CSV",
+      "csvPlaceholder": "Вывод CSV (ожидается массив JSON)…",
+      "typescript": "TypeScript",
+      "typescriptPlaceholder": "Сгенерированные интерфейсы…"
+    },
+    "base64": {
+      "plainText": "Обычный текст",
+      "base64": "Base64",
+      "encodePlaceholder": "Текст для кодирования…",
+      "decodePlaceholder": "Base64 для декодирования…",
+      "invalid": "Недопустимый ввод Base64"
+    },
+    "base64-image": {
+      "toBase64": "Изображение → Base64",
+      "toImage": "Base64 → Изображение",
+      "dropImage": "Перетащите изображение сюда или нажмите для выбора",
+      "dataUri": "Data URI",
+      "asBase64": "{size} в Base64",
+      "inputLabel": "Base64 или data URI",
+      "downloadImage": "Скачать изображение"
+    },
+    "base64-file": {
+      "toBase64": "Файл → Base64",
+      "toFile": "Base64 → Файл",
+      "dropFile": "Перетащите любой файл сюда или нажмите для выбора",
+      "dataUri": "Data URI",
+      "asBase64": "{size} в Base64",
+      "inputLabel": "Base64 или data URI",
+      "filename": "Имя файла"
+    },
+    "jwt-decoder": {
+      "label": "JWT",
+      "placeholder": "Вставьте JSON Web Token…",
+      "warning": "Подпись не проверяется — декодирование происходит локально и никогда не проверяет секрет.",
+      "minParts": "JWT содержит не менее двух частей, разделённых точками.",
+      "decodeError": "Не удалось декодировать этот токен.",
+      "issued": "Выдан: {date}",
+      "expires": "Истекает: {date}",
+      "expired": "Истёк: {date}",
+      "header": "Заголовок",
+      "payload": "Полезная нагрузка"
+    },
+    "hash-generator": {
+      "placeholder": "Введите или вставьте текст для хеширования…",
+      "note": "Вычислено локально через Web Crypto API. MD5 не поддерживается браузерами и опущен."
+    },
+    "case-converter": {
+      "placeholder": "Введите текст…"
+    },
+    "url-encoder": {
+      "component": "Компонент",
+      "wholeUrl": "Весь URL",
+      "placeholder": "Текст или URL…",
+      "malformed": "Некорректный ввод — не удалось декодировать."
+    },
+    "query-parser": {
+      "label": "URL или query-строка",
+      "placeholder": "https://example.com/search?q=hello&tag=a&tag=b",
+      "key": "Ключ",
+      "value": "Значение",
+      "asJson": "Как JSON"
+    },
+    "url-builder": {
+      "baseUrl": "Базовый URL",
+      "queryParams": "Параметры запроса",
+      "key": "ключ",
+      "value": "значение",
+      "addParam": "Добавить параметр",
+      "removeParam": "Удалить параметр"
+    },
+    "uuid-generator": {
+      "note": "UUID версии 4 (RFC 4122), сгенерированы локально через Web Crypto API."
+    },
+    "password-generator": {
+      "strength": "Надёжность: {label}",
+      "weak": "Слабый",
+      "fair": "Средний",
+      "strong": "Надёжный",
+      "lower": "строчные",
+      "upper": "прописные",
+      "numbers": "цифры",
+      "symbols": "символы",
+      "note": "Сгенерирован локально с помощью CSPRNG Web Crypto."
+    },
+    "password-strength": {
+      "placeholder": "Введите пароль для проверки…",
+      "show": "Показать",
+      "hide": "Скрыть",
+      "entropy": "{bits} бит энтропии",
+      "crackTime": "Оценка времени офлайн-взлома: {time}",
+      "instantly": "мгновенно",
+      "veryWeak": "Очень слабый",
+      "weak": "Слабый",
+      "fair": "Средний",
+      "strong": "Надёжный",
+      "veryStrong": "Очень надёжный",
+      "tipLength": "Используйте не менее 12 символов",
+      "tipUpper": "Добавьте прописные буквы",
+      "tipNumber": "Добавьте цифры",
+      "tipSymbol": "Добавьте символы",
+      "tipRepeat": "Избегайте повторяющихся символов",
+      "unit_second": "{n, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",
+      "unit_minute": "{n, plural, one {# минута} few {# минуты} many {# минут} other {# минуты}}",
+      "unit_hour": "{n, plural, one {# час} few {# часа} many {# часов} other {# часа}}",
+      "unit_day": "{n, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
+      "unit_year": "{n, plural, one {# год} few {# года} many {# лет} other {# года}}",
+      "unit_century": "{n, plural, one {# век} few {# века} many {# веков} other {# века}}",
+      "note": "Проанализировано локально — ваш пароль никогда не покидает браузер."
+    },
+    "random-string": {
+      "alphanumeric": "буквенно-цифровой",
+      "letters": "буквы",
+      "numbers": "цифры",
+      "hex": "hex",
+      "symbols": "символы",
+      "note": "Сгенерировано локально с помощью CSPRNG Web Crypto."
+    },
+    "hex-rgb": {
+      "invalid": "Введите корректный 3- или 6-значный hex-цвет."
+    },
+    "color-picker": {
+      "hex": "HEX",
+      "rgb": "RGB",
+      "hsl": "HSL",
+      "cssVariable": "CSS-переменная",
+      "pickFromScreen": "Выбрать с экрана",
+      "invalid": "Введите корректный hex-цвет."
+    },
+    "tailwind-palette": {
+      "baseColor": "Базовый цвет",
+      "name": "Имя",
+      "invalid": "Введите корректный hex-цвет."
+    },
+    "contrast-checker": {
+      "textColor": "Цвет текста",
+      "background": "Фон",
+      "invalid": "Введите два корректных hex-цвета.",
+      "ratio": "коэффициент контраста",
+      "aaNormal": "AA · Обычный текст (4.5:1)",
+      "aaLarge": "AA · Крупный текст (3:1)",
+      "aaaNormal": "AAA · Обычный текст (7:1)",
+      "aaaLarge": "AAA · Крупный текст (4.5:1)"
+    },
+    "gradient-generator": {
+      "linear": "линейный",
+      "radial": "радиальный",
+      "angle": "Угол",
+      "addStop": "Добавить точку",
+      "removeStop": "Удалить точку"
+    },
+    "border-radius": {
+      "linked": "Связано",
+      "independent": "Независимо",
+      "allCorners": "Все углы",
+      "topLeft": "Верхний левый",
+      "topRight": "Верхний правый",
+      "bottomRight": "Нижний правый",
+      "bottomLeft": "Нижний левый"
+    },
+    "box-shadow": {
+      "offsetX": "Смещение X",
+      "offsetY": "Смещение Y",
+      "blur": "Размытие",
+      "spread": "Разброс",
+      "opacity": "Непрозрачность",
+      "inset": "внутренняя"
+    },
+    "clamp-generator": {
+      "minViewport": "Мин. viewport",
+      "maxViewport": "Макс. viewport",
+      "minSize": "Мин. размер",
+      "maxSize": "Макс. размер",
+      "rootFontSize": "Корневой размер шрифта",
+      "viewportsMustDiffer": "Минимальный и максимальный viewport должны отличаться.",
+      "livePreview": "Живой предпросмотр (измените размер окна):",
+      "explanation": "Плавно масштабируется от {minSize}px при ширине {minVw}px до {maxSize}px при ширине {maxVw}px, используя rem для доступности."
+    },
+    "lorem-ipsum": {
+      "paragraphs": "абзацы",
+      "sentences": "предложения",
+      "words": "слова",
+      "startClassic": "Начать с «Lorem ipsum»"
+    },
+    "slug-generator": {
+      "hyphen": "дефис -",
+      "underscore": "подчёркивание _",
+      "lowercase": "строчные",
+      "stripAccents": "убрать акценты",
+      "textLabel": "Текст (по одному в строке)",
+      "textPlaceholder": "Моя Отличная Запись в Блоге!",
+      "slug": "Slug",
+      "slugPlaceholder": "moya-otlichnaya-zapis-v-bloge"
+    },
+    "unix-timestamp": {
+      "currentTime": "Текущее время Unix",
+      "use": "Использовать",
+      "inputLabel": "Метка времени (с или мс) или строка даты",
+      "placeholder": "напр. 1516239022 или 2026-07-15T10:00:00Z",
+      "unrecognized": "Дата или метка времени не распознаны.",
+      "unixSeconds": "Unix (секунды)",
+      "unixMs": "Unix (мс)",
+      "iso": "ISO 8601",
+      "utc": "UTC",
+      "local": "Локальное"
+    },
+    "character-counter": {
+      "placeholder": "Введите или вставьте ваш текст…",
+      "words": "Слова",
+      "characters": "Символы",
+      "charactersNoSpaces": "Символы (без пробелов)",
+      "sentences": "Предложения",
+      "lines": "Строки",
+      "paragraphs": "Абзацы",
+      "readingTime": "Время чтения"
+    },
+    "sort-lines": {
+      "asc": "А → Я",
+      "desc": "Я → А",
+      "alpha": "по алфавиту",
+      "numeric": "по числам",
+      "lengthKind": "по длине",
+      "inputPlaceholder": "По одному элементу в строке…",
+      "sorted": "Отсортировано"
+    },
+    "remove-duplicate-lines": {
+      "inputPlaceholder": "По одному элементу в строке…",
+      "uniqueLines": "Уникальные строки",
+      "removed": "{n, plural, one {удалён # дубликат} few {удалено # дубликата} many {удалено # дубликатов} other {удалено # дубликата}}",
+      "noDuplicates": "Дубликатов нет"
+    },
+    "html-escape": {
+      "escape": "экранировать",
+      "unescape": "снять экранирование",
+      "rawLabel": "Сырой HTML / текст",
+      "escapedLabel": "Экранированный HTML",
+      "escapePlaceholder": "<div class=\"x\">Привет & пока</div>",
+      "unescapePlaceholder": "&lt;div&gt;…&lt;/div&gt;"
+    },
+    "conventional-commit": {
+      "type": "Тип",
+      "scope": "Область (необязательно)",
+      "scopePlaceholder": "api, ui, auth…",
+      "description": "Описание",
+      "descriptionPlaceholder": "добавить эндпоинт входа",
+      "body": "Тело (необязательно)",
+      "bodyPlaceholder": "Более подробное объяснение…",
+      "breaking": "Ломающее изменение",
+      "breakingPlaceholder": "Опишите, что ломается…",
+      "commitMessage": "Сообщение коммита",
+      "feat": "Новая функция",
+      "fix": "Исправление ошибки",
+      "docs": "Только документация",
+      "style": "Форматирование, без изменений кода",
+      "refactor": "Не исправляет ошибку и не добавляет функцию",
+      "perf": "Улучшает производительность",
+      "test": "Добавление или исправление тестов",
+      "build": "Система сборки или зависимости",
+      "ci": "Конфигурация CI",
+      "chore": "Прочие изменения",
+      "revert": "Откатывает предыдущий коммит"
+    },
+    "gitignore-generator": {
+      "includeTemplates": "Включить шаблоны",
+      "outputPlaceholder": "Выберите шаблоны выше…"
+    },
+    "robots-generator": {
+      "allowAll": "Разрешить всё",
+      "blockAll": "Заблокировать всё",
+      "custom": "Настраиваемое",
+      "userAgent": "User-agent",
+      "sitemapUrl": "URL карты сайта",
+      "disallowPaths": "Запрещённые пути",
+      "addPath": "Добавить путь",
+      "removePath": "Удалить путь"
+    },
+    "sitemap-generator": {
+      "urlsLabel": "URL (по одному в строке)",
+      "changeFrequency": "Частота изменения",
+      "priority": "Приоритет",
+      "includeLastmod": "включить lastmod (сегодня)"
+    },
+    "metadata-generator": {
+      "title": "Заголовок",
+      "description": "Описание",
+      "canonicalUrl": "Канонический URL",
+      "imageUrl": "URL изображения",
+      "siteName": "Название сайта",
+      "twitterHandle": "Аккаунт в Twitter",
+      "ogType": "Тип OG",
+      "htmlMetaTags": "HTML meta-теги"
+    },
+    "qr-reader": {
+      "hint": "Перетащите изображение QR-кода сюда или нажмите для выбора",
+      "couldNotRead": "Не удалось прочитать изображение.",
+      "notFound": "На этом изображении QR-код не найден.",
+      "couldNotLoad": "Не удалось загрузить изображение.",
+      "decodedContent": "Декодированное содержимое",
+      "open": "Открыть",
+      "note": "Декодировано локально — изображения никогда не покидают ваш браузер."
+    }
+  }
+}

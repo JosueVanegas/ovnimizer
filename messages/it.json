@@ -1,0 +1,683 @@
+{
+  "meta": {
+    "title": "Ovnimizer — Strumenti per sviluppatori nel tuo browser",
+    "description": "Strumenti per sviluppatori veloci e rispettosi della privacy: formatta JSON, converti immagini, decodifica JWT, genera UUID, hash e altro. Nessun upload, nessun account."
+  },
+  "hero": {
+    "title": "Ottimizza le tue immagini senza limiti",
+    "subtitle": "Converti, comprimi e ridimensiona direttamente nel tuo browser"
+  },
+  "upload": {
+    "drag": "Trascina le immagini qui",
+    "drop": "Rilascia le immagini qui",
+    "hint": "o clicca per selezionare · JPG, PNG, WebP, AVIF, TIFF, GIF, BMP, HEIC, SVG · Max 50MB per file",
+    "reject": "Formato non supportato",
+    "addMore": "Aggiungi altre immagini",
+    "dropToAdd": "Rilascia per aggiungere",
+    "orFrom": "o da:",
+    "fromUrl": "URL",
+    "urlPlaceholder": "Incolla l'URL dell'immagine…",
+    "fetch": "Recupera",
+    "urlFetching": "Recupero…",
+    "urlError": "Impossibile recuperare l'immagine. Controlla l'URL e le impostazioni CORS.",
+    "cloudSoon": "Integrazione cloud in arrivo",
+    "cloudDrive": "Google Drive",
+    "cloudDropbox": "Dropbox",
+    "cloudOneDrive": "OneDrive"
+  },
+  "options": {
+    "format": "Formato di output",
+    "quality": "Qualità",
+    "maxWidth": "Dimensione massima",
+    "avifWarning": "AVIF richiede il supporto del browser. Se non disponibile, verrà usato WebP.",
+    "preset": {
+      "max": "Massimo",
+      "high": "Alta",
+      "balanced": "Bilanciato",
+      "aggressive": "Aggressivo",
+      "minimum": "Minimo",
+      "custom": "Personalizzato"
+    },
+    "size": {
+      "original": "Originale",
+      "large": "Grande",
+      "medium": "Medio",
+      "small": "Piccolo",
+      "thumb": "Miniatura"
+    }
+  },
+  "gallery": {
+    "image": "immagine",
+    "images": "immagini",
+    "processed": "elaborata",
+    "processedPlural": "elaborate",
+    "removeAria": "Rimuovi immagine",
+    "downloadAria": "Scarica immagine",
+    "compareAria": "Vedi confronto",
+    "before": "Prima",
+    "after": "Dopo",
+    "close": "Chiudi"
+  },
+  "actions": {
+    "processAll": "Elabora tutto",
+    "clear": "Pulisci",
+    "reprocess": "Rielabora",
+    "cancel": "Annulla"
+  },
+  "progress": {
+    "label": "Elaborazione {current} di {total}"
+  },
+  "stats": {
+    "image": "immagine",
+    "images": "immagini",
+    "compression": "compressione",
+    "saved": "risparmiato",
+    "download": "Scarica",
+    "downloadAll": "Scarica tutto",
+    "downloadZip": "Scarica ZIP",
+    "zipping": "Compressione…",
+    "original": "originale"
+  },
+  "editor": {
+    "notProcessed": "Regolazione impostazioni…",
+    "error": "Errore nell'elaborazione di questa immagine",
+    "applyAll": "Applica a tutte le immagini"
+  },
+  "share": {
+    "button": "Condividi Ovnimizer con altri",
+    "text": "Dai un'occhiata a Ovnimizer — ottimizzatore di immagini gratuito nel browser. Nessun upload, nessun limite.",
+    "copied": "Link copiato negli appunti!"
+  },
+  "format": {
+    "label": "Formato di output",
+    "searchPlaceholder": "Cerca formati…",
+    "noResults": "Nessun formato trovato",
+    "cat": {
+      "all": "Tutti",
+      "web": "Web",
+      "lossless": "Senza perdita",
+      "icon": "Icona",
+      "raster": "Raster"
+    },
+    "desc": {
+      "webp": "Ideale per il web",
+      "avif": "Nuova generazione",
+      "jpg": "Universale",
+      "png": "Senza perdita",
+      "ico": "Favicon",
+      "tiff": "Alta qualità",
+      "bmp": "Non compresso",
+      "keep": "Mantieni il formato originale"
+    },
+    "pngWarning": "PNG è senza perdita — non riduce le dimensioni di foto o JPEG.",
+    "convertLabel": "Converti in",
+    "keepLabel": "Mantieni"
+  },
+  "toast": {
+    "success": "{count} immagine ottimizzata",
+    "successPlural": "{count} immagini ottimizzate",
+    "warning": "{done} elaborate, {errors} con errori",
+    "optimize": {
+      "success": "{count} immagine ottimizzata",
+      "successPlural": "{count} immagini ottimizzate"
+    },
+    "convert": {
+      "success": "{count} immagine convertita",
+      "successPlural": "{count} immagini convertite"
+    }
+  },
+  "footer": {
+    "privacy": "I tuoi file non lasciano mai il tuo dispositivo",
+    "privacyLink": "Privacy",
+    "community": "Gratuito e open source per la community",
+    "changelog": "Changelog",
+    "shortcuts": "Scorciatoie"
+  },
+  "privacy": {
+    "title": "Informativa sulla privacy",
+    "badge": "Nessuna raccolta di dati",
+    "intro": "Ovnimizer è uno strumento gratuito, open source e senza scopo di lucro creato per la community. Non raccogliamo, memorizziamo né trasmettiamo alcun dato personale o file.",
+    "localTitle": "Elaborazione 100% locale",
+    "localBody": "Le tue immagini vengono elaborate usando la CPU e la memoria del tuo dispositivo tramite API del browser (OffscreenCanvas). Nessun file viene caricato su alcun server. Quando chiudi la scheda, tutti i dati spariscono.",
+    "noCollectionTitle": "Nessuna raccolta di dati",
+    "noCollectionBody": "Non raccogliamo alcun tipo di dato: né immagini, né metadati, né informazioni sul dispositivo, né indirizzi IP. Non abbiamo modo di sapere chi usa questo strumento.",
+    "noTrackingTitle": "Nessun tracciamento né analisi",
+    "noTrackingBody": "Non usiamo cookie, strumenti di analisi né alcuna tecnologia di tracciamento. Nessuna pubblicità, nessun profilo utente, nessuna monetizzazione.",
+    "cloudIntegrationTitle": "Integrazioni cloud (opzionali)",
+    "cloudIntegrationBody": "Ovnimizer offre connessioni opzionali con Google Drive e Dropbox. L'autenticazione avviene direttamente tra il tuo browser e il provider — mai attraverso i nostri server. I file vengono scaricati dal cloud al tuo browser ed elaborati localmente. Non memorizziamo mai token, credenziali o file in alcun momento.",
+    "openSourceTitle": "Open source e community",
+    "openSourceBody": "Ovnimizer è un progetto senza scopo di lucro creato per la community. Non c'è alcun modello di business né interesse commerciale. Il codice è libero e aperto.",
+    "gdprTitle": "Conformità al GDPR e alla privacy",
+    "gdprBody": "Poiché nessun dato personale viene elaborato o memorizzato, Ovnimizer è pienamente conforme al GDPR, al CCPA e ad altre normative sulla privacy in tutto il mondo. Non è richiesto alcun consenso ai cookie.",
+    "back": "Torna alla home"
+  },
+  "landing": {
+    "title": "Uno strumento pulito per ogni lavoro sulle immagini",
+    "subtitle": "Scegli ciò di cui hai bisogno — ottimizza le prestazioni o converti tra formati. Nessun flusso misto, nessuna sorpresa. Tutto viene eseguito privatamente nel tuo browser.",
+    "privacyNote": "100% locale — i tuoi file non lasciano mai il tuo dispositivo."
+  },
+  "tool": {
+    "allTools": "← Tutti gli strumenti",
+    "optimize": {
+      "badge": "Ottimizzazione immagine",
+      "title": "Ottimizza immagine",
+      "subtitle": "Comprimi, ridimensiona e rimuovi i metadati mantenendo il formato originale.",
+      "switch": "Devi cambiare formato? Converti immagine →",
+      "cardDesc": "Rendi le immagini più leggere e veloci senza cambiarne il formato — a meno che tu non voglia.",
+      "cta": "Ottimizza immagini",
+      "feature0": "Compressione intelligente e controllo qualità",
+      "feature1": "Ridimensiona a qualsiasi dimensione",
+      "feature2": "Rimuove automaticamente i metadati EXIF"
+    },
+    "convert": {
+      "badge": "Conversione file",
+      "title": "Converti immagine",
+      "subtitle": "Converti tra JPG, PNG, WebP, AVIF, TIFF, BMP e altro.",
+      "switch": "Vuoi solo ridurne le dimensioni? Ottimizza immagine →",
+      "cardDesc": "Cambia un'immagine da un formato a un altro, con pieno controllo sulla qualità.",
+      "cta": "Converti immagini",
+      "feature0": "JPG · PNG · WebP · AVIF · TIFF · BMP",
+      "feature1": "Legge HEIC, GIF (primo fotogramma) e altro",
+      "feature2": "Scegli esplicitamente il formato di destinazione"
+    }
+  },
+  "home": {
+    "badge": "La cassetta degli attrezzi dello sviluppatore",
+    "title": "Strumenti per sviluppatori che funzionano subito nel tuo browser",
+    "subtitle": "Formatta, converti, genera e ispeziona — decine di utilità veloci e rispettose della privacy in un unico posto. Nessun account, nessun upload, nessun disordine.",
+    "popular": "Strumenti popolari",
+    "categories": "Esplora per categoria",
+    "recent": "Aggiunti di recente",
+    "privacyTitle": "Privacy by design",
+    "privacyDesc": "Ovnimizer elabora i tuoi dati localmente ogni volta che è tecnicamente possibile. File e testo restano sul tuo dispositivo — nulla viene caricato su un server.",
+    "featureInstant": "Istantaneo",
+    "featureInstantDesc": "Nessuna registrazione, nessuna attesa. Gli strumenti funzionano appena la pagina si carica.",
+    "featurePrivate": "Privato",
+    "featurePrivateDesc": "Tutto viene eseguito nel tuo browser. I tuoi dati non lasciano mai il tuo dispositivo.",
+    "featureOffline": "Funziona offline",
+    "featureOfflineDesc": "Gli strumenti solo-browser continuano a funzionare senza connessione.",
+    "faq": "Domande frequenti",
+    "faqQ1": "I miei file e dati vengono caricati da qualche parte?",
+    "faqA1": "No. Gli strumenti solo-browser elaborano tutto localmente sul tuo dispositivo. Nulla viene inviato a un server.",
+    "faqQ2": "Serve un account?",
+    "faqA2": "Mai. Ogni strumento funziona subito senza registrazione.",
+    "faqQ3": "Ovnimizer è gratuito?",
+    "faqA3": "Sì — Ovnimizer è un progetto gratuito e open source creato per la community degli sviluppatori.",
+    "nTools": "{count} strumenti"
+  },
+  "common": {
+    "tools": "Strumenti",
+    "soon": "Presto",
+    "copy": "Copia",
+    "copied": "Copiato",
+    "copyError": "Impossibile copiare",
+    "localBadge": "Elaborato localmente nel tuo browser",
+    "favorites": "Preferiti",
+    "favorite": "Preferito",
+    "favorited": "Nei preferiti",
+    "recentlyUsed": "Usati di recente",
+    "relatedTools": "Strumenti correlati",
+    "download": "Scarica",
+    "share": "Condividi",
+    "shareCopied": "Link copiato negli appunti",
+    "shareError": "Impossibile copiare il link",
+    "searchTools": "Cerca strumenti",
+    "searchPlaceholder": "Cerca strumenti…",
+    "noToolsFound": "Nessuno strumento trovato",
+    "navigate": "naviga",
+    "open": "apri",
+    "addFavorite": "Aggiungi ai preferiti",
+    "removeFavorite": "Rimuovi dai preferiti"
+  },
+  "cat": {
+    "images": { "label": "Immagini", "desc": "Ottimizza, converti e trasforma immagini" },
+    "json": { "label": "JSON", "desc": "Formatta, valida e converti JSON" },
+    "base64": { "label": "Base64", "desc": "Codifica e decodifica Base64" },
+    "jwt": { "label": "JWT", "desc": "Ispeziona JSON Web Token" },
+    "hash": { "label": "Hash", "desc": "Genera hash crittografici" },
+    "uuid": { "label": "UUID", "desc": "Genera identificatori univoci" },
+    "text": { "label": "Testo", "desc": "Trasforma e analizza testo" },
+    "url": { "label": "URL", "desc": "Codifica, decodifica e analizza URL" },
+    "html": { "label": "HTML", "desc": "Formatta, minifica ed escapa HTML" },
+    "css": { "label": "CSS", "desc": "Formatta, minifica e genera CSS" },
+    "svg": { "label": "SVG", "desc": "Ottimizza e converti SVG" },
+    "colors": { "label": "Colori", "desc": "Converti, genera e verifica colori" },
+    "seo": { "label": "SEO", "desc": "Metadati, robots e sitemap" },
+    "git": { "label": "Git", "desc": "Commit e aiuti per .gitignore" },
+    "utilities": { "label": "Utilità", "desc": "Utilità quotidiane per sviluppatori" }
+  },
+  "t": {
+    "image-optimizer": { "title": "Ottimizzatore di immagini", "desc": "Comprimi e ridimensiona immagini senza cambiare formato." },
+    "image-converter": { "title": "Converti immagine", "desc": "Converti tra JPG, PNG, WebP, AVIF, TIFF, BMP." },
+    "resize-image": { "title": "Ridimensiona immagine", "desc": "Ridimensiona immagini a dimensioni esatte." },
+    "heic-converter": { "title": "Convertitore HEIC", "desc": "Converti foto HEIC/HEIF in JPG o PNG." },
+    "exif-remover": { "title": "Rimuovi EXIF", "desc": "Rimuovi i metadati dalle immagini." },
+    "blur-placeholder": { "title": "Generatore di Blur Placeholder", "desc": "Genera placeholder sfocati base64 (LQIP)." },
+    "responsive-image": { "title": "Generatore di immagini responsive", "desc": "Genera srcset e più dimensioni." },
+    "favicon-generator": { "title": "Generatore di Favicon", "desc": "Genera favicon in tutte le dimensioni." },
+    "json-formatter": { "title": "Formattatore JSON", "desc": "Formatta, valida e minifica JSON all'istante." },
+    "json-validator": { "title": "Validatore JSON", "desc": "Valida JSON e individua gli errori per riga e colonna." },
+    "json-diff": { "title": "Confronto JSON", "desc": "Confronta due documenti JSON e vedi cosa è cambiato." },
+    "json-minifier": { "title": "Minificatore JSON", "desc": "Minifica JSON alla dimensione minima." },
+    "json-to-typescript": { "title": "JSON → TypeScript", "desc": "Genera interfacce TypeScript da JSON." },
+    "json-to-yaml": { "title": "JSON → YAML", "desc": "Converti JSON in YAML." },
+    "json-to-csv": { "title": "JSON → CSV", "desc": "Converti un array JSON in CSV." },
+    "base64": { "title": "Codifica / Decodifica Base64", "desc": "Codifica e decodifica testo in Base64." },
+    "base64-image": { "title": "Immagine ↔ Base64", "desc": "Converti immagini da e verso data URI Base64." },
+    "base64-file": { "title": "File ↔ Base64", "desc": "Converti qualsiasi file da e verso Base64." },
+    "jwt-decoder": { "title": "Decoder JWT", "desc": "Decodifica e ispeziona JSON Web Token localmente." },
+    "hash-generator": { "title": "Generatore di Hash", "desc": "Genera hash SHA-1, SHA-256, SHA-384 e SHA-512." },
+    "uuid-generator": { "title": "Generatore di UUID", "desc": "Genera identificatori UUID v4 in blocco." },
+    "case-converter": { "title": "Convertitore di Maiuscole", "desc": "Converti testo tra camelCase, snake_case e altro." },
+    "remove-duplicate-lines": { "title": "Rimuovi Righe Duplicate", "desc": "Rimuovi le righe duplicate mantenendo l'ordine." },
+    "sort-lines": { "title": "Ordina Righe", "desc": "Ordina le righe alfabeticamente, numericamente o per lunghezza." },
+    "character-counter": { "title": "Contatore di Caratteri", "desc": "Conta caratteri, parole, righe e tempo di lettura." },
+    "word-counter": { "title": "Contatore di Parole", "desc": "Conta parole, frasi e tempo di lettura." },
+    "lorem-ipsum": { "title": "Generatore Lorem Ipsum", "desc": "Genera testo segnaposto in paragrafi, frasi o parole." },
+    "url-encoder": { "title": "Codificatore / Decodificatore URL", "desc": "Codifica e decodifica URL e componenti in percentuale." },
+    "query-parser": { "title": "Parser di Query", "desc": "Analizza le query string in coppie chiave/valore e JSON." },
+    "url-builder": { "title": "Costruttore di URL", "desc": "Costruisci URL da una base e parametri di query." },
+    "html-beautifier": { "title": "Formattatore HTML", "desc": "Formatta e indenta HTML." },
+    "html-minifier": { "title": "Minificatore HTML", "desc": "Minifica il markup HTML." },
+    "escape-html": { "title": "Escape HTML", "desc": "Converti i caratteri HTML speciali in entità." },
+    "unescape-html": { "title": "Unescape HTML", "desc": "Decodifica le entità HTML in testo." },
+    "css-beautifier": { "title": "Formattatore CSS", "desc": "Formatta e indenta CSS." },
+    "css-minifier": { "title": "Minificatore CSS", "desc": "Minifica CSS." },
+    "border-radius": { "title": "Generatore di Border Radius", "desc": "Genera visivamente il border-radius CSS." },
+    "box-shadow": { "title": "Generatore di Box Shadow", "desc": "Genera visivamente il box-shadow CSS." },
+    "clamp-generator": { "title": "Generatore di Clamp", "desc": "Genera valori CSS clamp() fluidi e responsive." },
+    "svg-optimizer": { "title": "Ottimizzatore SVG", "desc": "Ottimizza e riduci i file SVG." },
+    "svg-viewer": { "title": "Visualizzatore SVG", "desc": "Anteprima del markup SVG grezzo." },
+    "svg-to-react": { "title": "SVG → React", "desc": "Converti SVG in un componente React." },
+    "svg-to-jsx": { "title": "SVG → JSX", "desc": "Converti SVG in JSX." },
+    "svg-color-editor": { "title": "Editor di Colori SVG", "desc": "Ricolora i path SVG." },
+    "hex-rgb": { "title": "Convertitore HEX ↔ RGB", "desc": "Converti colori tra HEX, RGB e HSL." },
+    "color-picker": { "title": "Selettore di Colori", "desc": "Scegli colori e copia i valori HEX, RGB e HSL." },
+    "gradient-generator": { "title": "Generatore di Gradienti", "desc": "Crea gradienti CSS lineari e radiali visivamente." },
+    "tailwind-palette": { "title": "Generatore di Palette Tailwind", "desc": "Genera una scala di colori Tailwind da un colore." },
+    "contrast-checker": { "title": "Verifica Contrasto (WCAG)", "desc": "Verifica i rapporti di contrasto dei colori rispetto a WCAG AA e AAA." },
+    "metadata-generator": { "title": "Generatore di Metadati", "desc": "Genera tag meta, Open Graph e Twitter card." },
+    "robots-generator": { "title": "Generatore robots.txt", "desc": "Genera un file robots.txt." },
+    "sitemap-generator": { "title": "Generatore sitemap.xml", "desc": "Genera un sitemap.xml da un elenco di URL." },
+    "slug-generator": { "title": "Generatore di Slug", "desc": "Trasforma qualsiasi testo in uno slug pulito per URL." },
+    "conventional-commit": { "title": "Generatore di Conventional Commit", "desc": "Costruisci messaggi di commit convenzionali." },
+    "gitignore-generator": { "title": "Generatore .gitignore", "desc": "Genera file .gitignore da modelli." },
+    "password-generator": { "title": "Generatore di Password", "desc": "Genera password forti e casuali localmente." },
+    "unix-timestamp": { "title": "Convertitore Unix Timestamp", "desc": "Converti tra timestamp Unix e date." },
+    "password-strength": { "title": "Verifica Forza Password", "desc": "Stima la forza della password e il tempo di crack." },
+    "random-string": { "title": "Generatore di Stringhe Casuali", "desc": "Genera stringhe casuali, token e hex." },
+    "qr-generator": { "title": "Generatore QR", "desc": "Genera codici QR scaricabili da testo o URL." },
+    "qr-reader": { "title": "Lettore QR", "desc": "Decodifica codici QR da un'immagine." }
+  },
+  "qr": {
+    "textLabel": "Testo o URL",
+    "placeholder": "Inserisci un URL o qualsiasi testo…",
+    "size": "Dimensione",
+    "errorLevel": "Correzione degli errori: livelli più alti (Q/H) resistono a più danni ma contengono meno dati. Generato localmente.",
+    "scanHint": "Suggerimento: lascia un margine chiaro attorno al codice e un contrasto sufficiente quando lo stampi o lo mostri, altrimenti alcuni scanner falliranno.",
+    "enterText": "Inserisci del testo per generare",
+    "downloadPng": "Scarica PNG",
+    "tooLong": "Il testo è troppo lungo per un codice QR a questo livello."
+  },
+  "tools": {
+    "common": {
+      "input": "Input",
+      "output": "Output",
+      "result": "Risultato…",
+      "clear": "Pulisci",
+      "sample": "Esempio",
+      "minify": "Minifica",
+      "generate": "Genera",
+      "randomize": "Casuale",
+      "copyAll": "Copia tutto",
+      "download": "Scarica",
+      "encode": "Codifica",
+      "decode": "Decodifica",
+      "useOutputAsInput": "Usa l'output come input",
+      "howMany": "Quanti",
+      "count": "quantità",
+      "length": "Lunghezza",
+      "invalidInput": "Input non valido",
+      "oneItemPerLine": "Un elemento per riga…",
+      "pasteJson": "Incolla il JSON qui…",
+      "caseInsensitive": "senza distinzione maiuscole",
+      "removeEmpty": "rimuovi vuote",
+      "trimWhitespace": "rimuovi spazi",
+      "previewText": "Ma la volpe col suo balzo ha raggiunto il quieto Fido",
+      "add": "Aggiungi",
+      "remove": "Rimuovi"
+    },
+    "json-formatter": {
+      "spaces": "{n} spazi",
+      "tab": "Tab",
+      "inputPlaceholder": "Incolla il JSON qui…",
+      "outputPlaceholder": "JSON formattato…",
+      "valid": "JSON valido",
+      "input": "Input",
+      "output": "Output"
+    },
+    "json-validator": {
+      "placeholder": "Incolla il JSON da validare…",
+      "valid": "JSON valido · la radice è {type}",
+      "typeArray": "array ({n} elementi)",
+      "typeObject": "oggetto ({n} chiavi)"
+    },
+    "json-diff": {
+      "left": "Sinistra (A)",
+      "right": "Destra (B)",
+      "originalPlaceholder": "JSON originale…",
+      "changedPlaceholder": "JSON modificato…",
+      "leftError": "Sinistra: {error}",
+      "rightError": "Destra: {error}",
+      "identical": "I due documenti sono identici.",
+      "differences": "{n, plural, one {# differenza} other {# differenze}}"
+    },
+    "json-converters": {
+      "json": "JSON",
+      "chars": "{n} caratteri",
+      "minified": "Minificato",
+      "minifiedPlaceholder": "JSON minificato…",
+      "yaml": "YAML",
+      "yamlPlaceholder": "Output YAML…",
+      "csv": "CSV",
+      "csvPlaceholder": "Output CSV (si aspetta un array JSON)…",
+      "typescript": "TypeScript",
+      "typescriptPlaceholder": "Interfacce generate…"
+    },
+    "base64": {
+      "plainText": "Testo semplice",
+      "base64": "Base64",
+      "encodePlaceholder": "Testo da codificare…",
+      "decodePlaceholder": "Base64 da decodificare…",
+      "invalid": "Input Base64 non valido"
+    },
+    "base64-image": {
+      "toBase64": "Immagine → Base64",
+      "toImage": "Base64 → Immagine",
+      "dropImage": "Rilascia un'immagine qui o clicca per sfogliare",
+      "dataUri": "Data URI",
+      "asBase64": "{size} come Base64",
+      "inputLabel": "Base64 o data URI",
+      "downloadImage": "Scarica immagine"
+    },
+    "base64-file": {
+      "toBase64": "File → Base64",
+      "toFile": "Base64 → File",
+      "dropFile": "Rilascia qualsiasi file qui o clicca per sfogliare",
+      "dataUri": "Data URI",
+      "asBase64": "{size} come Base64",
+      "inputLabel": "Base64 o data URI",
+      "filename": "Nome file"
+    },
+    "jwt-decoder": {
+      "label": "JWT",
+      "placeholder": "Incolla un JSON Web Token…",
+      "warning": "La firma non è verificata — la decodifica avviene localmente e non controlla mai il segreto.",
+      "minParts": "Un JWT ha almeno due parti separate da punti.",
+      "decodeError": "Impossibile decodificare questo token.",
+      "issued": "Emesso: {date}",
+      "expires": "Scade: {date}",
+      "expired": "Scaduto: {date}",
+      "header": "Header",
+      "payload": "Payload"
+    },
+    "hash-generator": {
+      "placeholder": "Scrivi o incolla il testo di cui calcolare l'hash…",
+      "note": "Calcolato localmente tramite la Web Crypto API. MD5 non è supportato dai browser ed è omesso."
+    },
+    "case-converter": {
+      "placeholder": "Scrivi del testo…"
+    },
+    "url-encoder": {
+      "component": "Componente",
+      "wholeUrl": "URL intero",
+      "placeholder": "Testo o URL…",
+      "malformed": "Input malformato — impossibile decodificare."
+    },
+    "query-parser": {
+      "label": "URL o query string",
+      "placeholder": "https://example.com/search?q=ciao&tag=a&tag=b",
+      "key": "Chiave",
+      "value": "Valore",
+      "asJson": "Come JSON"
+    },
+    "url-builder": {
+      "baseUrl": "URL di base",
+      "queryParams": "Parametri di query",
+      "key": "chiave",
+      "value": "valore",
+      "addParam": "Aggiungi parametro",
+      "removeParam": "Rimuovi parametro"
+    },
+    "uuid-generator": {
+      "note": "UUID versione 4 (RFC 4122), generati localmente con la Web Crypto API."
+    },
+    "password-generator": {
+      "strength": "Forza: {label}",
+      "weak": "Debole",
+      "fair": "Discreta",
+      "strong": "Forte",
+      "lower": "minuscole",
+      "upper": "maiuscole",
+      "numbers": "numeri",
+      "symbols": "simboli",
+      "note": "Generata localmente con il CSPRNG della Web Crypto."
+    },
+    "password-strength": {
+      "placeholder": "Scrivi una password da testare…",
+      "show": "Mostra",
+      "hide": "Nascondi",
+      "entropy": "{bits} bit di entropia",
+      "crackTime": "Tempo di crack offline stimato: {time}",
+      "instantly": "istantaneamente",
+      "veryWeak": "Molto debole",
+      "weak": "Debole",
+      "fair": "Discreta",
+      "strong": "Forte",
+      "veryStrong": "Molto forte",
+      "tipLength": "Usa almeno 12 caratteri",
+      "tipUpper": "Aggiungi lettere maiuscole",
+      "tipNumber": "Aggiungi numeri",
+      "tipSymbol": "Aggiungi simboli",
+      "tipRepeat": "Evita caratteri ripetuti",
+      "unit_second": "{n, plural, one {# secondo} other {# secondi}}",
+      "unit_minute": "{n, plural, one {# minuto} other {# minuti}}",
+      "unit_hour": "{n, plural, one {# ora} other {# ore}}",
+      "unit_day": "{n, plural, one {# giorno} other {# giorni}}",
+      "unit_year": "{n, plural, one {# anno} other {# anni}}",
+      "unit_century": "{n, plural, one {# secolo} other {# secoli}}",
+      "note": "Analizzata localmente — la tua password non lascia mai il browser."
+    },
+    "random-string": {
+      "alphanumeric": "alfanumerico",
+      "letters": "lettere",
+      "numbers": "numeri",
+      "hex": "hex",
+      "symbols": "simboli",
+      "note": "Generato localmente con il CSPRNG della Web Crypto."
+    },
+    "hex-rgb": {
+      "invalid": "Inserisci un colore hex valido di 3 o 6 cifre."
+    },
+    "color-picker": {
+      "hex": "HEX",
+      "rgb": "RGB",
+      "hsl": "HSL",
+      "cssVariable": "Variabile CSS",
+      "pickFromScreen": "Preleva dallo schermo",
+      "invalid": "Inserisci un colore hex valido."
+    },
+    "tailwind-palette": {
+      "baseColor": "Colore di base",
+      "name": "Nome",
+      "invalid": "Inserisci un colore hex valido."
+    },
+    "contrast-checker": {
+      "textColor": "Colore del testo",
+      "background": "Sfondo",
+      "invalid": "Inserisci due colori hex validi.",
+      "ratio": "rapporto di contrasto",
+      "aaNormal": "AA · Testo normale (4.5:1)",
+      "aaLarge": "AA · Testo grande (3:1)",
+      "aaaNormal": "AAA · Testo normale (7:1)",
+      "aaaLarge": "AAA · Testo grande (4.5:1)"
+    },
+    "gradient-generator": {
+      "linear": "lineare",
+      "radial": "radiale",
+      "angle": "Angolo",
+      "addStop": "Aggiungi stop",
+      "removeStop": "Rimuovi stop"
+    },
+    "border-radius": {
+      "linked": "Collegato",
+      "independent": "Indipendente",
+      "allCorners": "Tutti gli angoli",
+      "topLeft": "In alto a sinistra",
+      "topRight": "In alto a destra",
+      "bottomRight": "In basso a destra",
+      "bottomLeft": "In basso a sinistra"
+    },
+    "box-shadow": {
+      "offsetX": "Offset X",
+      "offsetY": "Offset Y",
+      "blur": "Sfocatura",
+      "spread": "Estensione",
+      "opacity": "Opacità",
+      "inset": "interna"
+    },
+    "clamp-generator": {
+      "minViewport": "Viewport minimo",
+      "maxViewport": "Viewport massimo",
+      "minSize": "Dimensione minima",
+      "maxSize": "Dimensione massima",
+      "rootFontSize": "Dimensione font radice",
+      "viewportsMustDiffer": "Il viewport minimo e massimo devono essere diversi.",
+      "livePreview": "Anteprima dal vivo (ridimensiona la finestra):",
+      "explanation": "Scala in modo fluido da {minSize}px a {minVw}px di larghezza fino a {maxSize}px a {maxVw}px di larghezza, usando rem per l'accessibilità."
+    },
+    "lorem-ipsum": {
+      "paragraphs": "paragrafi",
+      "sentences": "frasi",
+      "words": "parole",
+      "startClassic": "Inizia con “Lorem ipsum”"
+    },
+    "slug-generator": {
+      "hyphen": "trattino -",
+      "underscore": "underscore _",
+      "lowercase": "minuscole",
+      "stripAccents": "rimuovi accenti",
+      "textLabel": "Testo (uno per riga)",
+      "textPlaceholder": "Il Mio Fantastico Articolo!",
+      "slug": "Slug",
+      "slugPlaceholder": "il-mio-fantastico-articolo"
+    },
+    "unix-timestamp": {
+      "currentTime": "Ora Unix attuale",
+      "use": "Usa",
+      "inputLabel": "Timestamp (s o ms) o una data testuale",
+      "placeholder": "es. 1516239022 o 2026-07-15T10:00:00Z",
+      "unrecognized": "Data o timestamp non riconosciuto.",
+      "unixSeconds": "Unix (secondi)",
+      "unixMs": "Unix (ms)",
+      "iso": "ISO 8601",
+      "utc": "UTC",
+      "local": "Locale"
+    },
+    "character-counter": {
+      "placeholder": "Scrivi o incolla il tuo testo…",
+      "words": "Parole",
+      "characters": "Caratteri",
+      "charactersNoSpaces": "Caratteri (senza spazi)",
+      "sentences": "Frasi",
+      "lines": "Righe",
+      "paragraphs": "Paragrafi",
+      "readingTime": "Tempo di lettura"
+    },
+    "sort-lines": {
+      "asc": "A → Z",
+      "desc": "Z → A",
+      "alpha": "alfabetico",
+      "numeric": "numerico",
+      "lengthKind": "lunghezza",
+      "inputPlaceholder": "Un elemento per riga…",
+      "sorted": "Ordinato"
+    },
+    "remove-duplicate-lines": {
+      "inputPlaceholder": "Un elemento per riga…",
+      "uniqueLines": "Righe uniche",
+      "removed": "{n, plural, one {# duplicata rimossa} other {# duplicate rimosse}}",
+      "noDuplicates": "Nessuna duplicata"
+    },
+    "html-escape": {
+      "escape": "escape",
+      "unescape": "unescape",
+      "rawLabel": "HTML / testo grezzo",
+      "escapedLabel": "HTML con escape",
+      "escapePlaceholder": "<div class=\"x\">Ciao & addio</div>",
+      "unescapePlaceholder": "&lt;div&gt;…&lt;/div&gt;"
+    },
+    "conventional-commit": {
+      "type": "Tipo",
+      "scope": "Ambito (opzionale)",
+      "scopePlaceholder": "api, ui, auth…",
+      "description": "Descrizione",
+      "descriptionPlaceholder": "aggiungi endpoint di login",
+      "body": "Corpo (opzionale)",
+      "bodyPlaceholder": "Spiegazione più lunga…",
+      "breaking": "Modifica incompatibile",
+      "breakingPlaceholder": "Descrivi cosa si rompe…",
+      "commitMessage": "Messaggio di commit",
+      "feat": "Una nuova funzionalità",
+      "fix": "Correzione di un bug",
+      "docs": "Solo documentazione",
+      "style": "Formattazione, nessuna modifica al codice",
+      "refactor": "Non corregge un bug né aggiunge una funzionalità",
+      "perf": "Migliora le prestazioni",
+      "test": "Aggiunta o correzione di test",
+      "build": "Sistema di build o dipendenze",
+      "ci": "Configurazione CI",
+      "chore": "Altre modifiche",
+      "revert": "Annulla un commit precedente"
+    },
+    "gitignore-generator": {
+      "includeTemplates": "Includi modelli",
+      "outputPlaceholder": "Seleziona i modelli qui sopra…"
+    },
+    "robots-generator": {
+      "allowAll": "Consenti tutto",
+      "blockAll": "Blocca tutto",
+      "custom": "Personalizzato",
+      "userAgent": "User-agent",
+      "sitemapUrl": "URL della sitemap",
+      "disallowPaths": "Percorsi non consentiti",
+      "addPath": "Aggiungi percorso",
+      "removePath": "Rimuovi percorso"
+    },
+    "sitemap-generator": {
+      "urlsLabel": "URL (uno per riga)",
+      "changeFrequency": "Frequenza di modifica",
+      "priority": "Priorità",
+      "includeLastmod": "includi lastmod (oggi)"
+    },
+    "metadata-generator": {
+      "title": "Titolo",
+      "description": "Descrizione",
+      "canonicalUrl": "URL canonico",
+      "imageUrl": "URL dell'immagine",
+      "siteName": "Nome del sito",
+      "twitterHandle": "Handle di Twitter",
+      "ogType": "Tipo OG",
+      "htmlMetaTags": "Tag meta HTML"
+    },
+    "qr-reader": {
+      "hint": "Rilascia un'immagine di codice QR qui o clicca per sfogliare",
+      "couldNotRead": "Impossibile leggere l'immagine.",
+      "notFound": "Nessun codice QR trovato in questa immagine.",
+      "couldNotLoad": "Impossibile caricare l'immagine.",
+      "decodedContent": "Contenuto decodificato",
+      "open": "Apri",
+      "note": "Decodificato localmente — le immagini non lasciano mai il tuo browser."
+    }
+  }
+}

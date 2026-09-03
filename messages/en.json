@@ -314,8 +314,370 @@
     "placeholder": "Enter a URL or any text…",
     "size": "Size",
     "errorLevel": "Error correction: higher levels (Q/H) survive more damage but hold less data. Generated locally.",
+    "scanHint": "Tip: keep a light margin around the code and enough contrast when you print or display it, or some scanners will fail.",
     "enterText": "Enter text to generate",
     "downloadPng": "Download PNG",
     "tooLong": "Text is too long for a QR code at this level."
+  },
+  "tools": {
+    "common": {
+      "input": "Input",
+      "output": "Output",
+      "result": "Result…",
+      "clear": "Clear",
+      "sample": "Sample",
+      "minify": "Minify",
+      "generate": "Generate",
+      "randomize": "Randomize",
+      "copyAll": "Copy all",
+      "download": "Download",
+      "encode": "Encode",
+      "decode": "Decode",
+      "useOutputAsInput": "Use output as input",
+      "howMany": "How many",
+      "count": "count",
+      "length": "Length",
+      "invalidInput": "Invalid input",
+      "oneItemPerLine": "One item per line…",
+      "pasteJson": "Paste JSON here…",
+      "caseInsensitive": "case-insensitive",
+      "removeEmpty": "remove empty",
+      "trimWhitespace": "trim whitespace",
+      "previewText": "The quick brown fox",
+      "add": "Add",
+      "remove": "Remove"
+    },
+    "json-formatter": {
+      "spaces": "{n} spaces",
+      "tab": "Tab",
+      "inputPlaceholder": "Paste JSON here…",
+      "outputPlaceholder": "Formatted JSON…",
+      "valid": "Valid JSON",
+      "input": "Input",
+      "output": "Output"
+    },
+    "json-validator": {
+      "placeholder": "Paste JSON to validate…",
+      "valid": "Valid JSON · root is {type}",
+      "typeArray": "array ({n} items)",
+      "typeObject": "object ({n} keys)"
+    },
+    "json-diff": {
+      "left": "Left (A)",
+      "right": "Right (B)",
+      "originalPlaceholder": "Original JSON…",
+      "changedPlaceholder": "Changed JSON…",
+      "leftError": "Left: {error}",
+      "rightError": "Right: {error}",
+      "identical": "The two documents are identical.",
+      "differences": "{n, plural, one {# difference} other {# differences}}"
+    },
+    "json-converters": {
+      "json": "JSON",
+      "chars": "{n} chars",
+      "minified": "Minified",
+      "minifiedPlaceholder": "Minified JSON…",
+      "yaml": "YAML",
+      "yamlPlaceholder": "YAML output…",
+      "csv": "CSV",
+      "csvPlaceholder": "CSV output (expects a JSON array)…",
+      "typescript": "TypeScript",
+      "typescriptPlaceholder": "Generated interfaces…"
+    },
+    "base64": {
+      "plainText": "Plain text",
+      "base64": "Base64",
+      "encodePlaceholder": "Text to encode…",
+      "decodePlaceholder": "Base64 to decode…",
+      "invalid": "Invalid Base64 input"
+    },
+    "base64-image": {
+      "toBase64": "Image → Base64",
+      "toImage": "Base64 → Image",
+      "dropImage": "Drop an image here or click to browse",
+      "dataUri": "Data URI",
+      "asBase64": "{size} as Base64",
+      "inputLabel": "Base64 or data URI",
+      "downloadImage": "Download image"
+    },
+    "base64-file": {
+      "toBase64": "File → Base64",
+      "toFile": "Base64 → File",
+      "dropFile": "Drop any file here or click to browse",
+      "dataUri": "Data URI",
+      "asBase64": "{size} as Base64",
+      "inputLabel": "Base64 or data URI",
+      "filename": "Filename"
+    },
+    "jwt-decoder": {
+      "label": "JWT",
+      "placeholder": "Paste a JSON Web Token…",
+      "warning": "Signature is not verified — decoding happens locally and never checks the secret.",
+      "minParts": "A JWT has at least two dot-separated parts.",
+      "decodeError": "Could not decode this token.",
+      "issued": "Issued: {date}",
+      "expires": "Expires: {date}",
+      "expired": "Expired: {date}",
+      "header": "Header",
+      "payload": "Payload"
+    },
+    "hash-generator": {
+      "placeholder": "Type or paste text to hash…",
+      "note": "Computed locally via the Web Crypto API. MD5 isn't supported by browsers and is omitted."
+    },
+    "case-converter": {
+      "placeholder": "Type some text…"
+    },
+    "url-encoder": {
+      "component": "Component",
+      "wholeUrl": "Whole URL",
+      "placeholder": "Text or URL…",
+      "malformed": "Malformed input — could not decode."
+    },
+    "query-parser": {
+      "label": "URL or query string",
+      "placeholder": "https://example.com/search?q=hello&tag=a&tag=b",
+      "key": "Key",
+      "value": "Value",
+      "asJson": "As JSON"
+    },
+    "url-builder": {
+      "baseUrl": "Base URL",
+      "queryParams": "Query parameters",
+      "key": "key",
+      "value": "value",
+      "addParam": "Add parameter",
+      "removeParam": "Remove parameter"
+    },
+    "uuid-generator": {
+      "note": "RFC 4122 version 4 UUIDs, generated locally with the Web Crypto API."
+    },
+    "password-generator": {
+      "strength": "Strength: {label}",
+      "weak": "Weak",
+      "fair": "Fair",
+      "strong": "Strong",
+      "lower": "lowercase",
+      "upper": "uppercase",
+      "numbers": "numbers",
+      "symbols": "symbols",
+      "note": "Generated locally with the Web Crypto CSPRNG."
+    },
+    "password-strength": {
+      "placeholder": "Type a password to test…",
+      "show": "Show",
+      "hide": "Hide",
+      "entropy": "{bits} bits of entropy",
+      "crackTime": "Estimated offline crack time: {time}",
+      "instantly": "instantly",
+      "veryWeak": "Very weak",
+      "weak": "Weak",
+      "fair": "Fair",
+      "strong": "Strong",
+      "veryStrong": "Very strong",
+      "tipLength": "Use at least 12 characters",
+      "tipUpper": "Add uppercase letters",
+      "tipNumber": "Add numbers",
+      "tipSymbol": "Add symbols",
+      "tipRepeat": "Avoid repeated characters",
+      "unit_second": "{n, plural, one {# second} other {# seconds}}",
+      "unit_minute": "{n, plural, one {# minute} other {# minutes}}",
+      "unit_hour": "{n, plural, one {# hour} other {# hours}}",
+      "unit_day": "{n, plural, one {# day} other {# days}}",
+      "unit_year": "{n, plural, one {# year} other {# years}}",
+      "unit_century": "{n, plural, one {# century} other {# centuries}}",
+      "note": "Analyzed locally — your password never leaves the browser."
+    },
+    "random-string": {
+      "alphanumeric": "alphanumeric",
+      "letters": "letters",
+      "numbers": "numbers",
+      "hex": "hex",
+      "symbols": "symbols",
+      "note": "Generated locally with the Web Crypto CSPRNG."
+    },
+    "hex-rgb": {
+      "invalid": "Enter a valid 3- or 6-digit hex color."
+    },
+    "color-picker": {
+      "hex": "HEX",
+      "rgb": "RGB",
+      "hsl": "HSL",
+      "cssVariable": "CSS variable",
+      "pickFromScreen": "Pick from screen",
+      "invalid": "Enter a valid hex color."
+    },
+    "tailwind-palette": {
+      "baseColor": "Base color",
+      "name": "Name",
+      "invalid": "Enter a valid hex color."
+    },
+    "contrast-checker": {
+      "textColor": "Text color",
+      "background": "Background",
+      "invalid": "Enter two valid hex colors.",
+      "ratio": "contrast ratio",
+      "aaNormal": "AA · Normal text (4.5:1)",
+      "aaLarge": "AA · Large text (3:1)",
+      "aaaNormal": "AAA · Normal text (7:1)",
+      "aaaLarge": "AAA · Large text (4.5:1)"
+    },
+    "gradient-generator": {
+      "linear": "linear",
+      "radial": "radial",
+      "angle": "Angle",
+      "addStop": "Add stop",
+      "removeStop": "Remove stop"
+    },
+    "border-radius": {
+      "linked": "Linked",
+      "independent": "Independent",
+      "allCorners": "All corners",
+      "topLeft": "Top left",
+      "topRight": "Top right",
+      "bottomRight": "Bottom right",
+      "bottomLeft": "Bottom left"
+    },
+    "box-shadow": {
+      "offsetX": "Offset X",
+      "offsetY": "Offset Y",
+      "blur": "Blur",
+      "spread": "Spread",
+      "opacity": "Opacity",
+      "inset": "inset"
+    },
+    "clamp-generator": {
+      "minViewport": "Min viewport",
+      "maxViewport": "Max viewport",
+      "minSize": "Min size",
+      "maxSize": "Max size",
+      "rootFontSize": "Root font size",
+      "viewportsMustDiffer": "Min and max viewport must differ.",
+      "livePreview": "Live preview (resize the window):",
+      "explanation": "Fluidly scales from {minSize}px at {minVw}px wide to {maxSize}px at {maxVw}px wide, using rem for accessibility."
+    },
+    "lorem-ipsum": {
+      "paragraphs": "paragraphs",
+      "sentences": "sentences",
+      "words": "words",
+      "startClassic": "Start with “Lorem ipsum”"
+    },
+    "slug-generator": {
+      "hyphen": "hyphen -",
+      "underscore": "underscore _",
+      "lowercase": "lowercase",
+      "stripAccents": "strip accents",
+      "textLabel": "Text (one per line)",
+      "textPlaceholder": "My Awesome Blog Post!",
+      "slug": "Slug",
+      "slugPlaceholder": "my-awesome-blog-post"
+    },
+    "unix-timestamp": {
+      "currentTime": "Current Unix time",
+      "use": "Use",
+      "inputLabel": "Timestamp (s or ms) or a date string",
+      "placeholder": "e.g. 1516239022 or 2026-07-15T10:00:00Z",
+      "unrecognized": "Unrecognized date or timestamp.",
+      "unixSeconds": "Unix (seconds)",
+      "unixMs": "Unix (ms)",
+      "iso": "ISO 8601",
+      "utc": "UTC",
+      "local": "Local"
+    },
+    "character-counter": {
+      "placeholder": "Type or paste your text…",
+      "words": "Words",
+      "characters": "Characters",
+      "charactersNoSpaces": "Characters (no spaces)",
+      "sentences": "Sentences",
+      "lines": "Lines",
+      "paragraphs": "Paragraphs",
+      "readingTime": "Reading time"
+    },
+    "sort-lines": {
+      "asc": "A → Z",
+      "desc": "Z → A",
+      "alpha": "alpha",
+      "numeric": "numeric",
+      "lengthKind": "length",
+      "inputPlaceholder": "One item per line…",
+      "sorted": "Sorted"
+    },
+    "remove-duplicate-lines": {
+      "inputPlaceholder": "One item per line…",
+      "uniqueLines": "Unique lines",
+      "removed": "{n, plural, one {# duplicate removed} other {# duplicates removed}}",
+      "noDuplicates": "No duplicates"
+    },
+    "html-escape": {
+      "escape": "escape",
+      "unescape": "unescape",
+      "rawLabel": "Raw HTML / text",
+      "escapedLabel": "Escaped HTML",
+      "escapePlaceholder": "<div class=\"x\">Hi & bye</div>",
+      "unescapePlaceholder": "&lt;div&gt;…&lt;/div&gt;"
+    },
+    "conventional-commit": {
+      "type": "Type",
+      "scope": "Scope (optional)",
+      "scopePlaceholder": "api, ui, auth…",
+      "description": "Description",
+      "descriptionPlaceholder": "add login endpoint",
+      "body": "Body (optional)",
+      "bodyPlaceholder": "Longer explanation…",
+      "breaking": "Breaking change",
+      "breakingPlaceholder": "Describe what breaks…",
+      "commitMessage": "Commit message",
+      "feat": "A new feature",
+      "fix": "A bug fix",
+      "docs": "Documentation only",
+      "style": "Formatting, no code change",
+      "refactor": "Neither fixes a bug nor adds a feature",
+      "perf": "Improves performance",
+      "test": "Adding or fixing tests",
+      "build": "Build system or dependencies",
+      "ci": "CI configuration",
+      "chore": "Other changes",
+      "revert": "Reverts a previous commit"
+    },
+    "gitignore-generator": {
+      "includeTemplates": "Include templates",
+      "outputPlaceholder": "Select templates above…"
+    },
+    "robots-generator": {
+      "allowAll": "Allow all",
+      "blockAll": "Block all",
+      "custom": "Custom",
+      "userAgent": "User-agent",
+      "sitemapUrl": "Sitemap URL",
+      "disallowPaths": "Disallow paths",
+      "addPath": "Add path",
+      "removePath": "Remove path"
+    },
+    "sitemap-generator": {
+      "urlsLabel": "URLs (one per line)",
+      "changeFrequency": "Change frequency",
+      "priority": "Priority",
+      "includeLastmod": "include lastmod (today)"
+    },
+    "metadata-generator": {
+      "title": "Title",
+      "description": "Description",
+      "canonicalUrl": "Canonical URL",
+      "imageUrl": "Image URL",
+      "siteName": "Site name",
+      "twitterHandle": "Twitter handle",
+      "ogType": "OG type",
+      "htmlMetaTags": "HTML meta tags"
+    },
+    "qr-reader": {
+      "hint": "Drop a QR code image here or click to browse",
+      "couldNotRead": "Could not read the image.",
+      "notFound": "No QR code found in this image.",
+      "couldNotLoad": "Could not load the image.",
+      "decodedContent": "Decoded content",
+      "open": "Open",
+      "note": "Decoded locally — images never leave your browser."
+    }
   }
 }

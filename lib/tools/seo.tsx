@@ -1,16 +1,21 @@
 import type { Metadata } from 'next'
+import { getTranslations } from 'next-intl/server'
 import { CATEGORY_MAP, getTool } from './registry'
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') ?? 'https://ovnimizer.com'
 
 /** Per-tool Metadata: title, description, keywords, OG, Twitter, canonical. */
-export function toolMetadata(slug: string, locale: string): Metadata {
+export async function toolMetadata(slug: string, locale: string): Promise<Metadata> {
   const tool = getTool(slug)
   if (!tool) return {}
 
-  const title = `${tool.title} — Ovnimizer`
-  const description = tool.description
+  const t = await getTranslations({ locale, namespace: 't' })
+  const localizedTitle = t.has(`${slug}.title`) ? t(`${slug}.title`) : tool.title
+  const localizedDesc = t.has(`${slug}.desc`) ? t(`${slug}.desc`) : tool.description
+
+  const title = `${localizedTitle} — Ovnimizer`
+  const description = localizedDesc
   const canonical = `${SITE_URL}/${locale}${tool.href}`
 
   return {
@@ -34,19 +39,30 @@ export function toolMetadata(slug: string, locale: string): Metadata {
 }
 
 /** WebApplication + BreadcrumbList JSON-LD for a tool page. */
-export function toolJsonLd(slug: string, locale: string): Record<string, unknown> | null {
+export async function toolJsonLd(
+  slug: string,
+  locale: string,
+): Promise<Record<string, unknown> | null> {
   const tool = getTool(slug)
   if (!tool) return null
   const category = CATEGORY_MAP[tool.category]
   const url = `${SITE_URL}/${locale}${tool.href}`
+
+  const t = await getTranslations({ locale, namespace: 't' })
+  const tCat = await getTranslations({ locale, namespace: 'cat' })
+  const tc = await getTranslations({ locale, namespace: 'common' })
+  const name = t.has(`${slug}.title`) ? t(`${slug}.title`) : tool.title
+  const description = t.has(`${slug}.desc`) ? t(`${slug}.desc`) : tool.description
+  const categoryLabel = tCat(`${tool.category}.label`)
+  const toolsLabel = tc('tools')
 
   return {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'WebApplication',
-        name: tool.title,
-        description: tool.description,
+        name,
+        description,
         url,
         applicationCategory: 'DeveloperApplication',
         operatingSystem: 'Any',
@@ -56,14 +72,14 @@ export function toolJsonLd(slug: string, locale: string): Record<string, unknown
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Tools', item: `${SITE_URL}/${locale}` },
+          { '@type': 'ListItem', position: 1, name: toolsLabel, item: `${SITE_URL}/${locale}` },
           {
             '@type': 'ListItem',
             position: 2,
-            name: category.label,
+            name: categoryLabel,
             item: `${SITE_URL}/${locale}/categories/${category.id}`,
           },
-          { '@type': 'ListItem', position: 3, name: tool.title, item: url },
+          { '@type': 'ListItem', position: 3, name, item: url },
         ],
       },
     ],

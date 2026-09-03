@@ -2,9 +2,11 @@
 
 import { useMemo, useState } from 'react'
 import { Plus, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput, Toolbar } from '../ui'
 
 export function RobotsGenerator() {
+  const t = useTranslations('tools.robots-generator')
   const [preset, setPreset] = useState<'all' | 'none' | 'custom'>('all')
   const [userAgent, setUserAgent] = useState('*')
   const [disallow, setDisallow] = useState<string[]>(['/admin', '/private'])
@@ -38,7 +40,7 @@ export function RobotsGenerator() {
                 preset === p ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {p === 'all' ? 'Allow all' : p === 'none' ? 'Block all' : 'Custom'}
+              {p === 'all' ? t('allowAll') : p === 'none' ? t('blockAll') : t('custom')}
             </button>
           ))}
         </div>
@@ -46,18 +48,18 @@ export function RobotsGenerator() {
 
       <div className="grid gap-3 sm:grid-cols-2">
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">User-agent</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('userAgent')}</label>
           <ToolInput value={userAgent} onChange={(e) => setUserAgent(e.target.value)} placeholder="*" />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">Sitemap URL</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('sitemapUrl')}</label>
           <ToolInput value={sitemap} onChange={(e) => setSitemap(e.target.value)} placeholder="https://…/sitemap.xml" />
         </div>
       </div>
 
       {preset === 'custom' && (
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Disallow paths</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('disallowPaths')}</label>
           {disallow.map((p, i) => (
             <div key={i} className="flex items-center gap-2">
               <ToolInput
@@ -68,7 +70,7 @@ export function RobotsGenerator() {
               <button
                 onClick={() => setDisallow((prev) => prev.filter((_, j) => j !== i))}
                 className="shrink-0 text-muted-foreground transition-colors hover:text-destructive"
-                aria-label="Remove path"
+                aria-label={t('removePath')}
               >
                 <X className="h-4 w-4" />
               </button>
@@ -78,7 +80,7 @@ export function RobotsGenerator() {
             onClick={() => setDisallow((prev) => [...prev, ''])}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold hover:bg-muted/70"
           >
-            <Plus className="h-3.5 w-3.5" /> Add path
+            <Plus className="h-3.5 w-3.5" /> {t('addPath')}
           </button>
         </div>
       )}

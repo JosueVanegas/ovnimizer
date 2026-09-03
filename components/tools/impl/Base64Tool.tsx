@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, Toolbar, ToolTextarea } from '../ui'
 
 function encodeB64(text: string): string {
@@ -13,6 +14,8 @@ function decodeB64(b64: string): string {
 }
 
 export function Base64Tool() {
+  const t = useTranslations('tools.base64')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
 
@@ -21,9 +24,9 @@ export function Base64Tool() {
     try {
       return { output: mode === 'encode' ? encodeB64(input) : decodeB64(input), error: null }
     } catch {
-      return { output: '', error: 'Invalid Base64 input' }
+      return { output: '', error: t('invalid') }
     }
-  }, [input, mode])
+  }, [input, mode, t])
 
   return (
     <div className="space-y-4">
@@ -33,11 +36,11 @@ export function Base64Tool() {
             <button
               key={v}
               onClick={() => setMode(v)}
-              className={`rounded-md px-3 py-1 font-semibold capitalize transition-colors ${
+              className={`rounded-md px-3 py-1 font-semibold transition-colors ${
                 mode === v ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {v}
+              {v === 'encode' ? tc('encode') : tc('decode')}
             </button>
           ))}
         </div>
@@ -46,35 +49,35 @@ export function Base64Tool() {
           disabled={!output}
           className="rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted/70 disabled:opacity-40"
         >
-          Use output as input
+          {tc('useOutputAsInput')}
         </button>
         <button
           onClick={() => setInput('')}
           className="rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted/70"
         >
-          Clear
+          {tc('clear')}
         </button>
       </Toolbar>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-muted-foreground">
-            {mode === 'encode' ? 'Plain text' : 'Base64'}
+            {mode === 'encode' ? t('plainText') : t('base64')}
           </label>
           <ToolTextarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={mode === 'encode' ? 'Text to encode…' : 'Base64 to decode…'}
+            placeholder={mode === 'encode' ? t('encodePlaceholder') : t('decodePlaceholder')}
           />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-xs font-semibold text-muted-foreground">
-              {mode === 'encode' ? 'Base64' : 'Plain text'}
+              {mode === 'encode' ? t('base64') : t('plainText')}
             </label>
             <CopyButton value={output} />
           </div>
-          <ToolTextarea value={output} readOnly placeholder="Result…" />
+          <ToolTextarea value={output} readOnly placeholder={tc('result')} />
         </div>
       </div>
 

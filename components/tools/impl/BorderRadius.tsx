@@ -2,17 +2,19 @@
 
 import { useMemo, useState } from 'react'
 import { Link2, Unlink } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton } from '../ui'
 
 type Corner = 'tl' | 'tr' | 'br' | 'bl'
 const CORNERS: { key: Corner; label: string }[] = [
-  { key: 'tl', label: 'Top left' },
-  { key: 'tr', label: 'Top right' },
-  { key: 'br', label: 'Bottom right' },
-  { key: 'bl', label: 'Bottom left' },
+  { key: 'tl', label: 'topLeft' },
+  { key: 'tr', label: 'topRight' },
+  { key: 'br', label: 'bottomRight' },
+  { key: 'bl', label: 'bottomLeft' },
 ]
 
 export function BorderRadius() {
+  const t = useTranslations('tools.border-radius')
   const [linked, setLinked] = useState(true)
   const [unit, setUnit] = useState<'px' | '%'>('px')
   const [values, setValues] = useState<Record<Corner, number>>({ tl: 24, tr: 24, br: 24, bl: 24 })
@@ -48,7 +50,7 @@ export function BorderRadius() {
             }`}
           >
             {linked ? <Link2 className="h-3.5 w-3.5" /> : <Unlink className="h-3.5 w-3.5" />}
-            {linked ? 'Linked' : 'Independent'}
+            {linked ? t('linked') : t('independent')}
           </button>
           <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-muted/40 p-0.5 text-xs">
             {(['px', '%'] as const).map((u) => (
@@ -68,7 +70,7 @@ export function BorderRadius() {
         {(linked ? [CORNERS[0]] : CORNERS).map(({ key, label }) => (
           <div key={key} className="space-y-1">
             <div className="flex items-center justify-between text-xs">
-              <span className="font-medium text-muted-foreground">{linked ? 'All corners' : label}</span>
+              <span className="font-medium text-muted-foreground">{linked ? t('allCorners') : t(label)}</span>
               <span className="font-mono tabular-nums">{values[key]}{unit}</span>
             </div>
             <input

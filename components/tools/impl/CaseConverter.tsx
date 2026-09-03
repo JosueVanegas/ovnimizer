@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea } from '../ui'
 
 function words(s: string): string[] {
@@ -31,17 +32,19 @@ function cap(w: string): string {
 }
 
 export function CaseConverter() {
+  const t = useTranslations('tools.case-converter')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
   const results = useMemo(() => CASES.map((c) => ({ ...c, value: input ? c.fn(input) : '' })), [input])
 
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-muted-foreground">Input</label>
+        <label className="text-xs font-semibold text-muted-foreground">{tc('input')}</label>
         <ToolTextarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type some text…"
+          placeholder={t('placeholder')}
           className="min-h-24"
         />
       </div>

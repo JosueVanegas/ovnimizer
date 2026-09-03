@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea } from '../ui'
 
 const ALGOS = ['SHA-1', 'SHA-256', 'SHA-384', 'SHA-512'] as const
@@ -15,6 +16,8 @@ async function hash(algo: Algo, text: string): Promise<string> {
 }
 
 export function HashGenerator() {
+  const t = useTranslations('tools.hash-generator')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
   const [hashes, setHashes] = useState<Record<Algo, string>>({
     'SHA-1': '',
@@ -41,11 +44,11 @@ export function HashGenerator() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-muted-foreground">Input</label>
+        <label className="text-xs font-semibold text-muted-foreground">{tc('input')}</label>
         <ToolTextarea
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          placeholder="Type or paste text to hash…"
+          placeholder={t('placeholder')}
           className="min-h-28"
         />
       </div>
@@ -63,9 +66,7 @@ export function HashGenerator() {
           </div>
         ))}
       </div>
-      <p className="text-xs text-muted-foreground">
-        Computed locally via the Web Crypto API. MD5 isn&apos;t supported by browsers and is omitted.
-      </p>
+      <p className="text-xs text-muted-foreground">{t('note')}</p>
     </div>
   )
 }

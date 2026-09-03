@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { ToolTextarea } from '../ui'
 
 function analyze(text: string) {
@@ -16,33 +17,34 @@ function analyze(text: string) {
 }
 
 const TILES: { key: keyof ReturnType<typeof analyze>; label: string }[] = [
-  { key: 'words', label: 'Words' },
-  { key: 'chars', label: 'Characters' },
-  { key: 'charsNoSpaces', label: 'Characters (no spaces)' },
-  { key: 'sentences', label: 'Sentences' },
-  { key: 'lines', label: 'Lines' },
-  { key: 'paragraphs', label: 'Paragraphs' },
-  { key: 'reading', label: 'Reading time' },
+  { key: 'words', label: 'words' },
+  { key: 'chars', label: 'characters' },
+  { key: 'charsNoSpaces', label: 'charactersNoSpaces' },
+  { key: 'sentences', label: 'sentences' },
+  { key: 'lines', label: 'lines' },
+  { key: 'paragraphs', label: 'paragraphs' },
+  { key: 'reading', label: 'readingTime' },
 ]
 
 export function TextStats() {
+  const t = useTranslations('tools.character-counter')
   const [text, setText] = useState('')
   const stats = useMemo(() => analyze(text), [text])
 
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
-        {TILES.map((t) => (
-          <div key={t.key} className="rounded-xl border border-border/50 bg-muted/20 p-3 text-center">
-            <p className="text-2xl font-extrabold tabular-nums">{stats[t.key]}</p>
-            <p className="mt-0.5 text-[11px] leading-tight text-muted-foreground">{t.label}</p>
+        {TILES.map((tile) => (
+          <div key={tile.key} className="rounded-xl border border-border/50 bg-muted/20 p-3 text-center">
+            <p className="text-2xl font-extrabold tabular-nums">{stats[tile.key]}</p>
+            <p className="mt-0.5 text-[11px] leading-tight text-muted-foreground">{t(tile.label)}</p>
           </div>
         ))}
       </div>
       <ToolTextarea
         value={text}
         onChange={(e) => setText(e.target.value)}
-        placeholder="Type or paste your text…"
+        placeholder={t('placeholder')}
         className="min-h-56"
       />
     </div>

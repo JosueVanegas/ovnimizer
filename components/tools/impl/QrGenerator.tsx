@@ -10,7 +10,7 @@ type Level = 'L' | 'M' | 'Q' | 'H'
 
 export function QrGenerator() {
   const t = useTranslations('qr')
-  const [text, setText] = useState('https://ovnimizer.com')
+  const [text, setText] = useState('https://example.com')
   const [size, setSize] = useState(320)
   const [level, setLevel] = useState<Level>('M')
   const [dataUrl, setDataUrl] = useState('')
@@ -18,15 +18,17 @@ export function QrGenerator() {
 
   useEffect(() => {
     let cancelled = false
-    if (!text) {
+    const payload = text.trim()
+    if (!payload) {
       setDataUrl('')
+      setError(null)
       return
     }
-    QRCode.toDataURL(text, {
+    QRCode.toDataURL(payload, {
       width: size,
-      margin: 2,
+      margin: 4,
       errorCorrectionLevel: level,
-      color: { dark: '#000000ff', light: '#ffffffff' },
+      color: { dark: '#000000', light: '#ffffff' },
     })
       .then((url) => {
         if (!cancelled) {
@@ -93,6 +95,9 @@ export function QrGenerator() {
         </Toolbar>
         <p className="text-xs text-muted-foreground">
           {t('errorLevel')}
+        </p>
+        <p className="text-xs text-muted-foreground">
+          {t('scanHint')}
         </p>
       </div>
 

@@ -2,18 +2,21 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea } from '../ui'
 import { tryParse, jsonToYaml, jsonToCsv, jsonToTypeScript, type Json } from '@/lib/tools/json-convert'
 
 function JsonConvert({
   transform,
-  outLabel,
-  outPlaceholder,
+  outLabelKey,
+  outPlaceholderKey,
 }: {
   transform: (v: Json) => string
-  outLabel: string
-  outPlaceholder: string
+  outLabelKey: string
+  outPlaceholderKey: string
 }) {
+  const t = useTranslations('tools.json-converters')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
 
   const { output, error } = useMemo(() => {
@@ -31,18 +34,18 @@ function JsonConvert({
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">JSON</label>
-          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="Paste JSON here…" className="min-h-72" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('json')}</label>
+          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={tc('pasteJson')} className="min-h-72" />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
             <label className="text-xs font-semibold text-muted-foreground">
-              {outLabel}
-              {output && <span className="ml-2 font-normal">· {output.length} chars</span>}
+              {t(outLabelKey)}
+              {output && <span className="ml-2 font-normal">· {t('chars', { n: output.length })}</span>}
             </label>
             <CopyButton value={output} />
           </div>
-          <ToolTextarea value={output} readOnly placeholder={outPlaceholder} className="min-h-72" />
+          <ToolTextarea value={output} readOnly placeholder={t(outPlaceholderKey)} className="min-h-72" />
         </div>
       </div>
       {error && (
@@ -58,14 +61,14 @@ const minify = (v: Json) => JSON.stringify(v)
 const toTs = (v: Json) => jsonToTypeScript(v)
 
 export function JsonMinifier() {
-  return <JsonConvert transform={minify} outLabel="Minified" outPlaceholder="Minified JSON…" />
+  return <JsonConvert transform={minify} outLabelKey="minified" outPlaceholderKey="minifiedPlaceholder" />
 }
 export function JsonToYaml() {
-  return <JsonConvert transform={jsonToYaml} outLabel="YAML" outPlaceholder="YAML output…" />
+  return <JsonConvert transform={jsonToYaml} outLabelKey="yaml" outPlaceholderKey="yamlPlaceholder" />
 }
 export function JsonToCsv() {
-  return <JsonConvert transform={jsonToCsv} outLabel="CSV" outPlaceholder="CSV output (expects a JSON array)…" />
+  return <JsonConvert transform={jsonToCsv} outLabelKey="csv" outPlaceholderKey="csvPlaceholder" />
 }
 export function JsonToTypeScript() {
-  return <JsonConvert transform={toTs} outLabel="TypeScript" outPlaceholder="Generated interfaces…" />
+  return <JsonConvert transform={toTs} outLabelKey="typescript" outPlaceholderKey="typescriptPlaceholder" />
 }

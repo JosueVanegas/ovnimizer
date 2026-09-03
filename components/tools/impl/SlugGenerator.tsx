@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, Toolbar, ToolTextarea } from '../ui'
 
 function slugify(text: string, sep: string, lower: boolean, stripAccents: boolean): string {
@@ -14,6 +15,7 @@ function slugify(text: string, sep: string, lower: boolean, stripAccents: boolea
 }
 
 export function SlugGenerator() {
+  const t = useTranslations('tools.slug-generator')
   const [input, setInput] = useState('')
   const [sep, setSep] = useState<'-' | '_'>('-')
   const [lower, setLower] = useState(true)
@@ -40,31 +42,31 @@ export function SlugGenerator() {
                 sep === s ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {s === '-' ? 'hyphen -' : 'underscore _'}
+              {s === '-' ? t('hyphen') : t('underscore')}
             </button>
           ))}
         </div>
         <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
           <input type="checkbox" checked={lower} onChange={(e) => setLower(e.target.checked)} className="accent-[var(--ufo-green)]" />
-          lowercase
+          {t('lowercase')}
         </label>
         <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
           <input type="checkbox" checked={stripAccents} onChange={(e) => setStripAccents(e.target.checked)} className="accent-[var(--ufo-green)]" />
-          strip accents
+          {t('stripAccents')}
         </label>
       </Toolbar>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">Text (one per line)</label>
-          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder="My Awesome Blog Post!" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('textLabel')}</label>
+          <ToolTextarea value={input} onChange={(e) => setInput(e.target.value)} placeholder={t('textPlaceholder')} />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-semibold text-muted-foreground">Slug</label>
+            <label className="text-xs font-semibold text-muted-foreground">{t('slug')}</label>
             <CopyButton value={output} />
           </div>
-          <ToolTextarea value={output} readOnly placeholder="my-awesome-blog-post" />
+          <ToolTextarea value={output} readOnly placeholder={t('slugPlaceholder')} />
         </div>
       </div>
     </div>

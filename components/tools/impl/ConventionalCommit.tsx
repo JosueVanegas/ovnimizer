@@ -1,24 +1,14 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput, ToolTextarea } from '../ui'
 
-const TYPES = [
-  { key: 'feat', desc: 'A new feature' },
-  { key: 'fix', desc: 'A bug fix' },
-  { key: 'docs', desc: 'Documentation only' },
-  { key: 'style', desc: 'Formatting, no code change' },
-  { key: 'refactor', desc: 'Neither fixes a bug nor adds a feature' },
-  { key: 'perf', desc: 'Improves performance' },
-  { key: 'test', desc: 'Adding or fixing tests' },
-  { key: 'build', desc: 'Build system or dependencies' },
-  { key: 'ci', desc: 'CI configuration' },
-  { key: 'chore', desc: 'Other changes' },
-  { key: 'revert', desc: 'Reverts a previous commit' },
-]
+const TYPES = ['feat', 'fix', 'docs', 'style', 'refactor', 'perf', 'test', 'build', 'ci', 'chore', 'revert'] as const
 
 export function ConventionalCommit() {
-  const [type, setType] = useState('feat')
+  const t = useTranslations('tools.conventional-commit')
+  const [type, setType] = useState<string>('feat')
   const [scope, setScope] = useState('')
   const [description, setDescription] = useState('')
   const [body, setBody] = useState('')
@@ -36,18 +26,18 @@ export function ConventionalCommit() {
   return (
     <div className="space-y-4">
       <div className="space-y-2">
-        <label className="text-xs font-semibold text-muted-foreground">Type</label>
+        <label className="text-xs font-semibold text-muted-foreground">{t('type')}</label>
         <div className="flex flex-wrap gap-1.5">
-          {TYPES.map((t) => (
+          {TYPES.map((key) => (
             <button
-              key={t.key}
-              onClick={() => setType(t.key)}
-              title={t.desc}
+              key={key}
+              onClick={() => setType(key)}
+              title={t(key)}
               className={`rounded-lg px-2.5 py-1 text-xs font-semibold transition-colors ${
-                type === t.key ? 'bg-ufo-green text-black' : 'bg-muted text-muted-foreground hover:bg-muted/70'
+                type === key ? 'bg-ufo-green text-black' : 'bg-muted text-muted-foreground hover:bg-muted/70'
               }`}
             >
-              {t.key}
+              {key}
             </button>
           ))}
         </div>
@@ -55,33 +45,33 @@ export function ConventionalCommit() {
 
       <div className="grid gap-3 sm:grid-cols-[200px_1fr]">
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">Scope (optional)</label>
-          <ToolInput value={scope} onChange={(e) => setScope(e.target.value)} placeholder="api, ui, auth…" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('scope')}</label>
+          <ToolInput value={scope} onChange={(e) => setScope(e.target.value)} placeholder={t('scopePlaceholder')} />
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">Description</label>
-          <ToolInput value={description} onChange={(e) => setDescription(e.target.value)} placeholder="add login endpoint" />
+          <label className="text-xs font-semibold text-muted-foreground">{t('description')}</label>
+          <ToolInput value={description} onChange={(e) => setDescription(e.target.value)} placeholder={t('descriptionPlaceholder')} />
         </div>
       </div>
 
       <div className="space-y-1.5">
-        <label className="text-xs font-semibold text-muted-foreground">Body (optional)</label>
-        <ToolTextarea value={body} onChange={(e) => setBody(e.target.value)} placeholder="Longer explanation…" className="min-h-24" />
+        <label className="text-xs font-semibold text-muted-foreground">{t('body')}</label>
+        <ToolTextarea value={body} onChange={(e) => setBody(e.target.value)} placeholder={t('bodyPlaceholder')} className="min-h-24" />
       </div>
 
       <div className="space-y-2">
         <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
           <input type="checkbox" checked={breaking} onChange={(e) => setBreaking(e.target.checked)} className="accent-[var(--ufo-green)]" />
-          Breaking change
+          {t('breaking')}
         </label>
         {breaking && (
-          <ToolInput value={breakingDesc} onChange={(e) => setBreakingDesc(e.target.value)} placeholder="Describe what breaks…" />
+          <ToolInput value={breakingDesc} onChange={(e) => setBreakingDesc(e.target.value)} placeholder={t('breakingPlaceholder')} />
         )}
       </div>
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-xs font-semibold text-muted-foreground">Commit message</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('commitMessage')}</label>
           <CopyButton value={message} />
         </div>
         <pre className="overflow-x-auto rounded-xl border border-border/50 bg-muted/20 p-3 font-mono text-sm">{message}</pre>

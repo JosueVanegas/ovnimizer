@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { Download } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolTextarea, Toolbar } from '../ui'
 
 const FREQS = ['always', 'hourly', 'daily', 'weekly', 'monthly', 'yearly', 'never']
@@ -11,6 +12,8 @@ function xmlEscape(s: string): string {
 }
 
 export function SitemapGenerator() {
+  const t = useTranslations('tools.sitemap-generator')
+  const tc = useTranslations('tools.common')
   const [urls, setUrls] = useState('https://example.com/\nhttps://example.com/about\nhttps://example.com/blog')
   const [changefreq, setChangefreq] = useState('weekly')
   const [priority, setPriority] = useState('0.8')
@@ -45,7 +48,7 @@ export function SitemapGenerator() {
     <div className="space-y-4">
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
-          <label className="text-xs font-semibold text-muted-foreground">URLs (one per line)</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('urlsLabel')}</label>
           <ToolTextarea value={urls} onChange={(e) => setUrls(e.target.value)} className="min-h-72" />
         </div>
         <div className="space-y-2">
@@ -57,7 +60,7 @@ export function SitemapGenerator() {
                 onClick={download}
                 className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold hover:bg-muted/70"
               >
-                <Download className="h-3.5 w-3.5" /> Download
+                <Download className="h-3.5 w-3.5" /> {tc('download')}
               </button>
             </div>
           </div>
@@ -67,7 +70,7 @@ export function SitemapGenerator() {
 
       <Toolbar>
         <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-          Change frequency
+          {t('changeFrequency')}
           <select
             value={changefreq}
             onChange={(e) => setChangefreq(e.target.value)}
@@ -79,7 +82,7 @@ export function SitemapGenerator() {
           </select>
         </label>
         <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-          Priority
+          {t('priority')}
           <select
             value={priority}
             onChange={(e) => setPriority(e.target.value)}
@@ -92,7 +95,7 @@ export function SitemapGenerator() {
         </label>
         <label className="flex items-center gap-1.5 text-xs font-medium text-muted-foreground">
           <input type="checkbox" checked={includeLastmod} onChange={(e) => setIncludeLastmod(e.target.checked)} className="accent-[var(--ufo-green)]" />
-          include lastmod (today)
+          {t('includeLastmod')}
         </label>
       </Toolbar>
     </div>

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { Check, X } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { ToolInput } from '../ui'
 
 function hexToRgb(hex: string): [number, number, number] | null {
@@ -39,6 +40,8 @@ function Judgement({ label, pass }: { label: string; pass: boolean }) {
 }
 
 export function ContrastChecker() {
+  const t = useTranslations('tools.contrast-checker')
+  const tc = useTranslations('tools.common')
   const [fg, setFg] = useState('#0b0b0b')
   const [bg, setBg] = useState('#64ff17')
 
@@ -57,13 +60,13 @@ export function ContrastChecker() {
         className="flex h-32 items-center justify-center rounded-2xl border border-border/50 text-lg font-semibold"
         style={{ backgroundColor: hexToRgb(bg) ? bg : '#fff', color: hexToRgb(fg) ? fg : '#000' }}
       >
-        The quick brown fox
+        {tc('previewText')}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         {[
-          { label: 'Text color', val: fg, set: setFg },
-          { label: 'Background', val: bg, set: setBg },
+          { label: t('textColor'), val: fg, set: setFg },
+          { label: t('background'), val: bg, set: setBg },
         ].map((f) => (
           <div key={f.label} className="space-y-1.5">
             <label className="text-xs font-semibold text-muted-foreground">{f.label}</label>
@@ -82,18 +85,18 @@ export function ContrastChecker() {
       </div>
 
       {ratio === null ? (
-        <p className="text-sm text-destructive">Enter two valid hex colors.</p>
+        <p className="text-sm text-destructive">{t('invalid')}</p>
       ) : (
         <>
           <div className="text-center">
             <p className="text-4xl font-extrabold tracking-tight">{r.toFixed(2)}:1</p>
-            <p className="text-xs text-muted-foreground">contrast ratio</p>
+            <p className="text-xs text-muted-foreground">{t('ratio')}</p>
           </div>
           <div className="grid gap-2 sm:grid-cols-2">
-            <Judgement label="AA · Normal text (4.5:1)" pass={r >= 4.5} />
-            <Judgement label="AA · Large text (3:1)" pass={r >= 3} />
-            <Judgement label="AAA · Normal text (7:1)" pass={r >= 7} />
-            <Judgement label="AAA · Large text (4.5:1)" pass={r >= 4.5} />
+            <Judgement label={t('aaNormal')} pass={r >= 4.5} />
+            <Judgement label={t('aaLarge')} pass={r >= 3} />
+            <Judgement label={t('aaaNormal')} pass={r >= 7} />
+            <Judgement label={t('aaaLarge')} pass={r >= 4.5} />
           </div>
         </>
       )}

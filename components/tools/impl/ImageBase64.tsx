@@ -2,10 +2,12 @@
 
 import { useState } from 'react'
 import { Download } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, FileDrop, ToolTextarea, Toolbar } from '../ui'
 import { formatBytes } from '@/lib/utils'
 
 export function ImageBase64() {
+  const t = useTranslations('tools.base64-image')
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
 
   // encode
@@ -49,7 +51,7 @@ export function ImageBase64() {
                 mode === m ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {m === 'encode' ? 'Image → Base64' : 'Base64 → Image'}
+              {m === 'encode' ? t('toBase64') : t('toImage')}
             </button>
           ))}
         </div>
@@ -57,7 +59,7 @@ export function ImageBase64() {
 
       {mode === 'encode' ? (
         <>
-          <FileDrop onFile={onFile} accept="image/*" hint="Drop an image here or click to browse" />
+          <FileDrop onFile={onFile} accept="image/*" hint={t('dropImage')} />
           {dataUri && (
             <>
               <div className="flex items-center gap-4 rounded-xl border border-border/50 bg-muted/20 p-3">
@@ -65,12 +67,12 @@ export function ImageBase64() {
                 <img src={dataUri} alt="preview" className="h-16 w-16 rounded-lg object-contain" />
                 <div className="text-xs text-muted-foreground">
                   <p className="font-medium text-foreground">{meta?.name}</p>
-                  <p>{meta && formatBytes(meta.size)} · {formatBytes(dataUri.length)} as Base64</p>
+                  <p>{meta && formatBytes(meta.size)} · {t('asBase64', { size: formatBytes(dataUri.length) })}</p>
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold text-muted-foreground">Data URI</label>
+                  <label className="text-xs font-semibold text-muted-foreground">{t('dataUri')}</label>
                   <CopyButton value={dataUri} />
                 </div>
                 <ToolTextarea value={dataUri} readOnly className="min-h-40" />
@@ -81,7 +83,7 @@ export function ImageBase64() {
       ) : (
         <>
           <div className="space-y-2">
-            <label className="text-xs font-semibold text-muted-foreground">Base64 or data URI</label>
+            <label className="text-xs font-semibold text-muted-foreground">{t('inputLabel')}</label>
             <ToolTextarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
@@ -97,7 +99,7 @@ export function ImageBase64() {
                 onClick={download}
                 className="inline-flex items-center gap-1.5 rounded-lg bg-ufo-green px-3 py-2 text-sm font-bold text-black transition-colors hover:bg-ufo-green/85"
               >
-                <Download className="h-4 w-4" /> Download image
+                <Download className="h-4 w-4" /> {t('downloadImage')}
               </button>
             </div>
           )}

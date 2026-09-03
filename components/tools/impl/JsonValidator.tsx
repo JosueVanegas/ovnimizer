@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { AlertCircle, CheckCircle2 } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { ToolTextarea } from '../ui'
 import { tryParse } from '@/lib/tools/json-convert'
 
@@ -16,6 +17,7 @@ function locate(input: string, message: string): string {
 }
 
 export function JsonValidator() {
+  const t = useTranslations('tools.json-validator')
   const [input, setInput] = useState('')
 
   const status = useMemo(() => {
@@ -23,28 +25,28 @@ export function JsonValidator() {
     const parsed = tryParse(input)
     if (parsed.error) return { ok: false as const, message: locate(input, parsed.error) }
     const type = Array.isArray(parsed.value)
-      ? `array (${parsed.value.length} items)`
+      ? t('typeArray', { n: parsed.value.length })
       : parsed.value === null
         ? 'null'
         : typeof parsed.value === 'object'
-          ? `object (${Object.keys(parsed.value as object).length} keys)`
+          ? t('typeObject', { n: Object.keys(parsed.value as object).length })
           : typeof parsed.value
     return { ok: true as const, type }
-  }, [input])
+  }, [input, t])
 
   return (
     <div className="space-y-4">
       <ToolTextarea
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Paste JSON to validate…"
+        placeholder={t('placeholder')}
         className="min-h-72"
       />
       {status &&
         (status.ok ? (
           <div className="flex items-center gap-2 rounded-xl border border-ufo-green/30 bg-ufo-green/10 px-4 py-3 text-sm font-medium text-ufo-green">
             <CheckCircle2 className="h-5 w-5 shrink-0" />
-            Valid JSON · root is {status.type}
+            {t('valid', { type: status.type })}
           </div>
         ) : (
           <div className="flex items-center gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">

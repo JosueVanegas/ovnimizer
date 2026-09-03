@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, Toolbar, ToolTextarea } from '../ui'
 
 const ESCAPES: Record<string, string> = {
@@ -22,6 +23,8 @@ function unescapeHtml(text: string): string {
 }
 
 function HtmlEscapeTool({ initialMode }: { initialMode: 'escape' | 'unescape' }) {
+  const t = useTranslations('tools.html-escape')
+  const tc = useTranslations('tools.common')
   const [input, setInput] = useState('')
   const [mode, setMode] = useState<'escape' | 'unescape'>(initialMode)
 
@@ -42,11 +45,11 @@ function HtmlEscapeTool({ initialMode }: { initialMode: 'escape' | 'unescape' })
             <button
               key={m}
               onClick={() => setMode(m)}
-              className={`rounded-md px-3 py-1 font-semibold capitalize transition-colors ${
+              className={`rounded-md px-3 py-1 font-semibold transition-colors ${
                 mode === m ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {m}
+              {t(m)}
             </button>
           ))}
         </div>
@@ -55,27 +58,27 @@ function HtmlEscapeTool({ initialMode }: { initialMode: 'escape' | 'unescape' })
           disabled={!output}
           className="rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted/70 disabled:opacity-40"
         >
-          Use output as input
+          {tc('useOutputAsInput')}
         </button>
       </Toolbar>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <div className="space-y-2">
           <label className="text-xs font-semibold text-muted-foreground">
-            {mode === 'escape' ? 'Raw HTML / text' : 'Escaped HTML'}
+            {mode === 'escape' ? t('rawLabel') : t('escapedLabel')}
           </label>
           <ToolTextarea
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={mode === 'escape' ? '<div class="x">Hi & bye</div>' : '&lt;div&gt;…&lt;/div&gt;'}
+            placeholder={mode === 'escape' ? t('escapePlaceholder') : t('unescapePlaceholder')}
           />
         </div>
         <div className="space-y-2">
           <div className="flex items-center justify-between">
-            <label className="text-xs font-semibold text-muted-foreground">Output</label>
+            <label className="text-xs font-semibold text-muted-foreground">{tc('output')}</label>
             <CopyButton value={output} />
           </div>
-          <ToolTextarea value={output} readOnly placeholder="Result…" />
+          <ToolTextarea value={output} readOnly placeholder={tc('result')} />
         </div>
       </div>
     </div>

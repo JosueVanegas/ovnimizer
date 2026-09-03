@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput } from '../ui'
 import { hexToRgb, rgbToHsl, hslToHex } from '@/lib/tools/color'
 
@@ -20,6 +21,7 @@ const STOPS: [number, number][] = [
 ]
 
 export function TailwindPalette() {
+  const t = useTranslations('tools.tailwind-palette')
   const [hex, setHex] = useState('#64ff17')
   const [name, setName] = useState('brand')
 
@@ -40,7 +42,7 @@ export function TailwindPalette() {
     <div className="space-y-5">
       <div className="flex flex-wrap items-end gap-3">
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">Base color</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('baseColor')}</label>
           <div className="flex items-center gap-2">
             <input
               type="color"
@@ -53,13 +55,13 @@ export function TailwindPalette() {
           </div>
         </div>
         <div className="space-y-1.5">
-          <label className="text-xs font-semibold text-muted-foreground">Name</label>
+          <label className="text-xs font-semibold text-muted-foreground">{t('name')}</label>
           <ToolInput value={name} onChange={(e) => setName(e.target.value)} className="w-32" />
         </div>
       </div>
 
       {!palette ? (
-        <p className="text-sm text-destructive">Enter a valid hex color.</p>
+        <p className="text-sm text-destructive">{t('invalid')}</p>
       ) : (
         <>
           <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-11">

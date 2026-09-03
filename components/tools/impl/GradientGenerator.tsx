@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react'
 import { Plus, X, RefreshCw } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton } from '../ui'
 
 interface Stop {
@@ -15,6 +16,8 @@ const randColor = () =>
   '#' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0')
 
 export function GradientGenerator() {
+  const t = useTranslations('tools.gradient-generator')
+  const tc = useTranslations('tools.common')
   const [type, setType] = useState<'linear' | 'radial'>('linear')
   const [angle, setAngle] = useState(90)
   const [stops, setStops] = useState<Stop[]>([
@@ -44,21 +47,21 @@ export function GradientGenerator() {
 
       <div className="flex flex-wrap items-center gap-3">
         <div className="flex items-center gap-1 rounded-lg border border-border/60 bg-muted/40 p-0.5 text-xs">
-          {(['linear', 'radial'] as const).map((t) => (
+          {(['linear', 'radial'] as const).map((tp) => (
             <button
-              key={t}
-              onClick={() => setType(t)}
-              className={`rounded-md px-3 py-1 font-semibold capitalize transition-colors ${
-                type === t ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
+              key={tp}
+              onClick={() => setType(tp)}
+              className={`rounded-md px-3 py-1 font-semibold transition-colors ${
+                type === tp ? 'bg-ufo-green text-black' : 'text-muted-foreground hover:bg-muted'
               }`}
             >
-              {t}
+              {t(tp)}
             </button>
           ))}
         </div>
         {type === 'linear' && (
           <label className="flex items-center gap-2 text-xs font-medium text-muted-foreground">
-            Angle
+            {t('angle')}
             <input
               type="range"
               min={0}
@@ -96,7 +99,7 @@ export function GradientGenerator() {
               onClick={() => setStops((prev) => (prev.length > 2 ? prev.filter((x) => x.id !== s.id) : prev))}
               disabled={stops.length <= 2}
               className="text-muted-foreground transition-colors hover:text-destructive disabled:opacity-30"
-              aria-label="Remove stop"
+              aria-label={t('removeStop')}
             >
               <X className="h-4 w-4" />
             </button>
@@ -109,13 +112,13 @@ export function GradientGenerator() {
           onClick={() => setStops((prev) => [...prev, { id: nextId++, color: randColor(), pos: 50 }])}
           className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold hover:bg-muted/70"
         >
-          <Plus className="h-3.5 w-3.5" /> Add stop
+          <Plus className="h-3.5 w-3.5" /> {t('addStop')}
         </button>
         <button
           onClick={() => setStops((prev) => prev.map((s) => ({ ...s, color: randColor() })))}
           className="inline-flex items-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-1.5 text-xs font-semibold hover:bg-muted/70"
         >
-          <RefreshCw className="h-3.5 w-3.5" /> Randomize
+          <RefreshCw className="h-3.5 w-3.5" /> {tc('randomize')}
         </button>
       </div>
     </div>

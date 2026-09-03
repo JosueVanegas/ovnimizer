@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Pipette } from 'lucide-react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput } from '../ui'
 import { hexToRgb, rgbToHsl } from '@/lib/tools/color'
 
@@ -18,6 +19,7 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 export function ColorPicker() {
+  const t = useTranslations('tools.color-picker')
   const [hex, setHex] = useState('#64ff17')
   const rgb = hexToRgb(hex)
   const normalized = rgb ? '#' + rgb.map((n) => n.toString(16).padStart(2, '0')).join('') : '#000000'
@@ -54,7 +56,7 @@ export function ColorPicker() {
             onClick={pick}
             className="inline-flex w-full items-center justify-center gap-1.5 rounded-lg border border-border/60 bg-muted/40 px-3 py-2 text-xs font-semibold hover:bg-muted/70"
           >
-            <Pipette className="h-3.5 w-3.5" /> Pick from screen
+            <Pipette className="h-3.5 w-3.5" /> {t('pickFromScreen')}
           </button>
         )}
       </div>
@@ -62,13 +64,13 @@ export function ColorPicker() {
       <div className="space-y-3">
         {rgb && hsl ? (
           <>
-            <Row label="HEX" value={normalized} />
-            <Row label="RGB" value={`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`} />
-            <Row label="HSL" value={`hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`} />
-            <Row label="CSS variable" value={`--color: ${normalized};`} />
+            <Row label={t('hex')} value={normalized} />
+            <Row label={t('rgb')} value={`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`} />
+            <Row label={t('hsl')} value={`hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`} />
+            <Row label={t('cssVariable')} value={`--color: ${normalized};`} />
           </>
         ) : (
-          <p className="text-sm text-destructive">Enter a valid hex color.</p>
+          <p className="text-sm text-destructive">{t('invalid')}</p>
         )}
       </div>
     </div>

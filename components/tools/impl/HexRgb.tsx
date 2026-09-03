@@ -1,6 +1,7 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { CopyButton, ToolInput } from '../ui'
 
 function hexToRgb(hex: string): [number, number, number] | null {
@@ -43,6 +44,7 @@ function Field({ label, value }: { label: string; value: string }) {
 }
 
 export function HexRgb() {
+  const t = useTranslations('tools.hex-rgb')
   const [hex, setHex] = useState('#64ff17')
   const rgb = useMemo(() => hexToRgb(hex), [hex])
   const normalizedHex = rgb ? `#${rgb.map((n) => n.toString(16).padStart(2, '0')).join('')}` : '#000000'
@@ -64,7 +66,7 @@ export function HexRgb() {
         </div>
       </div>
 
-      {!rgb && hex.trim() && <p className="text-sm text-destructive">Enter a valid 3- or 6-digit hex color.</p>}
+      {!rgb && hex.trim() && <p className="text-sm text-destructive">{t('invalid')}</p>}
 
       {rgb && hsl && (
         <div className="grid gap-3 sm:grid-cols-3">
